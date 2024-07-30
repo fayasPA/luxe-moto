@@ -1,9 +1,32 @@
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import Layout from "./Layout";
+import Home from "./pages/Home/Home";
+import React from "react";
+
 function App() {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Layout />}>
+        <Route path="" element={<Home />} />
+        {/* <Route path="vehicles" >
+          <Route path="" element={<Cars />} />
+          <Route path=":carId/*" element={<CarDetails />} />
+        </Route> */}
+        {/* <Route path="sellcar" element={<SellCar />} /> */}
+        {/* <Route path="showroom" element={<Showroom />} /> */}
+        {/* <Route path="gallery" element={<Gallery />} /> */}
+        {/* <Route path="insurance" element={<Insurance />} /> */}
+        {/* <Route path="emi-calculator" element={<Calculator />} /> */}
+        {/* <Route path="about" element={<About />} /> */}
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
+      </Route>
+    )
+  );
 
   return (
-    <h1 className="text-3xl text-green font-bold underline bg-white h-[100vh]">
-      Hello world!
-    </h1>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 }
 

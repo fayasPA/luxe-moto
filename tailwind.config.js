@@ -12,6 +12,7 @@ export default {
         josefin: ['Montserrat', 'sans-serif'],
       },
       colors: {
+        red: "red",
         green: {
           DEFAULT: "#00693E",
           100: "#228B22",
