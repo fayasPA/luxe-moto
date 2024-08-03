@@ -1,9 +1,15 @@
 import React from 'react'
-import BannerCarousel from '../../components/BannerCarousal/BannerCarousel'
+import BannerCarousel from '../../components/BannerCarousel'
 const Home = () => {
   return (
-    <section className='h-screen'>
+    <section className='h-screen w-full'>
       <BannerCarousel />
+      <div>fays</div>
+      <div>fays</div>
+      <div>fays</div>
+      <div>fays</div>
+      <div>fays</div>
+      <div>fays</div>
     </section>
   )
 }

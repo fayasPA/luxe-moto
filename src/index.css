@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
     /* font-family: "Noto Sans", sans-serif; */
     /* font-family: 'Roboto', sans-serif; */
@@ -10,5 +16,65 @@ body {
     color: #000;
 }
 
+body::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: rgb(49, 49, 49)
+  }
+  
+  body::-webkit-scrollbar-track-piece {
+    background: rgb(49, 49, 49);
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: white;
+    box-shadow: inset -2px 2px 3px hsl(0deg 0% 100% / 25%),
+      inset -1px 2px 3px rgb(0 0 0 / 25%);
+    border-radius: 20px;
+  }
 
 
+/* Hamburger */
+.menu-trigger {
+  display: inline-flex;
+  flex-direction: column;
+  /* height: 48px;
+  width: 48px; */
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  position: relative;
+  padding: 9px;
+  cursor: pointer;
+  span {
+    display: inline-flex;
+    width: 20px;
+    height: 3px;
+    border-radius: 16px;
+    background-color: #ffff;
+    transition: all ease 0.5s;
+  }
+}
+.menu-close {
+  span {
+    position: absolute;
+    background-color: #ffff;
+    &:nth-child(1) {
+      transform: rotate(45deg);
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+      height: 0;
+      width: 0;
+    }
+  }
+}
+/* Hamburger */
