@@ -1,0 +1,53 @@
+html, body {
+  @apply h-full w-full m-0 p-0;
+}
+
+body {
+  @apply bg-white font-sans text-black;
+}
+
+/*  */
+
+.mySwiper {
+  @apply w-full h-full;
+}
+
+.swiper-slide {
+  @apply flex items-center justify-center rounded-xl text-xl font-bold text-white;
+}
+
+.swiper-slide:nth-child(1n) {
+  @apply bg-red;
+}
+
+.swiper-slide:nth-child(2n) {
+  @apply bg-blue-600;
+}
+
+.swiper-slide:nth-child(3n) {
+  @apply bg-green-600;
+}
+
+.swiper-slide:nth-child(4n) {
+  @apply bg-orange-600;
+}
+
+.swiper-slide:nth-child(5n) {
+  @apply bg-yellow-600;
+}
+
+.swiper-slide:nth-child(6n) {
+  @apply bg-pink-600;
+}
+
+.swiper-slide:nth-child(7n) {
+  @apply bg-teal-600;
+}
+
+.swiper-slide:nth-child(8n) {
+  @apply bg-indigo-600;
+}
+
+.swiper-slide:nth-child(9n) {
+  @apply bg-purple-600;
+}
