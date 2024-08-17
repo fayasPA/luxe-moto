@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Loader from './components/Loader';
 
+
 const Layout = () => {
   const [loaded, setLoaded] = useState(false);
   const [exitLoader, setExitLoader] = useState(false);
