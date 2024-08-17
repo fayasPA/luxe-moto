@@ -152,10 +152,10 @@ export default function Navbar() {
 
                     <div className={`w-full md:items-center md:w-auto hidden md:flex`}>
                         <div className="text-sm flex md:flex-grow font-semibold">
-                            <NavLink to='/' onClick={() => handleNavClick('/')} className={({ isActive }) => `${isActive ? 'text-green-300' : ''} block mt-4 md:inline-block md:mt-0 ${isScrolled ? 'text-black' : 'text-white'} hover:text-green-300 mr-4`} >
+                            <NavLink to='/' onClick={() => handleNavClick('/')} className={({ isActive }) => `${isActive ? 'text-green-300' : 'text-white'} block mt-4 md:inline-block md:mt-0 hover:text-green-300 mr-4`} >
                                 <span className=" ">Home</span>
                             </NavLink>
-                            <NavLink to='/vehicles' onClick={() => handleNavClick('/vehicles')} className={({ isActive }) => `${isActive ? 'text-green-300' : ''} px-5 block mt-4 md:inline-block md:mt-0 text-white hover:text-green-300 mr-4`} >
+                            <NavLink to='/vehicles' onClick={() => handleNavClick('/vehicles')} className={({ isActive }) => `${isActive ? 'text-green-300' : 'text-white'} px-5 block mt-4 md:inline-block md:mt-0 hover:text-green-300 mr-4`} >
                                 <span className=" ">Buy Used Cars</span>
                             </NavLink>
                             <span className={`block mt-4 md:inline-block md:mt-0 text-white hover:text-green-300 mr-4 `}>
@@ -218,7 +218,7 @@ export default function Navbar() {
                     <ul className={`items-center justify w-full md:flex md:w-auto md:order-1 gap-3`} id="navbar-search">
                         <div className="relative mt-3 md:hidden">
                             <div className='flex'>
-                                <ul className="bg-black p-4 font-josefin font-medium h-full flex flex-col justify-center items-center gap-5 w-full text-white">
+                                <ul className=" p-4 font-josefin font-medium h-full flex flex-col justify-center items-center gap-5 w-full text-white">
 
                                     <li className="sm-navbar py-3 w-full text-xl">
                                         <NavLink to='/' onClick={() => handleNavClick('/')} className={({ isActive }) => `${isActive ? ' text-green-300' : ''} flex justify-start items-start text-left`} >

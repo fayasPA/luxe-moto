@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import React from "react";
 import UsedVehicles from "./pages/UsedVehicles/UsedVehicles";
 import About from "./pages/About/About";
+import Calculator from "./pages/Calculator/Calculator";
 
 function App() {
   const router = createBrowserRouter(
@@ -18,7 +19,7 @@ function App() {
         {/* <Route path="showroom" element={<Showroom />} /> */}
         {/* <Route path="gallery" element={<Gallery />} /> */}
         {/* <Route path="insurance" element={<Insurance />} /> */}
-        {/* <Route path="emi-calculator" element={<Calculator />} /> */}
+        <Route path="emi-calculator" element={<Calculator />} />
         <Route path="about" element={<About />} />
         {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Route>
