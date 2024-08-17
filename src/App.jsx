@@ -8,6 +8,7 @@ import Calculator from "./pages/Calculator/Calculator";
 
 function App() {
   const router = createBrowserRouter(
+    
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
         <Route path="" element={<Home />} />

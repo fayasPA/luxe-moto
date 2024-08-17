@@ -60,6 +60,13 @@ body::-webkit-scrollbar {
     transition: all ease 0.5s;
   }
 }
+
+.menu-trigger-black {
+  span {
+    background-color: #000;
+  }
+}
+
 .menu-close {
   span {
     position: absolute;
@@ -75,6 +82,12 @@ body::-webkit-scrollbar {
       height: 0;
       width: 0;
     }
+  }
+}
+
+.menu-close-black {
+  span {
+    background-color: #000;
   }
 }
 /* Hamburger */

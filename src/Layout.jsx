@@ -10,7 +10,7 @@ const Layout = () => {
   useEffect(() => {
     setTimeout(() => {
       setExitLoader(true);
-    }, 3000);
+    }, 1000);
   }, []);
 
   return (

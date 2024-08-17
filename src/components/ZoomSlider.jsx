@@ -33,7 +33,7 @@ export default function ZoomSlider() {
           start: 'top center',
           end: 'bottom center',
           scrub: true,
-          markers: true,
+          // markers: true,
           onEnter: () => {
             gsap.to(swiperEl, {
               width: '100vw',
