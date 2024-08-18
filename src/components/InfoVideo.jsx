@@ -19,7 +19,7 @@ const InfoVideo = () => {
         videoRefs.current.pause();
       } else {
         videoRefs.current.play();
-      }
+      }//comment
       setIsPlaying(!isPlaying);
     }
   };
