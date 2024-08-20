@@ -20,7 +20,7 @@ const Layout = () => {
       <Navbar />
       <Loader
         onExit={() => {
-          setLoaded(true);
+          setLoaded(false);
         }}
       />
       <div className='relative z-0'>

@@ -1,17 +1,17 @@
 import React from 'react'
 import BannerCarousel from '../../components/BannerCarousel'
 import ZoomSlider from './../../components/ZoomSlider';
+import InfoVideo from '../../components/InfoVideo';
+import SliderAndVideo from '../../components/SliderAndVideo';
 const Home = () => {
   return (
     <section className='h-screen w-full'>
       <BannerCarousel />
-      <ZoomSlider />
-      <div>fays</div>
-      <div>fays</div>
-      <div>fays</div>
-      <div>fays</div>
-      <div>fays</div>
-      <div>fays</div>
+      <div><InfoVideo/></div>
+
+{/*       <ZoomSlider /> */}
+        <SliderAndVideo/>
+
     </section>
   )
 }

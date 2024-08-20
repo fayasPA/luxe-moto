@@ -5,8 +5,11 @@ import React from "react";
 import UsedVehicles from "./pages/UsedVehicles/UsedVehicles";
 import About from "./pages/About/About";
 import Calculator from "./pages/Calculator/Calculator";
+import LocomotiveScroll from "locomotive-scroll";
+
 
 function App() {
+  const locomotiveScroll = new LocomotiveScroll();
   const router = createBrowserRouter(
     
     createRoutesFromElements(
