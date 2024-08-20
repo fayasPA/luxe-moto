@@ -1,12 +1,12 @@
 import React from 'react'
-import info from '../../public/images/benz.jpg';
+import img from '/videos/benz.jpg';
 
 const ImageShowcase = () => {
   return (
     <div>
       <div>
         <div>
-            <image src={info}/>
+            <image src={img} />
         </div>
       </div>
     </div>
