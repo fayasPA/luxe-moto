@@ -60,7 +60,7 @@ const Loader = ({ onExit }) => {
           ease: 'power1.inOut',
         }, 0);
 
-      }, 2000); // Delay before the exit animation starts
+      }, 2000); // Delay before the exit animation starts  
     }
   }, [onExit]);
 
@@ -85,7 +85,7 @@ const Loader = ({ onExit }) => {
             opacity: 0,
           }}
         >
-          <p className="text-9xl font-bold whitespace-nowrap text-black">
+          <p className="text-5xl md:text-9xl font-bold whitespace-nowrap text-black">
             Luxe Moto
           </p>
         </div>
