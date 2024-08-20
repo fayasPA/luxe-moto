@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Loader from './components/Loader';
+import Footer from './components/Footer';
 
 
 const Layout = () => {
@@ -24,7 +25,7 @@ const Layout = () => {
       />
       <div className='relative z-0'>
         <Outlet />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );

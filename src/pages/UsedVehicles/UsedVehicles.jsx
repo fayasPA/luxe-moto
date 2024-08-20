@@ -1,4 +1,6 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
+import FilterSearch from '../../components/FilterSearch';
 
 
 const products = [
@@ -38,12 +40,36 @@ const products = [
 ]
 
 const UsedVehicles = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const filters = {
+    brand_id: params.get('brand_id'),
+    car_type: params.get('car_type'),
+    fuel_type: params.get('fuel_type'),
+    min_price: params.get('min_price') && parseInt(params.get('min_price')),
+    max_price: params.get('max_price') && parseInt(params.get('max_price'))
+  };
+
+  const filterProps = {
+    ...(filters.brand_id && { brandSel: filters.brand_id }),
+    ...(filters.fuel_type && { fuelTypeSel: filters.fuel_type }),
+    ...(filters.car_type && { carTypeSel: filters.car_type }),
+    ...(filters.min_price && { minPriceSel: filters.min_price }),
+    ...(filters.max_price && { maxPriceSel: filters.max_price }),
+  };
+
   return (
     <div className="bg-white pt-10">
 
       <div className="text-black mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <div>
-          <h2>Make Your Choice</h2>
+
+
+        {/* filter */}
+        <FilterSearch {...filterProps} />
+        {/* filter */}
+
+        <div className=''>
+          <h2 className='text-xl md:text-4xl'>Make Your Choice</h2>
         </div>
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -62,40 +88,6 @@ const UsedVehicles = () => {
           ))}
         </div>
 
-
-
-        {/* extra */}
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <a key={product.id} href={product.href} className="group">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                <img
-                  alt={product.imageAlt}
-                  src={product.imageSrc}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
-                />
-              </div>
-              <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-              <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-            </a>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <a key={product.id} href={product.href} className="group">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                <img
-                  alt={product.imageAlt}
-                  src={product.imageSrc}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
-                />
-              </div>
-              <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-              <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
-            </a>
-          ))}
-        </div>
-        {/* extra */}
 
       </div>
     </div>
@@ -103,5 +95,3 @@ const UsedVehicles = () => {
 }
 
 export default UsedVehicles
-
-
