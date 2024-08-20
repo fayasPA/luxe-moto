@@ -23,9 +23,9 @@ const Layout = () => {
           setLoaded(false);
         }}
       />
-      <div className='relative z-0'>
+      <div className=''>
         <Outlet />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
