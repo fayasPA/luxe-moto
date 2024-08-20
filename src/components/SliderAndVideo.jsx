@@ -34,14 +34,14 @@ const SliderAndVideo = () => {
   }, []);
 
   return (
-    <div className='w-full h-full flex'>
-      <div className='w-[50%]'>
+    <div className='w-screen h-screen md:flex'>
+      <div className='w-full md:w-[50%] '>
         <ZoomSlider />
       </div>
-      <div className='w-[50%] h-full pl-16 pr-3 flex justify-center items-center'>
+      <div className='w-full  md:w-[50%] h-full md:pl-16 md:pr-3 '>
         <video 
           ref={videoRef} // Attach ref to the video element
-          className='w-full h-[40vw]'
+          className='w-full h-full object-cover'
           controls={false} // Disable default controls
           muted // Mute the video if needed
         >
