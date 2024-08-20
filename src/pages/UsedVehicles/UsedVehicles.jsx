@@ -8,34 +8,34 @@ import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
 const products = [
   {
     id: 1,
-    name: 'Earthen Bottle',
+    brand: 'Earthen Bottle',
     href: '#',
     price: '$48',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
     imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
   },
   {
     id: 2,
-    name: 'Nomad Tumbler',
+    brand: 'Nomad Tumbler',
     href: '#',
     price: '$35',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
     imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
   },
   {
     id: 3,
-    name: 'Focus Paper Refill',
+    brand: 'Focus Paper Refill',
     href: '#',
     price: '$89',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
     imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
   },
   {
     id: 4,
-    name: 'Machined Mechanical Pencil',
+    brand: 'Machined Mechanical Pencil',
     href: '#',
     price: '$35',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
     imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
   },
   // More products...
@@ -91,6 +91,7 @@ const UsedVehicles = () => {
         }
       }
     } catch (error) {
+      setDatas(products)
       console.log("---------BANNER_ERROR", error);
     } finally {
       // setLoading(false)
@@ -120,7 +121,7 @@ const UsedVehicles = () => {
               <div className="relative">
                 <div className="aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-t-lg">
                   <img
-                    src={`${BASE_IMAGE_URL}${product.image}`}
+                    src={product.image ? `${BASE_IMAGE_URL}${product.image}`: `${product.sampleImage}`}
                     alt={product.image}
                     className="h-full w-full object-cover object-center group-hover:opacity-85 hover:scale-105 transition-transform duration-1000 ease-in"
                   />
