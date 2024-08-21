@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
-
+import './style.css';
+import { TbPhoneCall } from 'react-icons/tb';
 
 const products = [
   {
@@ -64,6 +65,11 @@ const UsedVehicles = () => {
   const [datas, setDatas] = useState([]);
   const [totalDataCount, setTotalDataCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+  };
   // api call
   useEffect(() => {
     setCurrentPage(1)
@@ -106,6 +112,22 @@ const UsedVehicles = () => {
 
       <div className="text-black mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
 
+        <div className='flex justify-center '>
+          <label
+            htmlFor="car-type-filter"
+            className="car-type-switch"
+            aria-label="toggle car-type filter"
+          >
+            <input
+              type="checkbox"
+              id="car-type-filter"
+              checked={isChecked}
+              onChange={handleToggle}
+            />
+            <span>PREMIUM</span>
+            <span>MINI</span>
+          </label>
+        </div>
 
         {/* filter */}
         <FilterSearch {...filterProps} />
@@ -121,7 +143,7 @@ const UsedVehicles = () => {
               <div className="relative">
                 <div className="aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-t-lg">
                   <img
-                    src={product.image ? `${BASE_IMAGE_URL}${product.image}`: `${product.sampleImage}`}
+                    src={product.image ? `${BASE_IMAGE_URL}${product.image}` : `${product.sampleImage}`}
                     alt={product.image}
                     className="h-full w-full object-cover object-center group-hover:opacity-85 hover:scale-105 transition-transform duration-1000 ease-in"
                   />
