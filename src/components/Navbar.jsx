@@ -15,36 +15,82 @@ import {
 } from "react-icons/fa";
 import { FaCableCar, FaHelmetSafety, FaPeopleGroup, FaShop } from "react-icons/fa6";
 import { GiAutoRepair } from "react-icons/gi";
-import { FiPhone } from "react-icons/fi";
+import { FiEdit, FiChevronDown, FiTrash, FiShare, FiPlusSquare, FiPhone } from "react-icons/fi";
 
 gsap.registerPlugin(ScrollTrigger)
 
 
+const DropDown = ({ name, items, isHomePage }) => {
+    const [open, setOpen] = useState(false);
+    const dropdownRef = useRef(null);
+    const iconRef = useRef(null);
 
-const DropDown = ({ name, items }) => {
-    const [swi, setSwi] = useState(false)
-    const toggle = () => {
-        if (swi) {
-            setSwi(false)
+    useEffect(() => {
+        const dropdownElement = dropdownRef.current;
+        const iconElement = iconRef.current;
+
+        if (open) {
+            gsap.to(dropdownElement, {
+                scaleY: 1,
+                opacity: 1,
+                duration: 0.3,
+                ease: 'power2.out',
+                stagger: 0.1,
+                transformOrigin: 'top',
+            });
+            gsap.to(iconElement, {
+                rotate: 180,
+                duration: 0.3,
+                ease: 'power2.out',
+            });
         } else {
-            setSwi(true)
+            gsap.to(dropdownElement, {
+                scaleY: 0,
+                opacity: 0,
+                duration: 0.3,
+                ease: 'power2.in',
+                stagger: 0.1,
+                transformOrigin: 'top',
+            });
+            gsap.to(iconElement, {
+                rotate: 0,
+                duration: 0.3,
+                ease: 'power2.in',
+            });
         }
-    }
-    return (
-        <div className=''>
-            <li className={swi ? 'flex items-center hover:text-green-300 cursor-pointer' : 'flex items-center hover:text-green-300 cursor-pointer'} onClick={toggle}>{name}{swi ? <MdKeyboardArrowUp size={20} className=' mx-1' /> : <MdKeyboardArrowDown size={20} className=' mx-1' />}</li>
-            <div className={swi ? 'absolute top-16 w-auto px-5 h-auto shadow-2xl rounded-xl flex flex-col justify-center bg-white transition-all duration-700' : 'hidden'}>
-                <ul className='flex flex-col text-gray-600 font-epilogue text-[15px]'>
-                    {items.map((item, index) => (
-                        <NavLink key={index} to={item.path} onClick={() => handleNavClick(item.path)} className={({ isActive }) => `${isActive ? 'text-green-300' : ''} flex  items-start my-1.5 mx-auto`} >
-                            <span className=" ">{item.name}</span>
-                        </NavLink>
-                        // <li key={index} className='flex  items-start my-1.5 mx-auto'>{item.name}</li>
+    }, [open]);
 
+
+    return (
+
+        <div className={`flex items-center justify-center ${isHomePage ? '': 'bg-white'}`}>
+            <div className="relative">
+                <button
+                    onClick={() => setOpen(prev => !prev)}
+                    className="flex items-center gap-2 px-3 rounded-md  transition-colors"
+                >
+                    <span className="font-semibold text-sm">Post actions</span>
+                    <span ref={iconRef}>
+                        <FiChevronDown />
+                    </span>
+                </button>
+
+                <ul
+                    ref={dropdownRef}
+                    className={`border border-1 flex flex-col gap-2 p-2 bg-white shadow-xl absolute top-[120%] left-[50%] w-48 overflow-hidden origin-top ${open ? 'block' : 'hidden'}`}
+                >
+                    {items.map((item, index) => (
+                        <NavLink key={index} to={item.path} onClick={() => handleNavClick(item.path)} className={({ isActive }) => `${isActive ? 'text-green-300' : 'text-slate-700'} flex  items-start my-1.5 mx-auto w-full`} >
+                            <li
+                                onClick={() => setOpen(false)}
+                                className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-gray-100  hover:text-green-300 transition-colors cursor-pointer"
+                            >
+                                <span>{item.name}</span>
+                            </li>
+                        </NavLink>
                     ))}
                 </ul>
             </div>
-
         </div>
 
 
@@ -150,7 +196,7 @@ export default function Navbar() {
     }, [lastScrollY]);
 
     return (
-        <nav className={`w-full top-0 border-gray-200 pb-2 z-10 transition-colors duration-300  ${isHomePage ? (isScrolled ? 'sticky bg-black' : nav ? 'absolute bg-black' : 'absolute bg-transparent') : isScrolled ? 'sticky bg-white': 'absolute bg-white'}`}>
+        <nav className={`w-full top-0 border-gray-200 pb-2 z-10 transition-colors duration-300  ${isHomePage ? (isScrolled ? 'sticky bg-black' : nav ? 'absolute bg-black' : 'absolute bg-transparent') : isScrolled ? 'sticky bg-white' : 'absolute bg-white'}`}>
             <div className="w-full flex flex-wrap items-center justify-between mx-auto px-5 md:px-10 ">
 
                 <div className={`w-full md:items-center md:w-auto hidden md:flex`}>
@@ -161,8 +207,8 @@ export default function Navbar() {
                         <NavLink to='/vehicles' onClick={() => handleNavClick('/vehicles')} className={({ isActive }) => `${isActive ? 'text-green-300' : isHomePage ? 'text-white' : 'text-black'} px-5 block mt-4 md:inline-block md:mt-0 hover:text-green-300 mr-4`} >
                             <span className=" ">Buy Used Cars</span>
                         </NavLink>
-                        <span className={`block mt-4 md:inline-block md:mt-0 ${isHomePage ? 'text-white': 'text-black'} hover:text-green-300 mr-4 `}>
-                            <DropDown name={'More'} items={moreList} />
+                        <span className={`block mt-4 md:inline-block md:mt-0 ${isHomePage ? 'text-white' : 'text-black'} hover:text-green-300 mr-4 `}>
+                            <DropDown name={'More'} items={moreList} isHomePage={isHomePage} />
                         </span>
                     </div>
                 </div>
@@ -172,14 +218,14 @@ export default function Navbar() {
                 text-white`}>
                     <img src={`${isHomePage ? whiteLogo : blackLogo}`} className="mt-2 w-12 h-8  md:w-16 md:h-10 rounded-xl logo " alt=" Logo" />
                     <div className='flex flex-col '>
-                    {/* <div className='flex flex-col mt-[-1.1rem] md:mt-[-1.4rem]'> */}
+                        {/* <div className='flex flex-col mt-[-1.1rem] md:mt-[-1.4rem]'> */}
                         <span className={`${isHomePage ? 'text-white' : 'text-black'}`}>LUXE MOTO</span>
                     </div>
                 </Link>
                 {/* Logo */}
 
                 <div className=" hidden md:flex ">
-                    <div className={`flex justify-center gap-2 ${isHomePage ? 'text-white': 'text-black'}`}>
+                    <div className={`flex justify-center gap-2 ${isHomePage ? 'text-white' : 'text-black'}`}>
                         <a href="https://wa.me/919037696969" target='blank'>
                             <FaWhatsapp size={20} className=" cursor-pointer" />
                         </a>
@@ -222,7 +268,7 @@ export default function Navbar() {
                 <ul className={`items-center justify w-full md:flex md:w-auto md:order-1 gap-3`} id="navbar-search">
                     <div className="relative mt-3 md:hidden">
                         <div className='flex'>
-                            <ul className={`p-4 font-josefin font-medium h-full flex flex-col justify-center items-center gap-5 w-full ${isHomePage ? 'text-white': 'text-black'}`}>
+                            <ul className={`p-4 font-josefin font-medium h-full flex flex-col justify-center items-center gap-5 w-full ${isHomePage ? 'text-white' : 'text-black'}`}>
 
                                 <li className="sm-navbar py-3 w-full text-xl">
                                     <NavLink to='/' onClick={() => handleNavClick('/')} className={({ isActive }) => `${isActive ? ' text-green-300' : ''} flex justify-start items-start text-left`} >
