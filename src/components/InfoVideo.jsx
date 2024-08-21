@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import info from '../../public/videos/info.mp4';
+import info from '/videos/info.mp4';
 import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
 
 // Register ScrollTrigger with GSAP
@@ -53,6 +53,8 @@ const InfoVideo = () => {
           className='w-full h-auto '
           controls={false} // Disable default controls
           muted // Mute the video if needed
+          loop
+          autoPlay
         >
           <source src={info} type="video/mp4" /> 
           Your browser does not support the video tag.

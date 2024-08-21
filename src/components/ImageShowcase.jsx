@@ -24,7 +24,7 @@ const ImageShowcase = () => {
           scrollTrigger: {
             trigger: imageEl,
             start: 'top 80%', // Start animation when image top is 80% from viewport top
-            end: 'top 40%', // End animation when image top is 40% from viewport top
+            end: 'center top', // End animation when the bottom of Swiper is at the top of the viewport
             scrub: true, // Smooth animation on scroll
             // markers: true, // Uncomment to see ScrollTrigger markers
           },
@@ -34,7 +34,7 @@ const ImageShowcase = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden bg-black  my-14">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden bg-black   my-4">
       {[...Array(6)].map((_, index) => (
         <div
           key={index}

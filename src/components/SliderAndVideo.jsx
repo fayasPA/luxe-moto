@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ZoomSlider from './ZoomSlider';
-import info from '../../public/videos/smallHero.mp4';
+import info from '/videos/smallHero.mp4';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FaPlay, FaPause } from 'react-icons/fa'; // Import icons for play and pause
+import SliderUi from './SliderUi';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +27,7 @@ const SliderAndVideo = () => {
           divEl,
           { scale: 0.6 }, // Initial zoom out for desktop
           {
-            scale: 0.9, // Final zoom in for desktop
+            scale: 1.0, // Final zoom in for desktop
             ease: 'power3.inOut', // Smoother easing function
             duration: 1.5,
             scrollTrigger: {
@@ -46,7 +47,7 @@ const SliderAndVideo = () => {
           divEl,
           { scale: 0.8 }, // Initial zoom out for mobile
           {
-            scale: 1.2, // Final zoom in for mobile
+            scale: 1, // Final zoom in for mobile
             ease: 'power3.inOut', // Smoother easing function
             duration: 1.5,
             scrollTrigger: {
@@ -75,15 +76,19 @@ const SliderAndVideo = () => {
   };
 
   return (
-    <div className='w-screen h-screen md:flex relative'>
-      <div className='w-full md:w-[50%]'>
-        <ZoomSlider />
+    <>
+    <div className='w-screen h-[200%] md:h-full md:flex relative my-0'>
+      <div className='w-full md:w-[50%] '>
+        <div className='md:hidden p-12 h-[100vh]'><ZoomSlider /> </div> 
+       <div className='hidden md:flex'> <SliderUi/> </div> 
       </div>
-      <div className='w-full md:w-[50%] h-full md:pl-16 md:pr-3 relative ' ref={videoRefs}>
+      <div className='w-full md:w-[50%] h-screen md:pl-16md:pr-3 relative ' ref={videoRefs}>
 
         <video 
           ref={videoRef} // Attach ref to the video element
-          className='w-full h-full object-cover rounded-2xl'
+          className='w-full h-full object-cover '
+          autoPlay
+          loop
           muted // Mute the video if needed
         >
           <source src={info} type="video/mp4" />
@@ -100,6 +105,14 @@ const SliderAndVideo = () => {
 
       </div>
     </div>
+    {/* text */}
+    <div className='flex justify-center items-center mx-24 md:mx-56 mt-10'>
+        <p className='text-xl md:text-4xl'>
+          Introducing the most electrifying Maserati story ever. Folgore is the perfect match
+          between innovative performance and highest Italian luxury design.
+        </p>
+      </div>
+    </>
   );
 }
 
