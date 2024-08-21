@@ -76,8 +76,10 @@ const Calculator = () => {
         datasets: [
             {
                 data: [loanAmount, emi * loanTenure - loanAmount],
-                backgroundColor: ['#ccc', '#36454F'],
-                hoverBackgroundColor: ['#B6B6B4', '#1A2421'],
+                backgroundColor: ['#49A584','#FF8383'  ], // Customize these colors
+                hoverBackgroundColor: ['#096254','#D8232D'], // Customize hover colors
+                
+    
             },
         ],
     };
@@ -206,7 +208,7 @@ const Calculator = () => {
                         <h2 className="text-2xl font-semibold content-gsap">{getNumberToCurrencyText(emi, 2)} /month</h2>
                         <div className="flex justify-between mt-4">
                             <div className="flex flex-col items-center">
-                                <p className="text-gray-600">Principal</p>
+                                <p className="text-lime-950">Principal</p>
                                 <p className="text-lg font-semibold content-gsap">{getNumberToCurrencyText(loanAmount)}</p>
                             </div>
                             <div className="flex flex-col items-center">
@@ -216,17 +218,18 @@ const Calculator = () => {
                             </div>
                         </div>
                         <div className="mt-4 w-full">
-                            <label className="block text-gray-600">Loan Amount</label>
-                            <input type="range" className="range-slider__range" min="100000" max="10000000" step={10000} value={loanAmount} onChange={handleLoanAmountChange} />
+                            <label className="block text-[#096254]">Loan Amount</label>
+                            <input type="range" className="range-slider__range" min="100000" max="10000000"
+                             step={10000} value={loanAmount} onChange={handleLoanAmountChange} />
                             <span className='content-gsap'>{getNumberToCurrencyText(loanAmount)}</span>
                         </div>
                         <div className="mt-4 w-full">
-                            <label className="block text-gray-600">Rate of Interest</label>
+                            <label className="block text-[#096254]">Rate of Interest</label>
                             <input type="range" className="range-slider__range" min="1" max="25" step="0.1" value={interestRate} onChange={handleInterestRateChange} />
                             <span className='content-gsap'>{interestRate} %</span>
                         </div>
                         <div className="mt-4 w-full">
-                            <label className="block text-gray-600">Loan Tenure</label>
+                            <label className="block text-[#096254]">Loan Tenure</label>
                             <input type="range" className="range-slider__range" min="12" max="84" value={loanTenure} onChange={handleLoanTenureChange} />
                             <span className='content-gsap'>{loanTenure} months</span>
                         </div>

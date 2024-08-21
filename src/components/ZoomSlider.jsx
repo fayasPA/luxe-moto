@@ -5,6 +5,9 @@ import 'swiper/css/effect-cards'; // Importing Swiper's effect cards CSS
 import './style.css'; // Importing custom styles
 import { EffectCards } from 'swiper/modules'; // Importing Swiper's cards effect module
 import gsap from 'gsap'; // Importing GSAP for animations
+import image1 from '/videos/del1.jpg';
+import image2 from '/videos/del2.jpeg';
+import image3 from '/videos/del3.jpeg';
 import ScrollTrigger from 'gsap/ScrollTrigger'; // Importing ScrollTrigger plugin for scroll-based animations
 
 // Register ScrollTrigger plugin with GSAP
@@ -41,7 +44,7 @@ export default function ZoomSlider() {
   }, []);
 
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="h-full flex items-center justify-center">
       {/* Swiper component with card effect */}
       <Swiper
         ref={swiperRef} // Attach ref to the Swiper component
@@ -51,15 +54,36 @@ export default function ZoomSlider() {
         className="mySwiper" // Custom class for styling
       >
         {/* Swiper slides */}
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide>
+          <div className='w-full h-full overflow-hidden bg-red'>
+          <img src={image1} alt="" className='object-cover h-full w-full' />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className='w-full h-full overflow-hidden bg-red'>
+          <img src={image2} alt="" className='object-cover h-full w-full' />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className='w-full h-full overflow-hidden bg-red'>
+          <img src={image3} alt="" className='object-cover h-full w-full' />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className='w-full h-full overflow-hidden bg-red'>
+          <img src={image1} alt="" className='object-cover h-full w-full' />
+          </div>
+        </SwiperSlide>
+        {/* <SwiperSlide><img src={image1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={image2} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={image3} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={image1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={image2} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={image3} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={image1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={image2} alt="" /></SwiperSlide> */}
+
+
       </Swiper>
     </div>
   );
