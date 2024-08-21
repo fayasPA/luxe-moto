@@ -34,7 +34,7 @@ const ImageShowcase = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden bg-black  my-14">
       {[...Array(6)].map((_, index) => (
         <div
           key={index}
