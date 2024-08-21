@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
 import './style.css';
 import { TbPhoneCall } from 'react-icons/tb';
-import { capitalizeFirstLetters, getNumberToCurrencyText } from '../../utils/helperFunctions';
-import { IoSpeedometerOutline } from 'react-icons/io5';
 
 const products = [
   {
@@ -139,58 +137,59 @@ const UsedVehicles = () => {
           <h2 className='text-xl md:text-4xl'>Make Your Choice</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {datas.map((product) => (
-            <div
-              key={product.id}
-              className="border-[1px] border-dashed border-black card shadow-lg h-[400px] w-full sm:w-[280px] group gap-2 rounded-none relative flex flex-col justify-end p-6 overflow-hidden bg-black"
-            >
-              <div
-                className="absolute top-0 left-0 h-full w-full bg-cover bg-center opacity-95 group-hover:opacity-20 transition-opacity duration-300"
-                style={{ backgroundImage: `url(${BASE_IMAGE_URL}${product.image})` }}
-              ></div>
-
-              <div className="relative z-10 text-white flex flex-col gap-2">
-
-                <div className="flex items-center gap-2">
-                  <div className="flex">
-                    {product.brand} {product.model}
-                  </div>
-                </div>
-
-                <div className="flex gap-2 justify-between">
-                  <div
-                    className="border-2 border-green-300 text-white font-normal px-2 py-1 hover:bg-green-300 hover:text-black transition duration-300 cursor-pointer"
-                  >
-                    <p>Enquiry</p>
-                  </div>
-
-                  <Link to={`/vehicles/${product.id}`}
-                    className="border-2 border-white text-white font-normal px-2 py-1 hover:bg-white hover:text-black transition duration-300 cursor-pointer"
-                  >
-                    <p>More Details</p>
-                  </Link>
-                </div>
-              </div>
-              <div className="text-white font-light relative h-0 group-hover:h-[8em] leading-5 transition-height duration-500 overflow-hidden z-10">
-                <div className="flex items-center justify-between  text-sm md:text-base">
-                  <span>{product.year}</span>
-                  <span>{capitalizeFirstLetters(product.fuel_type)}</span>
-                </div>
-
-                <p className="mt-2 text-2xl font-semibold ">{getNumberToCurrencyText(product.price)}</p>
-
-                <div className="mt-4 flex items-center justify-between text-sm md:text-base">
-                  <div className="flex items-center gap-2 justify-center">
-                    <IoSpeedometerOutline size={15} className='text-gray' />
-                    <span className='text-gray font-medium'>{product.kms} KMS</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+  {datas.map((product) => (
+    <div
+      key={product.id}
+      className="relative group duration-500 cursor-pointer overflow-hidden text-gray-50 h-72 w-56 rounded-2xl hover:duration-700"
+    >
+      <div className="w-56 h-72 bg-lime-400 text-gray-800">
+        <div className="flex justify-between p-1">
+          <svg
+            className="fill-current stroke-current w-8 h-8 p-2 hover:bg-lime-200 rounded-full"
+            height="100"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.8,32.9V15.8m0,0H32.9m-17.1,0L37.2,37.2m47-4.3V15.8m0,0H67.1m17.1,0L62.8,37.2m-47,29.9V84.2m0,0H32.9m-17.1,0L37.2,62.8m47,21.4L62.8,62.8M84.2,84.2V67.1m0,17.1H67.1"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="8"
+            />
+          </svg>
+          <svg
+            className="fill-current stroke-current w-8 h-8 p-2 hover:bg-lime-200 rounded-full"
+            height="100"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M50,17.4h0M50,50h0m0,32.6h0M50,22a4.7,4.7,0,1,1,4.7-4.6A4.7,4.7,0,0,1,50,22Zm0,32.7A4.7,4.7,0,1,1,54.7,50,4.7,4.7,0,0,1,50,54.7Zm0,32.6a4.7,4.7,0,1,1,4.7-4.7A4.7,4.7,0,0,1,50,87.3Z"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="8"
+            />
+          </svg>
         </div>
-
+      </div>
+      <div className="absolute bg-gray-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 duration-500 group-hover:duration-600">
+        <span className="text-lime-400 font-bold text-xs">{product.year}</span>
+        <span className="text-gray-800 font-bold text-3xl">
+          {product.brand} {product.model}
+        </span>
+        <p className="text-neutral-800">
+          {product.mileage} MI - {product.price}
+        </p>
+        <p className="text-neutral-800">EXTERIOR: {product.exterior}</p>
+        <p className="text-neutral-800">INTERIOR: {product.interior}</p>
+        <p className="text-neutral-800">AVAILABLE AT: {product.location}</p>
+      </div>
+    </div>
+  ))}
+</div>
 
 
 

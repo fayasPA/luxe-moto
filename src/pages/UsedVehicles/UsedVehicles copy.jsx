@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
 import './style.css';
 import { TbPhoneCall } from 'react-icons/tb';
-import { capitalizeFirstLetters, getNumberToCurrencyText } from '../../utils/helperFunctions';
-import { IoSpeedometerOutline } from 'react-icons/io5';
 
 const products = [
   {
@@ -139,59 +137,64 @@ const UsedVehicles = () => {
           <h2 className='text-xl md:text-4xl'>Make Your Choice</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {datas.map((product) => (
-            <div
-              key={product.id}
-              className="border-[1px] border-dashed border-black card shadow-lg h-[400px] w-full sm:w-[280px] group gap-2 rounded-none relative flex flex-col justify-end p-6 overflow-hidden bg-black"
-            >
-              <div
-                className="absolute top-0 left-0 h-full w-full bg-cover bg-center opacity-95 group-hover:opacity-20 transition-opacity duration-300"
-                style={{ backgroundImage: `url(${BASE_IMAGE_URL}${product.image})` }}
-              ></div>
-
-              <div className="relative z-10 text-white flex flex-col gap-2">
-
-                <div className="flex items-center gap-2">
-                  <div className="flex">
-                    {product.brand} {product.model}
-                  </div>
+            <div key={product.id} className="group bg-white border rounded-lg shadow-sm">
+              <div className="relative">
+                <div className="aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-t-lg">
+                  <img
+                    src={product.image ? `${BASE_IMAGE_URL}${product.image}` : `${product.sampleImage}`}
+                    alt={product.image}
+                    className="h-full w-full object-cover object-center group-hover:opacity-85 hover:scale-105 transition-transform duration-1000 ease-in"
+                  />
                 </div>
-
-                <div className="flex gap-2 justify-between">
-                  <div
-                    className="border-2 border-green-300 text-white font-normal px-2 py-1 hover:bg-green-300 hover:text-black transition duration-300 cursor-pointer"
-                  >
-                    <p>Enquiry</p>
-                  </div>
-
-                  <Link to={`/vehicles/${product.id}`}
-                    className="border-2 border-white text-white font-normal px-2 py-1 hover:bg-white hover:text-black transition duration-300 cursor-pointer"
-                  >
-                    <p>More Details</p>
-                  </Link>
+                <div className="absolute top-0 left-0 m-4">
+                  <span className="bg-white text-black px-2 py-1 text-xs font-semibold rounded">
+                    {product.new ? 'NEW' : ''}
+                  </span>
                 </div>
+                {product.approved && (
+                  <div className="absolute top-0 right-0 m-4">
+                    <span className="bg-black text-white px-2 py-1 text-xs font-semibold rounded">
+                      FERRARI APPROVED
+                    </span>
+                  </div>
+                )}
               </div>
-              <div className="text-white font-light relative h-0 group-hover:h-[8em] leading-5 transition-height duration-500 overflow-hidden z-10">
-                <div className="flex items-center justify-between  text-sm md:text-base">
+
+              <div className="p-4">
+                <div className="flex items-center justify-between text-gray-500 text-sm">
                   <span>{product.year}</span>
-                  <span>{capitalizeFirstLetters(product.fuel_type)}</span>
+                  <span>{product.mileage} MI</span>
                 </div>
 
-                <p className="mt-2 text-2xl font-semibold ">{getNumberToCurrencyText(product.price)}</p>
+                <h3 className="mt-2 text-lg font-bold text-gray-900">
+                  {product.brand} {product.model}
+                </h3>
 
-                <div className="mt-4 flex items-center justify-between text-sm md:text-base">
-                  <div className="flex items-center gap-2 justify-center">
-                    <IoSpeedometerOutline size={15} className='text-gray' />
-                    <span className='text-gray font-medium'>{product.kms} KMS</span>
-                  </div>
+                <p className="mt-2 text-2xl font-semibold text-gray-900">{product.price}</p>
+
+                <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
+                  <span>EXTERIOR: {product.exterior}</span>
+                  <span>INTERIOR: {product.interior}</span>
+                </div>
+
+                <div className="mt-2 text-sm text-gray-500">
+                  <span>AVAILABLE AT: {product.location}</span>
+                </div>
+
+                <div className="mt-4 flex space-x-2">
+                  <button className="bg-green text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300">
+                    ENQUIRE
+                  </button>
+                  <button className="bg-white text-black border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-300">
+                    MORE DETAILS
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
-
 
 
 
