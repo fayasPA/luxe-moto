@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <section className='h-screen w-full'>
       <BannerCarousel />
-      <div><InfoVideo/></div>
-        <SliderAndVideo/>
-        <ImageShowcase />
+      <div><InfoVideo /></div>
+      <SliderAndVideo />
+      <ImageShowcase />
 
     </section>
   )

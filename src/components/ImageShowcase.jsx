@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import img from '/videos/benz.jpg';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import { NavLink } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,18 +35,21 @@ const ImageShowcase = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden bg-black   my-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden bg-black my-4">
       {[...Array(6)].map((_, index) => (
         <div
           key={index}
           className="relative overflow-hidden"
           ref={(el) => (imageRefs.current[index] = el)}
         >
-          <img
-            src={img}
-            alt={`Showcase ${index + 1}`}
-            className="w-screen md:w-[50vw] h-[100vh] object-cover"
-          />
+          <NavLink to={`/vehicles/${index}`} >
+            <img
+              src={img}
+              alt={`Showcase ${index + 1}`}
+              className="w-screen md:w-[50vw] h-[100vh] object-cover"
+            />
+          </NavLink>
+
           {/* Car name overlay */}
           <div className="absolute bottom-0 inset-x-0 flex items-center justify-center p-4">
             <span className="text-white text-3xl md:text-4xl font-bold drop-shadow-md">

@@ -6,6 +6,7 @@ import UsedVehicles from "./pages/UsedVehicles/UsedVehicles";
 import About from "./pages/About/About";
 import Calculator from "./pages/Calculator/Calculator";
 import LocomotiveScroll from "locomotive-scroll";
+import VehicleDetails from "./pages/VehicleDetails/VehicleDetails";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         <Route path="" element={<Home />} />
         <Route path="vehicles" >
           <Route path="" element={<UsedVehicles />} />
-          {/* <Route path=":carId/*" element={<CarDetails />} /> */}
+          <Route path=":carId/*" element={<VehicleDetails />} />
         </Route>
         {/* <Route path="sellcar" element={<SellCar />} /> */}
         {/* <Route path="showroom" element={<Showroom />} /> */}
