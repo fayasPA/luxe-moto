@@ -46,3 +46,7 @@
   font-weight: 600;
   scale: 110%;
 }
+
+.swiper-slide {
+  background-color: transparent !important;
+}

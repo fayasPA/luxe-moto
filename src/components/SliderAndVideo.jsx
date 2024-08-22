@@ -77,7 +77,7 @@ const SliderAndVideo = () => {
 
   return (
     <>
-    <div className='w-screen h-[200%] md:h-full md:flex relative my-0'>
+    <div className='w-full h-[200%] md:h-full md:flex relative my-0'>
       <div className='w-full md:w-[50%] '>
         <div className='md:hidden p-12 h-[100vh]'><ZoomSlider /> </div> 
        <div className='hidden md:flex'> <SliderUi/> </div> 

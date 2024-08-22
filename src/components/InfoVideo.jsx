@@ -31,15 +31,16 @@ const InfoVideo = () => {
           scale: 1, // Initial scale
         },
         {
-          scale: 0.7, // Zoom-out scale
+          scale: 0.3, // Zoom-out scale
           scrollTrigger: {
             trigger: videoRef.current,
-            start: "top 75%", // Trigger when the top of the video hits 75% of the viewport height
+            start: "top 5%", // Trigger when the top of the video hits 75% of the viewport height
             end: "bottom top", // End when the bottom of the video hits the top of the viewport
             scrub: true, // Smoothly animate based on scroll position
           },
           yoyo: true,
           ease: "none", // No easing for a smooth scrolling effect
+          markers:true,
         }
       );
     }
@@ -47,7 +48,7 @@ const InfoVideo = () => {
 
   return (
     <>
-      <div className=' my-6 mx-6 relative' ref={videoRef}>
+      <div className='relative' ref={videoRef}>
         <video 
           ref={videoRefs}
           className='w-full h-auto '
@@ -76,8 +77,8 @@ const InfoVideo = () => {
       </div>
       <div className='flex justify-center items-center mx-24 md:mx-56 mt-10'>
         <p className='text-xl md:text-4xl'>
-          Introducing the most electrifying Maserati story ever. Folgore is the perfect match
-          between innovative performance and highest Italian luxury design.
+          Introducing the most electrifying Car stories ever. <strong className='text-green'>Luxe Moto</strong> is the perfect match
+          for your used car purchase.
         </p>
       </div>
     </>

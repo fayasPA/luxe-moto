@@ -17,13 +17,13 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className='min-h-screen flex flex-col relative'>
+    <div className='flex flex-col'>
       <Navbar />
-      <Loader
+      {/* <Loader
         onExit={() => {
           setLoaded(false);
         }}
-      />
+      /> */}
       <div className=''>
         <Outlet />
         {/* <Footer /> */}

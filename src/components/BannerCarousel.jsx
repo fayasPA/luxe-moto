@@ -79,7 +79,7 @@ const BannerCarousel = () => {
         pagination={pagination}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className={`w-full h-full z-0`}
+        className={`w-full h-full`}
         onSlideChange={handleSlideChange}
         onSlideChangeTransitionEnd={handleSlideChangeTransitionEnd}
         onSwiper={(swiper) => {

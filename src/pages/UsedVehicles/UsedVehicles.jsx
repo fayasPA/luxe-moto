@@ -88,7 +88,6 @@ const UsedVehicles = () => {
     try {
       const params = new URLSearchParams(location.search);
       const response = await axiosInstance.get(`${GET_ALL_VEHICLES}`);
-      console.log("@UsedVehicles", response)
       if (response.status === 200) {
         if (response.data.all_cars) {
           setDatas(response.data.all_cars);
