@@ -63,7 +63,7 @@ const DropDown = ({ name, items, isHomePage }) => {
 
     return (
 
-        <div className={`flex items-center justify-center ${isHomePage ? '': 'bg-white'}`}>
+        <div className={`flex items-center justify-center ${isHomePage ? '' : 'bg-white'}`}>
             <div className="relative">
                 <button
                     onClick={() => setOpen(prev => !prev)}

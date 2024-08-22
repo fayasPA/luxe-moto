@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Loader from './components/Loader';
 import Footer from './components/Footer';
+import 'react-range-slider-input/dist/style.css';
 
 
 const Layout = () => {
