@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Overview from './Overview';
 
 const VehicleDetail = () => {
   const images = [
@@ -194,20 +195,8 @@ const VehicleDetail = () => {
                    <li><strong class="font-medium">Transmission:</strong> Automatic</li>
                    <li><strong class="font-medium">Status:</strong> Available</li> */}
 
-<div className='w-full h-full'>
-    <div className='flex flex-row justify-center items-center'>
-       <p className='text-4xl pt-4 '>Overview</p>
-       <div>
-        <div className='flex flex-row'>
-            <p>Condition</p>
-            <p className='text-xl'>Used</p>
-        </div>
 
-       </div>
-
-    </div>
-</div>
-
+          <Overview/>
 
 
     </div>

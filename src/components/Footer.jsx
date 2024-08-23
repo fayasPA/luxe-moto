@@ -1,177 +1,112 @@
 import React, { useEffect } from "react";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaYoutube,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from "react-icons/fa";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
-import blackLogo from "/images/blackLogo.png"
-import whiteLogo from "/images/logo-white.png"
-import { useLocation, useNavigate } from "react-router-dom";
 
-function Footer() {
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
-  const phoneNumber = "+919037696969"
-  const email = "info.amanimotors@gmail.com"
-
+const Footer = () => {
   useEffect(() => {
     gsap.fromTo(
-      ".footer",
+      ".footer-content",
       {
-        x: 0,
-        y: -100,
-        borderRadius: "0%",
-        yoyo: false,
-        rotation: 0,
         opacity: 0,
+        y: 200,
       },
       {
-        y: 0,
-        x: 0,
-        repeat: 0,
-        yoyo: false,
-        rotation: 0,
-        borderRadius: "0%",
-        duration: 0.5,
-        ease: "elastic.inOut",
-        stagger: 0.1,
         opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
         scrollTrigger: {
-          trigger: ".divfooter",
+          trigger: ".footer-container",
+          start: "top bottom",
           toggleActions: "play none none none",
-          once: true
         },
       }
     );
   }, []);
 
   return (
-    <div className={`${isHomePage ? 'bg-black text-white': 'bg-white text-black'} px-10 py-5 divfooter flex flex-col justify-center items-center`}>
-
-      <div className="flex flex-col items-center rtl:space-x-reverse w-fit mb-5 footer self-start mx-0 2xl:mx-auto ">
-        <img src={`${isHomePage ? whiteLogo : blackLogo}`} className="w-20 h-w-14  md:w-40 md:h-w-12 rounded-xl logo " alt=" Logo" />
-      </div>
-
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Contact Information */}
-        <div className="md:text-base ">
+    <footer className="w-full bg-black text-white py-12 footer-container pl-24">
+      <div className="w-full px-4">
+        <div className="footer-content grid grid-cols-2 md:grid-cols-4 gap-8 text-sm text-center md:text-left">
 
 
-          <p className="footer">
-            Pipeline Rd, Thrikkakara P.O, Kochi, Kerala 682021
-          </p>
-          <a href={`tel:${phoneNumber}`}>
-            <p className="flex gap-2 items-center mt-4 footer">
-              <FaPhone className="" /> +91 9037696969
-            </p>
-          </a>
-          <a href={`mailto:${email}`}>
-            <p className="flex gap-2 items-center mt-2 footer" style={{ fontSize: '.8em' }}>
-              <FaEnvelope className="" />info.amanimotors@gmail.com
-            </p>
-          </a>
-        </div>
-
-        {/* Information Links */}
-        <div>
-          <h2 className="text-lg font-bold mb-4 footer">Information</h2>
-          <ul className="space-y-2 font-extralight">
-            <li className="footer  md:text-xs ">Custom Requirement</li>
-            <li className="footer  md:text-xs ">Get a Loan</li>
-            <li className="footer  md:text-xs ">EMI Calculator</li>
-            <li className="footer  md:text-xs ">Insurance</li>
-            <li className="footer  md:text-xs ">Contact Us</li>
-            <li className="footer  md:text-xs ">Privacy Policy</li>
-            <li className="footer  md:text-xs ">Terms & Conditions</li>
-          </ul>
-        </div>
-
-        {/* Brands Links */}
-        <div>
-          <h2 className="text-lg font-bold mb-4 footer">Brands</h2>
-          <ul className="space-y-2 columns-2 footer font-extralight">
-            <li className=" footer md:text-xs">Audi</li>
-            <li className=" footer md:text-xs">Bentley</li>
-            <li className=" footer md:text-xs">BMW</li>
-            <li className=" footer md:text-xs">Cadillac</li>
-            <li className=" footer md:text-xs">Chrysler</li>
-            <li className=" footer md:text-xs">DC Design</li>
-            <li className=" footer md:text-xs">Fiat</li>
-            <li className=" footer md:text-xs">Ford</li>
-            <li className=" footer md:text-xs">Hummer</li>
-            <li className=" footer md:text-xs">Jaguar</li>
-            <li className=" footer md:text-xs">Land Rover</li>
-            <li className=" footer md:text-xs">Lexus</li>
-            <li className=" footer md:text-xs">Mazda</li>
-            <li className=" footer md:text-xs">Mercedes-Benz</li>
-            <li className=" footer md:text-xs">Porsche</li>
-          </ul>
-        </div>
-
-        {/* Search by Category and Newsletter */}
-        <div>
-          <h2 className="text-lg font-bold mb-4 footer">Search by Category</h2>
-          <ul className="space-y-2 font-extralight ">
-            <li className="md:text-xs footer">Search by Make</li>
-            <li className="md:text-xs footer">Search by Vehicle Type</li>
-            <li className="md:text-xs footer">Search by Fuel Type</li>
-            <li className="md:text-xs footer">Search by Price</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Social Media Icons */}
-      <div className="flex justify-center mt-3 space-x-4 footer">
-        <a href="https://wa.me/919037696969" target='blank'>
-          <FaWhatsapp className="w-6 h-6 cursor-pointer footer" />
-        </a>
-        <a href="https://www.facebook.com/people/Amani-Motors/61555223155190/" target='blank'>
-          <FaFacebook className="w-6 h-6 cursor-pointer footer" />
-        </a>
-        {/* <FaTwitter className="w-6 h-6 cursor-pointer footer" /> */}
-        <a href="https://www.youtube.com/watch?v=D3kcFp9i_cE" target='blank'>
-          <FaYoutube className="w-6 h-6 cursor-pointer footer" />
-        </a>
-        <a href="https://www.instagram.com/amani_motors/" target='blank'>
-          <FaInstagram className="w-6 h-6 cursor-pointer footer" />
-        </a>
-      </div>
-
-      <div className="container flex flex-col pt-10 items-center ">
-        <div className="flex flex-col gap-1 w-full pb-4">
-          <div style={{ height: '3px' }} className=" w-full bg-gray-600"></div>
-          <div style={{ height: '3px' }} className=" w-full bg-gray-600"></div>
-          <div style={{ height: '3px' }} className=" w-full bg-gray-600"></div>
-        </div>
-        <div className="text-xs md:text-sm w-full flex flex-col  items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <p className="scale-110">&copy; 2024 Amani Motors All Rights Reserved.</p>
+          {/* Column 2 */}
+          <div>
+            <h3 className="font-semibold mb-4 ">SPORTS CARS</h3>
+            <ul>
+              <li className="text-xs p-2">Range</li>
+              <li className="text-xs p-2">Configure your Ferrari</li>
+              <li className="text-xs p-2">MyFerrari</li>
+              <li className="text-xs p-2">Pre-owned</li>
+              <li className="text-xs p-2">Dealers</li>
+              <li className="text-xs p-2">Recall information</li>
+              <li className="text-xs p-2">TechInfo</li>
+            </ul>
           </div>
-          <div className="flex items-center space-x-2 mt-4 sm:mt-0">
-            <p className="text-sm scale-90 md:scale-95">
-              Designed & Developed by
-              <a href="https://wa.me/919496715606" className="text-blue ml-1" target="_blank" rel="noopener noreferrer">
-                Fayas
-              </a> &
-              <a href="https://wa.me/919037146943" className="text-blue ml-1" target="_blank" rel="noopener noreferrer">
-                Almas
-              </a>
-            </p>
+
+          {/* Column 3 */}
+          <div>
+            <h3 className="font-bold mb-4">COLLECTIONS</h3>
+            <ul>
+              <li className="text-xs p-2">Men</li>
+              <li className="text-xs p-2">Women</li>
+              <li className="text-xs p-2">Kids</li>
+              <li className="text-xs p-2">Shoes</li>
+              <li className="text-xs p-2">Eyewear</li>
+              <li className="text-xs p-2">Collectibles</li>
+              <li className="text-xs p-2">Scuderia Ferrari Selection</li>
+            </ul>
+          </div>
+
+          {/* Column 4 */}
+          <div>
+            <h3 className="font-bold mb-4">EXPERIENCES</h3>
+            <ul>
+              <li className="text-xs p-2">Corse Clienti</li>
+              <li className="text-xs p-2">Ferrari Esports Series</li>
+              <li className="text-xs p-2">Ristorante Cavallino</li>
+              <li className="text-xs p-2">Ferrari Museums</li>
+              <li className="text-xs p-2">Ferrari World Abu Dhabi</li>
+              <li className="text-xs p-2">Ferrari Land Barcelona</li>
+            </ul>
+          </div>
+
+          {/* Column 5 */}
+          <div>
+            <h3 className="font-bold mb-4">ABOUT US</h3>
+            <ul>
+              <li className="text-xs p-2">Corporate</li>
+              <li className="text-xs p-2">Sustainability</li>
+              <li className="text-xs p-2">Media Centre</li>
+              <li className="text-xs p-2">News</li>
+              <li className="text-xs p-2">Magazine</li>
+              <li className="text-xs p-2">History</li>
+              <li className="text-xs p-2">Join us</li>
+            </ul>
           </div>
         </div>
+
+        {/* Social Media Icons */}
+        <div className="flex justify-center space-x-20 mt-8 pr-28">
+          <a href="#" className="hover:text-sky-600">
+            <FaFacebook className="w-6 h-6 ml-7" /> <span className="text-sm">FACEBOOK</span>
+          </a>
+          <a href="#" className="hover:text-pink-500 ">
+            <FaInstagram className="w-6 h-6 ml-7" /> <span className="text-sm">INSTAGRAM</span>
+          </a>
+          <a href="#" className="hover:text-violet-700">
+            <FaLinkedin className="w-6 h-6 ml-5" /> <span className="text-sm">LINKEDIN</span>
+          </a>
+          <a href="#" className="hover:text-red">
+            <FaTiktok className="w-6 h-6 ml-3" /> <span className="text-sm">TIKTOK</span>
+          </a>
+        </div>
       </div>
-
-
-    </div>
+    </footer>
   );
-}
+};
 
 export default Footer;

@@ -13,6 +13,7 @@ const Home = () => {
       <InfoVideo />
       <SliderAndVideo />
       <ImageShowcase />
+      <Footer/>
 
     </section>
   )
