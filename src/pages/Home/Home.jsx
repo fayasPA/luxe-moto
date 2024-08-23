@@ -4,6 +4,7 @@ import ZoomSlider from './../../components/ZoomSlider';
 import InfoVideo from '../../components/InfoVideo';
 import SliderAndVideo from '../../components/SliderAndVideo';
 import ImageShowcase from '../../components/ImageShowcase';
+import Footer from './../../components/Footer';
 const Home = () => {
   return (
     <section className='h-screen w-full'>
@@ -11,6 +12,7 @@ const Home = () => {
       <div><InfoVideo /></div>
       <SliderAndVideo />
       <ImageShowcase />
+      <Footer/>
 
     </section>
   )
