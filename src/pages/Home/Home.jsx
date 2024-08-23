@@ -9,11 +9,9 @@ const Home = () => {
   return (
     <section className='h-screen w-full'>
       <BannerCarousel />
-      <div className='pb-10'>
-        <InfoVideoHeader />
-        <InfoVideo />
-        <SliderAndVideo />
-      </div>
+      <InfoVideoHeader />
+      <InfoVideo />
+      <SliderAndVideo />
       <ImageShowcase />
 
     </section>

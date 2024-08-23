@@ -8,64 +8,63 @@ import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
 gsap.registerPlugin(ScrollTrigger);
 
 const InfoVideo = () => {
+  const videoDivRef = useRef(null);
   const videoRef = useRef(null);
-  const videoRefs = useRef(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayPause = () => {
-    if (videoRefs.current) {
+    if (videoRef.current) {
       if (isPlaying) {
-        videoRefs.current.pause();
+        videoRef.current.pause();
       } else {
-        videoRefs.current.play();
+        videoRef.current.play();
       }//comment
       setIsPlaying(!isPlaying);
     }
   };
 
   useEffect(() => {
-    if (videoRef.current) {
-      gsap.fromTo(videoRef.current,
+    if (videoDivRef.current) {
+      gsap.fromTo(videoDivRef.current,
         {
           scale: 1, // Initial scale
         },
         {
           scale: 0.3, // Zoom-out scale
           scrollTrigger: {
-            trigger: videoRef.current,
-            start: "top 5%", // Trigger when the top of the video hits 75% of the viewport height
-            end: "bottom top", // End when the bottom of the video hits the top of the viewport
+            trigger: '.info-video-div',
+            start: "top 0%", // Trigger when the top of the video hits 75% of the viewport height
+            end: 'bottom top',
+          // end: "bottom bottom", // End when the bottom of the video hits the top of the viewport
             scrub: true, // Smoothly animate based on scroll position
+            // pin: true
           },
           yoyo: true,
           ease: "none", // No easing for a smooth scrolling effect
-          markers:true,
+          markers: true,
         }
       );
     }
   }, []);
 
   return (
-    <>
-      <div className='relative' ref={videoRef}>
-        <video 
-          ref={videoRefs}
-          className='w-full h-auto '
+    <div className='h-full w-full info-video-div pt-10 md:pt-28'>
+      <div className='relative h-[80%]' ref={videoDivRef}>
+        <video
+          className='w-full h-full object-cover'
           controls={false} // Disable default controls
           muted // Mute the video if needed
           loop
           autoPlay
+          ref={videoRef}
         >
-          <source src={info} type="video/mp4" /> 
+          <source src={info} type="video/mp4" />
           Your browser does not support the video tag.
-          
-
-          
-          </video>
-          <button
+        </video>
+        <button
           onClick={handlePlayPause}
-          className='absolute  bottom-0 right-0 md:bottom-8 md:right-8 p-1 md:p-3 bg-white rounded-full shadow-lg flex items-center justify-center'
+          className='absolute  bottom-5 right-5 md:bottom-8 md:right-8 p-1 md:p-3 bg-white rounded-full shadow-lg flex items-center justify-center'
         >
           {isPlaying ? (
             <PauseIcon className='w-6 h-6 md:w-8 md:h-8 text-black' />
@@ -75,13 +74,14 @@ const InfoVideo = () => {
         </button>
 
       </div>
-      <div className='flex justify-center items-center mx-24 md:mx-56 mt-10'>
-        <p className='text-xl md:text-4xl'>
+
+      <div className='flex justify-center items-center text-center h-[20%]'>
+        <p className='text-xl md:text-4xl max-w-md md:max-w-3xl'>
           Introducing the most electrifying Car stories ever. <strong className='text-green'>Luxe Moto</strong> is the perfect match
           for your used car purchase.
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

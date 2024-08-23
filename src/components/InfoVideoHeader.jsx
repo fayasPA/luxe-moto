@@ -3,7 +3,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 const InfoVideoHeader = () => {
     return (
-        <div className='w-full md:flex justify-center px-20 md:px-60 py-10 md:py-28'>
+        <div className='w-full md:flex justify-center px-20 md:px-60 pt-10 md:pt-28'>
             <div className='w-full md:w-1/2 flex items-center text-center text-3xl md:text-6xl pb-3 md:pb-0'>
                 <p className=''>
                     An extraordinary model range
