@@ -8,7 +8,7 @@ import SliderUi from './SliderUi';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const SliderAndVideo = () => {
+const LatestDeliveries = () => {
   const videoRef = useRef(null); // Create a ref to access the video element
   const videoRefs = useRef(null); // Create a ref to access the video element
 
@@ -76,13 +76,13 @@ const SliderAndVideo = () => {
   };
 
   return (
-    <>
-    <div className='w-full h-[200%] md:h-full md:flex relative my-0'>
-      <div className='w-full md:w-[50%] '>
-        <div className='md:hidden p-12 h-[100vh]'><ZoomSlider /> </div> 
+    <div className='h-full w-full py-28'>
+    <div className='w-full h-full md:flex relative my-0 bg-red'>
+      <div className='w-full md:w-1/2 '>
+        {/* <div className='md:hidden p-12 h-[100vh]'><ZoomSlider /> </div>  */}
        <div className='hidden md:flex'> <SliderUi/> </div> 
       </div>
-      <div className='w-full md:w-[50%] h-screen md:pl-16md:pr-3 relative ' ref={videoRefs}>
+      <div className='w-full md:w-1/2 h-full md:pl-16md:pr-3 relative p-5 border border-l-2' >
 
         <video 
           ref={videoRef} // Attach ref to the video element
@@ -112,8 +112,8 @@ const SliderAndVideo = () => {
           between innovative performance and highest Italian luxury design.
         </p>
       </div>
-    </>
+    </div>
   );
 }
 
-export default SliderAndVideo;
+export default LatestDeliveries;
