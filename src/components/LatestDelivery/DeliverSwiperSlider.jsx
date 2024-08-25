@@ -13,6 +13,7 @@ import image3 from '/videos/del3.jpeg';
 import gsap from 'gsap'; // Importing GSAP for animations
 import ScrollTrigger from 'gsap/ScrollTrigger'; // Importing ScrollTrigger plugin for scroll-based animations
 
+gsap.registerPlugin(ScrollTrigger);
 
 export default function DeliverSwiperSlider() {
   const swiperRef = useRef(null); // Creating a ref to access the Swiper component
@@ -36,8 +37,6 @@ export default function DeliverSwiperSlider() {
           start: 'top 95%', // Start animation when the Swiper is 80% from the top of the viewport
           end: 'center 50%', // End animation when the bottom of Swiper is at the top of the viewport
           scrub: 1, // Smooth animation on scroll with more consistent scrubbing
-          // Uncomment below line to visualize the ScrollTrigger markers
-          // markers: true, 
         },
       }
     );

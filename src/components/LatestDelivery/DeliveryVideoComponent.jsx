@@ -4,6 +4,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FaPlay, FaPause } from 'react-icons/fa'; // Import icons for play and pause
 import info from '/videos/smallHero.mp4';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const DeliveryVideoComponent = () => {
   const videoRef = useRef(null); // Create a ref to access the video element
   const videoDivRef = useRef(null); // Create a ref to access the video element
@@ -42,7 +44,6 @@ const DeliveryVideoComponent = () => {
               start: 'top 95%', // Start animation when the Swiper is 80% from the top of the viewport
               end: 'center 40%', // End animation when the bottom of Swiper is at the top of the viewport
               scrub: 1, // Smooth animation on scroll with more consistent scrubbing
-              // markers: true, // Uncomment to visualize ScrollTrigger markers
             },
           }
         );

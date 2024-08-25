@@ -42,7 +42,6 @@ const InfoVideo = () => {
           },
           yoyo: true,
           ease: "none", // No easing for a smooth scrolling effect
-          markers: true,
         }
       );
     }

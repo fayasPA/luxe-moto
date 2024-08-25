@@ -27,7 +27,6 @@ const ImageShowcase = () => {
             start: 'top 95%', // Start animation when image top is 80% from viewport top
             end: 'bottom 105%', // End animation when the bottom of Swiper is at the top of the viewport
             scrub: true, // Smooth animation on scroll
-            // markers: true, // Uncomment to see ScrollTrigger markers
           },
         }
       );
@@ -35,40 +34,40 @@ const ImageShowcase = () => {
   }, []);
 
   return (
-    <>
-    <div className='w-full md:py-0'>
+    <div>
+      <div className='w-full md:py-0'>
         <div className='font-medium max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl'>
           <h2>Pre Owned Luxury Premium Cars</h2>
         </div>
       </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden bg-black my-4">
-      {[...Array(6)].map((_, index) => (
-        <div
-          key={index}
-          className="relative overflow-hidden"
-          ref={(el) => (imageRefs.current[index] = el)}
-        >
-          <NavLink to={`/vehicles/${index}`} >
-            <img
-              src={img}
-              alt={`Showcase ${index + 1}`}
-              className="w-screen md:w-[50vw] h-[100vh] object-cover group-hover:opacity-85 hover:scale-110 transition-transform duration-[3000ms] ease-in"
-            />
-          </NavLink>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden  my-4">
+        {[...Array(6)].map((_, index) => (
+          <div
+            key={index}
+            className="relative overflow-hidden"
+            ref={(el) => (imageRefs.current[index] = el)}
+          >
+            <NavLink to={`/vehicles/${index}`} >
+              <img
+                src={img}
+                alt={`Showcase ${index + 1}`}
+                className="w-screen md:w-[50vw] h-[100vh] object-cover group-hover:opacity-85 hover:scale-110 transition-transform duration-[2000ms] ease-in"
+              />
+            </NavLink>
 
-          {/* Car name overlay */}
-          <div className="absolute bottom-10 inset-x-0 flex flex-col items-center justify-center gap-4 mx-auto w-fit">
-            <span className="text-white text-base md:text-xl font-medium drop-shadow-md">
-              Spectre{index + 1}
-            </span>
-            <span className="text-white text-3xl md:text-4xl font-bold drop-shadow-md">
-              ROLLS ROYCE {index + 1}
-            </span>
+            {/* Car name overlay */}
+            <div className="absolute bottom-10 md:bottom-14 inset-x-0 flex flex-col items-start justify-start md:items-center md:justify-center gap-4 mx-5 md:mx-auto w-fit">
+              <span className="text-white text-base md:text-xl font-semibold drop-shadow-md">
+                Spectre{index + 1}
+              </span>
+              <span className="text-white text-3xl md:text-4xl font-bold drop-shadow-md">
+                ROLLS ROYCE {index + 1}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-    </>
   );
 };
 
