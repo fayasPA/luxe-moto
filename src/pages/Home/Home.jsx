@@ -1,18 +1,17 @@
 import React from 'react'
 import BannerCarousel from '../../components/BannerCarousel'
-import ZoomSlider from './../../components/ZoomSlider';
+import ZoomSlider from '../../components/LatestDelivery/DeliverSwiperSlider';
 import InfoVideo from '../../components/InfoVideo';
-import SliderAndVideo from '../../components/LatestDeliveries';
 import ImageShowcase from '../../components/ImageShowcase';
 import InfoVideoHeader from '../../components/InfoVideoHeader';
+import LatestDeliveries from '../../components/LatestDelivery/LatestDeliveries';
 const Home = () => {
   return (
-    <section className='h-screen w-full'>
+    <section className=' w-full'>
       <BannerCarousel />
       <InfoVideoHeader />
       <InfoVideo />
-
-      <SliderAndVideo />
+      <LatestDeliveries />
       <ImageShowcase />
     </section>
   )

@@ -49,7 +49,7 @@ const InfoVideo = () => {
   }, []);
 
   return (
-    <div className='h-full w-full info-video-div pt-10 md:pt-28'>
+    <div className='h-screen w-full info-video-div pt-10 md:pt-28'>
       <div className='relative h-[80%]' ref={videoDivRef}>
         <video
           className='w-full h-full object-cover'
