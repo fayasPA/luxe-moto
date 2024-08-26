@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FiFilter } from 'react-icons/fi'; // Importing the filter icon
 import { AiOutlineClose } from 'react-icons/ai'; // Importing the close icon
 import RangeSlider from 'react-range-slider-input';
+import '../assets/css/rangeSliderStyle.css'; // Import the CSS file
 import { capitalizeWord, getNumberToCurrencyText } from '../utils/helperFunctions';
-import '../assets/css/rangeSliderStyle.css'
 import { GET_FILTER_TYPES } from '../utils/urls';
 import { axiosAPI } from '../utils/axiosAPI';
 
@@ -176,7 +176,8 @@ const FilterSearch = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   PRICE RANGE
                 </label>
-                <div className="range-slider-div w-full border border-gray-300 rounded-none flex flex-col gap-2 py-4 px-2 bg-white shadow-xl origin-top focus:outline-none focus:ring-0 focus:border-1">
+
+                <div className="range-slider-div flex flex-col w-full">
                   <RangeSlider
                     min={50000}
                     max={20000000}
@@ -191,6 +192,22 @@ const FilterSearch = () => {
                     <span>{getNumberToCurrencyText(priceRange[1])}</span>
                   </div>
                 </div>
+
+                {/* <div className="range-slider-div w-full border border-gray-300 rounded-none flex flex-col gap-2 py-4 px-2 bg-white shadow-xl origin-top focus:outline-none focus:ring-0 focus:border-1">
+                  <RangeSlider
+                    min={50000}
+                    max={20000000}
+                    value={priceRange}
+                    step={[20000, 20000]}
+                    className=" border border-gray-200 range-slider-component"
+                    id="range-slider-component"
+                    onInput={handleSliderChange}
+                  />
+                  <div style={{ fontSize: '.8em' }} className="flex justify-between pt-3 ">
+                    <span>{getNumberToCurrencyText(priceRange[0])}</span>
+                    <span>{getNumberToCurrencyText(priceRange[1])}</span>
+                  </div>
+                </div> */}
               </div>
 
               <div className="flex justify-end">

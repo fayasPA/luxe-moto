@@ -1,13 +1,48 @@
+/* RangeSlider.css */
+
+.fayas{
+  background: red;
+}
+
+.range-slider-div {
+  width: 100%;
+}
+
+.range-slider-div .range-slider__thumb[data-lower],
+.range-slider-div .range-slider__thumb[data-upper] {
+  width: 1.2em; /* Decrease the size of the thumbs */
+  height: 1.2em;
+}
+
+.range-slider-div [data-track] {
+  height: 4px; /* Adjust the track height if needed */
+}
+
 #range-slider-component {
   background-color: white;
+  border-radius: 0%;
 }
 #range-slider-component .range-slider__range {
-  background: black;
+  background: rgb(66, 66, 66);
   transition: height 0.3s;
 }
 
 #range-slider-component .range-slider__thumb {
-  border: 6px solid rgb(184, 180, 180);
+    border: 3px solid rgb(184, 180, 180);
+    /* border: 3px solid rgb(184, 180, 180); */
   box-sizing: border-box;
-  background: black;
+  background: green;
+  border-radius: 0%;
+}
+
+@media (max-width: 768px) {
+  .range-slider-div {
+    width: 90%; /* Adjust the width for smaller screens */
+  }
+
+  .range-slider-div [data-lower_thumb],
+  .range-slider-div [data-upper_thumb] {
+    width: 12px; /* Further decrease thumb size on smaller screens */
+    height: 12px;
+  }
 }
