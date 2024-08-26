@@ -7,6 +7,7 @@ import About from "./pages/About/About";
 import Calculator from "./pages/Calculator/Calculator";
 import LocomotiveScroll from "locomotive-scroll";
 import VehicleDetails from "./pages/VehicleDetails/VehicleDetails";
+import Gallery from "./pages/Gallery/Gallery";
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
         </Route>
         {/* <Route path="sellcar" element={<SellCar />} /> */}
         {/* <Route path="showroom" element={<Showroom />} /> */}
-        {/* <Route path="gallery" element={<Gallery />} /> */}
+        <Route path="gallery" element={<Gallery />} />
         {/* <Route path="insurance" element={<Insurance />} /> */}
         <Route path="emi-calculator" element={<Calculator />} />
         <Route path="about" element={<About />} />

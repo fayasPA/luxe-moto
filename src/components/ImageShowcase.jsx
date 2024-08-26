@@ -3,6 +3,7 @@ import img from '/videos/benz.jpg';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { NavLink } from 'react-router-dom';
+import { FaChevronRight } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,7 @@ const ImageShowcase = () => {
           <h2>Pre Owned Luxury Premium Cars</h2>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden  my-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden  mt-4">
         {[...Array(6)].map((_, index) => (
           <div
             key={index}
@@ -67,6 +68,33 @@ const ImageShowcase = () => {
           </div>
         ))}
       </div>
+
+      <div className='flex justify-center items-center py-10'>
+        <div className='w-fit flex justify-center items-center gap-10'>
+
+          <div className='w-fit text-md md:text-xl'>
+            <p className=''>
+              We have a lot more to show you.
+            </p>
+          </div>
+
+          <div className=' flex justify-center items-center'>
+          <button
+            className="flex gap-2 px-6 py-3.5 md:px-10 md:py-4 overflow-hidden group bg-gradient-to-r from-gray-700 to-black relative hover:bg-gradient-to-r hover:from-green hover:to-green-300 text-white transition-all ease-out duration-300"
+          >
+            <span
+              className="absolute right-0 w-32 md:w-44 h-full top-0 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 -skew-x-12 group-hover:-translate-x-36 ease"
+            ></span>
+            <span className="relative text-base md:text-xl font-semibold">Discover More</span>
+            <FaChevronRight className='flex self-center' />
+          </button>
+        </div>
+
+
+        </div>
+      </div>
+
+
     </div>
   );
 };

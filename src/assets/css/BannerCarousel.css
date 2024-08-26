@@ -3,7 +3,7 @@
 .swiper-button-prev {
   background-color: #f8f8f8;
   font-weight: bold;
-  padding: 1.5rem;
+  padding: 1.3rem;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -28,8 +28,8 @@
 }
 
 .swiper-pagination-bullet {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
   text-align: center;
   line-height: 25px;
   font-size: .8rem;
@@ -38,13 +38,15 @@
   opacity: 1;
   background: rgba(0, 0, 0, 0.2);
   scale: 80%;
+  border-radius: 50%;
+  background-color: rgb(170, 167, 167);
 }
 
 .swiper-pagination-bullet-active {
   color: #228B22;
   background: #fff;
   font-weight: 600;
-  scale: 110%;
+  scale: 105%;
 }
 
 .swiper-slide {

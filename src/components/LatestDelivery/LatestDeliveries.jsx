@@ -10,7 +10,7 @@ const LatestDeliveries = () => {
       {/* Header */}
       <div className='w-full md:py-0'>
         <div className='font-medium max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl'>
-          <h2>Latest Delivery</h2>
+          <h2>Happy Customers</h2>
         </div>
       </div>
 

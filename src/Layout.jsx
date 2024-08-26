@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Loader from './components/Loader';
 import Footer from './components/Footer';
-import 'react-range-slider-input/dist/style.css';
-
+import PageLoader from './components/Loaders/PageLoader';
 
 const Layout = () => {
-  const [loaded, setLoaded] = useState(false);
-  const [exitLoader, setExitLoader] = useState(false);
+  // State to control whether the loader is visible
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setExitLoader(true);
-    }, 1000);
-  }, []);
+  // Function to handle hiding the loader
+  const handleLoaderExit = () => {
+    setIsLoading(false); // Set loading to false to hide the loader
+  };
 
   return (
     <div className='flex flex-col'>
-      <Navbar />
-      {/* <Loader
-        onExit={() => {
-          setLoaded(false);
-        }}
-      /> */}
-      <div className=''>
-        <Outlet />
-        <Footer />
-      </div>
+      {isLoading ? (
+        <PageLoader onExit={handleLoaderExit} /> // Pass the handleLoaderExit to the PageLoader component
+      ) : (
+        <>
+          <Navbar />
+          <div>
+            <Outlet />
+            <Footer />
+          </div>
+        </>
+      )}
     </div>
   );
 };

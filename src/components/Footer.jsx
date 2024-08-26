@@ -1,43 +1,39 @@
 import React, { useEffect } from "react";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok,FaTwitter,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaPhone,
+import { FaInstagram,
   FaWhatsapp,
-  FaYoutube, } from "react-icons/fa";
+  } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import WhiteLogo from '/images/logo-white.png'
 import { ImFacebook2 } from "react-icons/im";
 import { IoLogoYoutube } from "react-icons/io";
-import { BiLogoWhatsappSquare } from "react-icons/bi";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   useEffect(() => {
-    // gsap.fromTo(
-    //   ".footer-content",
-    //   {
-    //     opacity: 0,
-    //     y: 200,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     y: 0,
-    //     duration: 1,
-    //     ease: "power2.out",
-    //     scrollTrigger: {
-    //       trigger: ".footer-container",
-    //       start: "top bottom",
-    //       toggleActions: "play none none none",
-    //     },
-    //   }
-    // );
+    gsap.fromTo(
+      ".footer-content",
+      {
+        opacity: 0,
+        y: 200,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".footer-container",
+          start: "top bottom",
+          toggleActions: "play none none none",
+        },
+      }
+    );
   }, []);
 
   return (
-    <footer className="w-full h-full bg-black text-white py-5 md:py-10 footer-container">
+    <footer className="w-full h-full bg-black text-white pt-5 md:pt-10 footer-container">
       <div className="flex flex-col items-center w-fit mx-auto footer-content">
         <img src={WhiteLogo} className="w-10 h-8 rounded-xl logo " alt=" Logo" />
         <span className="w-full font-semibold">Luxe Moto</span>
@@ -99,20 +95,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* <div className="flex justify-center mx-auto md:space-x-20 mt-8 pr-28">
-          <a href="#" className="hover:text-sky-600">
-            <FaFacebook className="w-6 h-6 ml-7" /> <span className="text-sm">FACEBOOK</span>
-          </a>
-          <a href="#" className="hover:text-pink-500 ">
-            <FaInstagram className="w-6 h-6 ml-7" /> <span className="text-sm">INSTAGRAM</span>
-          </a>
-          <a href="#" className="hover:text-violet-700">
-            <FaLinkedin className="w-6 h-6 ml-5" /> <span className="text-sm">LINKEDIN</span>
-          </a>
-          <a href="#" className="hover:text-red">
-            <FaTiktok className="w-6 h-6 ml-3" /> <span className="text-sm">TIKTOK</span>
-          </a>
-        </div> */}
         {/* Social Media Icons */}
         <div className="flex justify-center mt-5 space-x-4 footer">
           <a className="flex justify-center items-center" href="https://wa.me/919037696969" target='blank'>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FiFilter } from 'react-icons/fi'; // Importing the filter icon
 import { AiOutlineClose } from 'react-icons/ai'; // Importing the close icon
 import RangeSlider from 'react-range-slider-input';
-import { getNumberToCurrencyText } from '../utils/helperFunctions';
+import { capitalizeWord, getNumberToCurrencyText } from '../utils/helperFunctions';
 import '../assets/css/rangeSliderStyle.css'
 import { GET_FILTER_TYPES } from '../utils/urls';
 import { axiosAPI } from '../utils/axiosAPI';
@@ -139,7 +139,7 @@ const FilterSearch = () => {
                 >
                   <option value="" className='text-gray-500'>Brand</option>
                   {brands && brands.map((opt, index) => (
-                    <option key={index} value={opt}>{opt}</option>
+                    <option key={index} value={opt.id}>{capitalizeWord(opt.name)}</option>
                   ))}
                 </select>
               </div>
@@ -153,7 +153,7 @@ const FilterSearch = () => {
                 >
                   <option value="" className='text-gray-500'>Body</option>
                   {vehicleTypes && vehicleTypes.map((opt, index) => (
-                    <option key={index} value={opt}>{opt}</option>
+                    <option key={index} value={opt}>{capitalizeWord(opt)}</option>
                   ))}
                 </select>
               </div>
@@ -167,7 +167,7 @@ const FilterSearch = () => {
                 >
                   <option value="" className='text-gray-500'>Fuel</option>
                   {fuelTypes && fuelTypes.map((opt, index) => (
-                    <option key={index} value={opt}>{opt}</option>
+                    <option key={index} value={opt}>{capitalizeWord(opt)}</option>
                   ))}
                 </select>
               </div>

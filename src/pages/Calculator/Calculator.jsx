@@ -76,8 +76,8 @@ const Calculator = () => {
         datasets: [
             {
                 data: [loanAmount, emi * loanTenure - loanAmount],
-                backgroundColor: ['#49A584','#FF8383'  ], // Customize these colors
-                hoverBackgroundColor: ['#096254','#D8232D'], // Customize hover colors
+                backgroundColor: ['#49A584','grey'  ], // Customize these colors
+                hoverBackgroundColor: ['#096254','#000'], // Customize hover colors
                 
     
             },
@@ -117,34 +117,6 @@ const Calculator = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         gsap.fromTo(
-            ".calc-header",
-            {
-                y: -200,
-                borderRadius: "0%",
-                yoyo: false,
-                rotation: 0,
-                opacity: 0,
-            },
-            {
-                y: 0,
-                repeat: 0,
-                delay: 0,
-                yoyo: false,
-                rotation: 0,
-                borderRadius: "0%",
-                duration: 0.7,
-                ease: "none",
-                stagger: 0.5,
-                opacity: 1,
-                scrollTrigger: {
-                    trigger: ".calc-header",
-                    toggleActions: "play none none none ",
-                    once: true
-                },
-            }
-        );
-
-        gsap.fromTo(
             ".content-gsap",
             {
                 y: 0,
@@ -174,18 +146,7 @@ const Calculator = () => {
     }, [])
 
     return (
-        <div>
-            <header
-                className="calc-header h-36 md:h-64 bg-gray-300 text-2xl font-bold flex flex-col justify-center items-center bg-cover bg-center"
-                style={{
-                    backgroundImage: "url(/assets/images/calc_header.jpg)"
-                }}
-            >
-                <div className="h-full w-full bg-black bg-opacity-50 flex flex-col justify-center items-center">
-                    <span className="text-2xl md:text-3xl text-white">EMI Calculator</span>
-                    <p className="text-xs md:text-sm font-light text-white">Customer service is not a department, it's our job.</p>
-                </div>
-            </header>
+        <div className='pt-24'>
             <div className="bg-white text-black py-10 px-5" id="calculator-range-slider">
                 <div className="text-black flex justify-start">
                     <h2 className="text-base md:text-lg font-medium content-text">EMI Calculator</h2>
@@ -201,7 +162,7 @@ const Calculator = () => {
                 <div className="content-gsap-trigger flex flex-col md:flex-row items-center border border-[#ececec] p-6 rounded-lg shadow-lg w-full max-w-md md:max-w-5xl mx-auto">
                     <div className="flex justify-center items-center w-full md:w-1/2 md:mr-6">
                         <div className="w-48 h-48 md:w-full md:h-full content-gsap">
-                            <Doughnut data={data} options={{ borderWidth: 5, borderRadius: 20, hoverBorderWidth: 0, cutout: '70%', plugins: { textCenter: {} } }} plugins={[textCenterPlugin]} />
+                            <Doughnut data={data} options={{ borderWidth: 5, hoverBorderWidth: 0, cutout: '70%', plugins: { textCenter: {} } }} plugins={[textCenterPlugin]} />
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 text-center md:text-left mt-4 md:mt-0">

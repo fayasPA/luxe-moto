@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
-import './style.css';
 import { TbPhoneCall } from 'react-icons/tb';
 import { capitalizeFirstLetters, getNumberToCurrencyText } from '../../utils/helperFunctions';
 import { IoSpeedometerOutline } from 'react-icons/io5';
