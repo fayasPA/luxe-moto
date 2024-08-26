@@ -20,7 +20,7 @@ import { FiEdit, FiChevronDown, FiTrash, FiShare, FiPlusSquare, FiPhone } from "
 gsap.registerPlugin(ScrollTrigger)
 
 
-const DropDown = ({ name, items, isHomePage }) => {
+const DropDown = ({ name, items, isHomePage, handleNavigation }) => {
     const [open, setOpen] = useState(false);
     const dropdownRef = useRef(null);
     const iconRef = useRef(null);
@@ -80,7 +80,7 @@ const DropDown = ({ name, items, isHomePage }) => {
                     className={`border border-1 flex flex-col gap-2 p-2 bg-white shadow-xl absolute top-[120%] left-[50%] w-48 overflow-hidden origin-top ${open ? 'block' : 'hidden'}`}
                 >
                     {items.map((item, index) => (
-                        <NavLink key={index} to={item.path} onClick={() => handleNavClick(item.path)} className={({ isActive }) => `${isActive ? 'text-green-300' : 'text-slate-700'} flex  items-start my-1.5 mx-auto w-full`} >
+                        <NavLink key={index} to={item.path} onClick={() => handleNavigation(item.path)} className={({ isActive }) => `${isActive ? 'text-green-300' : 'text-slate-700'} flex  items-start my-1.5 mx-auto w-full`} >
                             <li
                                 onClick={() => setOpen(false)}
                                 className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-gray-100  hover:text-green-300 transition-colors cursor-pointer"
@@ -208,7 +208,7 @@ export default function Navbar() {
                             <span className=" ">Buy Used Cars</span>
                         </NavLink>
                         <span className={`block mt-4 md:inline-block md:mt-0 ${isHomePage ? 'text-white' : 'text-black'} hover:text-green-300 mr-4 `}>
-                            <DropDown name={'More'} items={moreList} isHomePage={isHomePage} />
+                            <DropDown name={'More'} items={moreList} isHomePage={isHomePage} handleNavigation={handleNavClick} />
                         </span>
                     </div>
                 </div>

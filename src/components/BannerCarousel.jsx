@@ -30,7 +30,7 @@ const BannerCarousel = () => {
 
   const handleSlideChange = (swiper) => {
     if (swiper.activeIndex === 0 || swiper.realIndex === 0) {
-      videoRef.current.currentTime = 15; // Reset the video to the start
+      videoRef.current.currentTime = 19; // Reset the video to the start
       videoRef.current.play(); // Play the video
     } else {
       videoRef.current.pause();
