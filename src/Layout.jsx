@@ -8,7 +8,7 @@ import './assets/css/ToggleSwitch.css'
 import 'react-range-slider-input/dist/style.css';
 
 const Layout = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className='flex flex-col'>

@@ -69,7 +69,7 @@ const DropDown = ({ name, items, isHomePage, handleNavigation }) => {
                     onClick={() => setOpen(prev => !prev)}
                     className="flex items-center gap-2 px-3 rounded-md  transition-colors"
                 >
-                    <span className="font-semibold text-sm">Post actions</span>
+                    <span className="font-semibold text-sm">More</span>
                     <span ref={iconRef}>
                         <FiChevronDown />
                     </span>
@@ -199,22 +199,22 @@ export default function Navbar() {
         <nav className={`w-full top-0 border-gray-200 pb-2 z-10 transition-colors duration-300  ${isHomePage ? (isScrolled ? 'sticky bg-black' : nav ? 'absolute bg-black' : 'absolute bg-transparent') : isScrolled ? 'sticky bg-white' : 'absolute bg-white'}`}>
             <div className="w-full flex flex-wrap items-center justify-between mx-auto px-5 md:px-10 ">
 
-                <div className={`w-full md:items-center md:w-auto hidden md:flex`}>
-                    <div className="text-sm flex md:flex-grow font-semibold">
-                        <NavLink to='/' onClick={() => handleNavClick('/')} className={({ isActive }) => `${isActive ? 'text-green-300' : isHomePage ? 'text-white' : 'text-black'} block mt-4 md:inline-block md:mt-0 hover:text-green-300 mr-4`} >
+                <div className={`w-full md:items-center md:w-1/3 hidden md:flex`}>
+                    <div className="text-sm flex md:flex-grow font-semibold ">
+                        <NavLink to='/' onClick={() => handleNavClick('/')} className={({ isActive }) => `${isActive ? 'text-green-300' : isHomePage ? 'text-white' : 'text-black'} block mt-4 md:inline-block md:mt-0 hover:text-green-300 `} >
                             <span className=" ">Home</span>
                         </NavLink>
-                        <NavLink to='/vehicles' onClick={() => handleNavClick('/vehicles')} className={({ isActive }) => `${isActive ? 'text-green-300' : isHomePage ? 'text-white' : 'text-black'} px-5 block mt-4 md:inline-block md:mt-0 hover:text-green-300 mr-4`} >
+                        <NavLink to='/vehicles' onClick={() => handleNavClick('/vehicles')} className={({ isActive }) => `${isActive ? 'text-green-300' : isHomePage ? 'text-white' : 'text-black'} px-5 block mt-4 md:inline-block md:mt-0 hover:text-green-300 `} >
                             <span className=" ">Buy Used Cars</span>
                         </NavLink>
-                        <span className={`block mt-4 md:inline-block md:mt-0 ${isHomePage ? 'text-white' : 'text-black'} hover:text-green-300 mr-4 `}>
+                        <span className={`block mt-4 md:inline-block md:mt-0 ${isHomePage ? 'text-white' : 'text-black'} hover:text-green-300  `}>
                             <DropDown name={'More'} items={moreList} isHomePage={isHomePage} handleNavigation={handleNavClick} />
                         </span>
                     </div>
                 </div>
 
                 {/* Logo */}
-                <Link to="/" className={`flex flex-col items-center text-xl font-semibold focus:outline-none focus:opacity-80 
+                <Link to="/" className={`w-1/3 flex flex-col items-center text-xl font-semibold focus:outline-none focus:opacity-80 
                 text-white`}>
                     <img src={`${isHomePage ? whiteLogo : blackLogo}`} className="mt-2 w-12 h-8  md:w-16 md:h-10 rounded-xl logo " alt=" Logo" />
                     <div className='flex flex-col '>
@@ -224,8 +224,8 @@ export default function Navbar() {
                 </Link>
                 {/* Logo */}
 
-                <div className=" hidden md:flex ">
-                    <div className={`flex justify-center gap-2 ${isHomePage ? 'text-white' : 'text-black'}`}>
+                <div className="w-1/3 hidden md:flex ">
+                    <div className={`w-full flex justify-end gap-2 ${isHomePage ? 'text-white' : 'text-black'}`}>
                         <a href="https://wa.me/919037696969" target='blank'>
                             <FaWhatsapp size={20} className=" cursor-pointer" />
                         </a>

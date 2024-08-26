@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
 import { TbPhoneCall } from 'react-icons/tb';
-import { capitalizeFirstLetters, getNumberToCurrencyText } from '../../utils/helperFunctions';
-import { IoSpeedometerOutline } from 'react-icons/io5';
-import FilterSearch from '../../components/FilterSearch';
+import { capitalizeWord, getNumberToCurrencyText } from '../../utils/helperFunctions';
 
 const products = [
   {
@@ -13,7 +12,7 @@ const products = [
     brand: 'Earthen Bottle',
     href: '#',
     price: '$48',
-    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+    image: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
     imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
   },
   {
@@ -21,7 +20,7 @@ const products = [
     brand: 'Nomad Tumbler',
     href: '#',
     price: '$35',
-    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+    image: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
     imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
   },
   {
@@ -29,7 +28,7 @@ const products = [
     brand: 'Focus Paper Refill',
     href: '#',
     price: '$89',
-    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    image: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
     imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
   },
   {
@@ -37,7 +36,7 @@ const products = [
     brand: 'Machined Mechanical Pencil',
     href: '#',
     price: '$35',
-    sampleImage: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+    image: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
     imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
   },
   // More products...
@@ -87,6 +86,7 @@ const UsedVehicles = () => {
     try {
       const params = new URLSearchParams(location.search);
       const response = await axiosInstance.get(`${GET_ALL_VEHICLES}`);
+      console.log("@UsedVehicles", response)
       if (response.status === 200) {
         if (response.data.all_cars) {
           setDatas(response.data.all_cars);
@@ -137,59 +137,42 @@ const UsedVehicles = () => {
           <h2 className='text-xl md:text-4xl'>Make Your Choice</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {datas.map((product) => (
-            <div
-              key={product.id}
-              className="border-[1px] border-dashed border-black card shadow-lg h-[400px] w-full sm:w-[280px] group gap-2 rounded-none relative flex flex-col justify-end p-6 overflow-hidden bg-black"
-            >
-              <div
-                className="absolute top-0 left-0 h-full w-full bg-cover bg-center opacity-95 group-hover:opacity-20 transition-opacity duration-300"
-                style={{ backgroundImage: `url(${BASE_IMAGE_URL}${product.image})` }}
-              ></div>
+            <div key={product.id} className="w-full rounded-lg overflow-hidden shadow-lg bg-white">
+              <img
+                className="w-full"
+                src={`${BASE_IMAGE_URL}${product.image}`}
+                alt={product.image}
+              />
+              <div className="p-4">
+                <div className="text-xl font-semibold mb-2">{getNumberToCurrencyText(product.price)}</div>
+                <div className="text-lg font-bold">{product.year} {capitalizeWord(`${product.brand} ${product.model}`)}</div>
+                <div className="mt-4 flex justify-between text-gray-700">
+                  <div className="flex flex-wrap justify-between w-full">
+                    <div className="w-fit">
+                      <div className="text-xs">REG. YEAR</div>
+                      <div className="text-sm font-semibold">{product.year}</div>
+                    </div>
+                    <div className='w-[1px] border border-gray-300'></div>
 
-              <div className="relative z-10 text-white flex flex-col gap-2">
-
-                <div className="flex items-center gap-2">
-                  <div className="flex">
-                    {product.brand} {product.model}
+                    <div className="w-fit ">
+                      <div className="text-xs">KMS</div>
+                      <div className="text-sm font-semibold">12700</div>
+                    </div>
+                    <div className='w-[1px] border border-gray-300'></div>
+                    
+                    <div className="w-fit ">
+                      <div className="text-xs">FUEL TYPE</div>
+                      <div className="text-sm font-semibold">{capitalizeWord(product.fuel_type)}</div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-2 justify-between">
-                  <div
-                    className="border-2 border-green-300 text-white font-normal px-2 py-1 hover:bg-green-300 hover:text-black transition duration-300 cursor-pointer"
-                  >
-                    <p>Enquiry</p>
-                  </div>
-
-                  <Link to={`/vehicles/${product.id}`}
-                    className="border-2 border-white text-white font-normal px-2 py-1 hover:bg-white hover:text-black transition duration-300 cursor-pointer"
-                  >
-                    <p>More Details</p>
-                  </Link>
-                </div>
-              </div>
-              <div className="text-white font-light relative h-0 group-hover:h-[8em] leading-5 transition-height duration-500 overflow-hidden z-10">
-                <div className="flex items-center justify-between  text-sm md:text-base">
-                  <span>{product.year}</span>
-                  <span>{capitalizeFirstLetters(product.fuel_type)}</span>
-                </div>
-
-                <p className="mt-2 text-2xl font-semibold ">{getNumberToCurrencyText(product.price)}</p>
-
-                <div className="mt-4 flex items-center justify-between text-sm md:text-base">
-                  <div className="flex items-center gap-2 justify-center">
-                    <IoSpeedometerOutline size={15} className='text-gray' />
-                    <span className='text-gray font-medium'>{product.kms} KMS</span>
-                  </div>
-                </div>
               </div>
             </div>
           ))}
         </div>
-
-
 
 
 

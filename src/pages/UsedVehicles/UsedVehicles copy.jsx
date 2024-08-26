@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
-import './style.css';
 import { TbPhoneCall } from 'react-icons/tb';
 
 const products = [
@@ -145,7 +144,7 @@ const UsedVehicles = () => {
                   <img
                     src={product.image ? `${BASE_IMAGE_URL}${product.image}` : `${product.sampleImage}`}
                     alt={product.image}
-                    className="h-full w-full object-cover object-center group-hover:opacity-85 hover:scale-105 transition-transform duration-1000 ease-in"
+                    className="h-full w-full object-cover object-center group-hover:opacity-85 hover:scale-105 transition-transform duration-[2000ms] ease-in"
                   />
                 </div>
                 <div className="absolute top-0 left-0 m-4">
