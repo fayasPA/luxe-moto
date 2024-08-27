@@ -7,13 +7,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const comp = useRef(null)
-  useEffect(() => {
-    gsap.from(".timeline-item", { duration: 1, opacity: 0, y: 50, stagger: 0.3, repeat: false });
-  }, []);
 
   const statsRef = useRef([]);
 
   useLayoutEffect(() => {
+    window.scrollTo(0,0)
     let ctx = gsap.context(() => {
       const t1 = gsap.timeline()
       t1.from(".page-header", {
@@ -25,23 +23,23 @@ const About = () => {
           y: "+=30",
           stagger: 0.3,
         })
-        // .from(statsRef.current, {
-        //   xPercent: "-100",
-        //   duration: 1.3,
-        //   delay: 0.3,
-        //   ease: 'circ.out',
-        //   stagger: 0.2
-        // })
-        // .to([".content-text"], {
-        //   opacity: 0,
-        //   y: "-=30",
-        //   delay: 0.3,
-        //   stagger: 0.5,
-        // })
-        // .to("#intro-slider", {
-        //   xPercent: "-100",
-        //   duration: 1.3,
-        // })
+      // .from(statsRef.current, {
+      //   xPercent: "-100",
+      //   duration: 1.3,
+      //   delay: 0.3,
+      //   ease: 'circ.out',
+      //   stagger: 0.2
+      // })
+      // .to([".content-text"], {
+      //   opacity: 0,
+      //   y: "-=30",
+      //   delay: 0.3,
+      //   stagger: 0.5,
+      // })
+      // .to("#intro-slider", {
+      //   xPercent: "-100",
+      //   duration: 1.3,
+      // })
     }, comp)
 
     return () => ctx.revert()

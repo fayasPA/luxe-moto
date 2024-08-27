@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import DeliveryVideoComponent from './DeliveryVideoComponent';
 import DeliverSwiperSlider from './DeliverSwiperSlider';
-
 
 const LatestDeliveries = () => {
 
   return (
     <div className='w-full pb-10'>
       {/* Header */}
-      <div className='w-full md:py-0'>
+      <div className='header-animate-container w-full md:py-0'>
         <div className='font-medium max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl'>
-          <h2>Happy Customers</h2>
+          <h2 className='header-animate-text'>Happy Customers</h2>
         </div>
       </div>
 

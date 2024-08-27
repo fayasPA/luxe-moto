@@ -241,7 +241,7 @@ export default function Navbar() {
                         </a>
                         <a href={`tel:${phoneNumber}`} className='pl-1'>
                             <p className="flex items-center  ">
-                                <FiPhone size={18} className=" cursor-pointer" /> +91-9037696969
+                                <FiPhone size={18} className=" cursor-pointer" />
                             </p>
                         </a>
                     </div>

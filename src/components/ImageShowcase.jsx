@@ -36,9 +36,9 @@ const ImageShowcase = () => {
 
   return (
     <div>
-      <div className='w-full md:py-0'>
-        <div className='font-medium max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl'>
-          <h2>Pre Owned Luxury Premium Cars</h2>
+      <div className='w-full md:py-0 mb-5'>
+        <div className='font-medium max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl header-animate-container'>
+          <h2 >Pre Owned Luxury Premium Cars</h2>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden  mt-4">
