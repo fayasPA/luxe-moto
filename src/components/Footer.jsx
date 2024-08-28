@@ -4,7 +4,8 @@ import { FaInstagram,
   } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import WhiteLogo from '/images/logo-white.png'
+import whiteLogo from '/images/logo-white.png'
+import blackLogo from '/images/blackLogo.png'
 import { ImFacebook2 } from "react-icons/im";
 import { IoLogoYoutube } from "react-icons/io";
 
@@ -33,18 +34,18 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="w-full h-full bg-black text-white pt-5 md:pt-10 footer-container">
+    <footer className="w-full h-full bg-18392B text-white pt-5 md:pt-10 footer-container">
       <div className="flex flex-col items-center w-fit mx-auto footer-content">
-        <img src={WhiteLogo} className="w-10 h-8 rounded-xl logo " alt=" Logo" />
+        <img src={whiteLogo} className="w-10 h-8 rounded-xl logo " alt=" Logo" />
         <span className="w-full font-semibold">Luxe Moto</span>
       </div>
 
       <div className="w-full px-5 py-6 flex flex-col items-center">
-        <div className="max-w-7xl w-full footer-content grid grid-cols-2 md:grid-cols-4 gap-8 text-sm md:text-base text-center md:text-left border-y-2 py-5 md:py-7 justify-center">
+        <div className="max-w-7xl w-full footer-content grid grid-cols-2 md:grid-cols-4 gap-8 text-sm md:text-base text-center md:text-left border-y-[0.1px] border-[#ffffff59] py-5 md:py-7 justify-center font-light">
 
 
           <div className="">
-            <h3 className="font-semibold mb-4 ">SPORTS CARS</h3>
+            <h3 className="font-medium mb-4 ">SPORTS CARS</h3>
             <ul>
               <li className="text-xs p-2">Range</li>
               <li className="text-xs p-2">Configure your Ferrari</li>
@@ -57,7 +58,7 @@ const Footer = () => {
           </div>
 
           <div className="">
-            <h3 className="font-bold mb-4">COLLECTIONS</h3>
+            <h3 className="font-medium mb-4">COLLECTIONS</h3>
             <ul>
               <li className="text-xs p-2">Men</li>
               <li className="text-xs p-2">Women</li>
@@ -70,7 +71,7 @@ const Footer = () => {
           </div>
 
           <div className="">
-            <h3 className="font-bold mb-4">EXPERIENCES</h3>
+            <h3 className="font-medium mb-4">EXPERIENCES</h3>
             <ul>
               <li className="text-xs p-2">Corse Clienti</li>
               <li className="text-xs p-2">Ferrari Esports Series</li>
@@ -82,7 +83,7 @@ const Footer = () => {
           </div>
 
           <div className="">
-            <h3 className="font-bold mb-4">ABOUT US</h3>
+            <h3 className="font-medium mb-4">ABOUT US</h3>
             <ul>
               <li className="text-xs p-2">Corporate</li>
               <li className="text-xs p-2">Sustainability</li>

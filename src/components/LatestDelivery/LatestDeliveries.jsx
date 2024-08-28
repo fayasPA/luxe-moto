@@ -8,8 +8,8 @@ const LatestDeliveries = () => {
     <div className='w-full pb-10'>
       {/* Header */}
       <div className='header-animate-container w-full md:py-0'>
-        <div className='font-medium max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl'>
-          <h2 className='header-animate-text'>Happy Customers</h2>
+        <div className=' max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl'>
+          <h2 className=' header-animate-text'>Latest deliveries</h2>
         </div>
       </div>
 

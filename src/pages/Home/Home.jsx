@@ -40,7 +40,7 @@ const Home = () => {
     });
   }, []);
   return (
-    <section className=' w-full'>
+    <section className=' w-full text-white'>
       <BannerCarousel />
       <InfoVideoHeader />
       <InfoVideo />

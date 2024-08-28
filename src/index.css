@@ -11,8 +11,10 @@
 body {
     /* font-family: "Noto Sans", sans-serif; */
     /* font-family: 'Roboto', sans-serif; */
-    font-family: "Montserrat", sans-serif;
-    background-color: #FFFFFF;
+    /* font-family: "Montserrat", sans-serif; */
+    font-family: "DM Sans", sans-serif;
+    font-weight: 100;
+    background-color: #18392B;
     color: #000;
 }
 

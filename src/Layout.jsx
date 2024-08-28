@@ -16,7 +16,9 @@ const Layout = () => {
         <PageLoader setIsLoading={setIsLoading} /> // Pass setIsLoading directly to PageLoader
       ) : (
         <>
+        <div className='overflow-hidden'>
           <Navbar />
+        </div>
           <div>
             <Outlet />
             <Footer />

@@ -12,6 +12,7 @@ import '../assets/css/BannerCarousel.css';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 import { bannerVideo, hightPlainsSlides } from '../constants/constants';
+// import bgRemove from '/videos/lamboBg.png'
 import bgRemove from '/videos/bg_remove.png'
 import { getNumberToCurrencyText } from '../utils/helperFunctions';
 import { FaChevronRight } from 'react-icons/fa';
@@ -130,8 +131,8 @@ const BannerCarousel = () => {
         {hightPlainsSlides.map((slide, i) => (
           <SwiperSlide key={i} >
             <div className='h-full w-full flex relative'>
-              <div className='w-1/3 h-full bg-green'></div>
-              <div className='flex-1 h-full bg-black'></div>
+              <div className='w-1/3 h-full bg-18392B'></div>
+              <div className='flex-1 h-full bg-white'></div>
               <div className='absolute h-full w-full md:flex'>
                 <div className='h-1/2 md:h-full w-full md:w-1/2 flex justify-end items-center'>
                   <img
@@ -140,7 +141,7 @@ const BannerCarousel = () => {
                     alt={`Slide 1`}
                   />
                 </div>
-                <div className='text-white h-1/2 md:h-full w-full md:w-1/2'>
+                <div className='text-black h-1/2 md:h-full w-full md:w-1/2'>
                   <div className="h-full flex items-start md:items-center justify-end md:justify-center pt-10 md:pt-0">
                     <div className="pr-10 md:pr-0">
                       <h2 className="text-xl md:text-4xl font-bold mb-2 content-text">Mercedes Benz</h2>

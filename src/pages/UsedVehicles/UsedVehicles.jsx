@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
@@ -140,36 +140,38 @@ const UsedVehicles = () => {
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {datas.map((product) => (
             <div key={product.id} className="w-full rounded-lg overflow-hidden shadow-lg bg-white">
-              <img
-                className="w-full"
-                src={`${BASE_IMAGE_URL}${product.image}`}
-                alt={product.image}
-              />
-              <div className="p-4">
-                <div className="text-xl font-semibold mb-2">{getNumberToCurrencyText(product.price)}</div>
-                <div className="text-lg font-bold">{product.year} {capitalizeWord(`${product.brand} ${product.model}`)}</div>
-                <div className="mt-4 flex justify-between text-gray-700">
-                  <div className="flex flex-wrap justify-between w-full">
-                    <div className="w-fit">
-                      <div className="text-xs">REG. YEAR</div>
-                      <div className="text-sm font-semibold">{product.year}</div>
-                    </div>
-                    <div className='w-[1px] border border-gray-300'></div>
+              <NavLink to={`/vehicles/${product.id}`} >
+                <img
+                  className="w-full"
+                  src={`${BASE_IMAGE_URL}${product.image}`}
+                  alt={product.image}
+                />
+                <div className="p-4">
+                  <div className="text-xl font-semibold mb-2">{getNumberToCurrencyText(product.price)}</div>
+                  <div className="text-lg font-bold">{product.year} {capitalizeWord(`${product.brand} ${product.model}`)}</div>
+                  <div className="mt-4 flex justify-between text-gray-700">
+                    <div className="flex flex-wrap justify-between w-full">
+                      <div className="w-fit">
+                        <div className="text-xs">REG. YEAR</div>
+                        <div className="text-sm font-semibold">{product.year}</div>
+                      </div>
+                      <div className='w-[1px] border border-gray-300'></div>
 
-                    <div className="w-fit ">
-                      <div className="text-xs">KMS</div>
-                      <div className="text-sm font-semibold">12700</div>
-                    </div>
-                    <div className='w-[1px] border border-gray-300'></div>
-                    
-                    <div className="w-fit ">
-                      <div className="text-xs">FUEL TYPE</div>
-                      <div className="text-sm font-semibold">{capitalizeWord(product.fuel_type)}</div>
+                      <div className="w-fit ">
+                        <div className="text-xs">KMS</div>
+                        <div className="text-sm font-semibold">12700</div>
+                      </div>
+                      <div className='w-[1px] border border-gray-300'></div>
+
+                      <div className="w-fit ">
+                        <div className="text-xs">FUEL TYPE</div>
+                        <div className="text-sm font-semibold">{capitalizeWord(product.fuel_type)}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-              </div>
+                </div>
+              </NavLink>
             </div>
           ))}
         </div>

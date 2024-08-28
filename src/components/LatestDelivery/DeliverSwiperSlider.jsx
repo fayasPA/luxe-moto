@@ -7,9 +7,12 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import '../../assets/css/delivery-swiper.css'; // Importing custom styles
 import { EffectCards } from 'swiper/modules';
-import image1 from '/videos/del1.jpg';
-import image2 from '/videos/del2.jpeg';
-import image3 from '/videos/del3.jpeg';
+import image1 from '/samples/del1.png';
+import image2 from '/samples/del2.png';
+import image3 from '/samples/del3.png';
+// import image1 from '/videos/del1.jpg';
+// import image2 from '/videos/del2.jpeg';
+// import image3 from '/videos/del3.jpeg';
 import gsap from 'gsap'; // Importing GSAP for animations
 import ScrollTrigger from 'gsap/ScrollTrigger'; // Importing ScrollTrigger plugin for scroll-based animations
 

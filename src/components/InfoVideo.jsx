@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import info from '/videos/info.mp4';
+import info from '/videos/bg-video2.mp4';
+// import info from '/videos/info.mp4';
 import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
 
 // Register ScrollTrigger with GSAP
@@ -97,7 +98,7 @@ const InfoVideo = () => {
         </div>
 
         <div ref={containerRef} className='flex justify-center items-center text-center h-[20%]'>
-          <p ref={textRef} className='text-xl md:text-4xl max-w-md md:max-w-3xl'>
+          <p ref={textRef} className='text-xl md:text-4xl font-extralight'>
             Introducing the most electrifying Car stories ever. <strong className='text-green'>Luxe Moto</strong> is the perfect match
             for your used car purchase.
           </p>

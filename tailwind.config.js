@@ -10,6 +10,7 @@ export default {
         pacifico: ['Noto Sans', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
         josefin: ['Montserrat', 'sans-serif'],
+        dmSand: ['DM Sand', 'sans-serif'],
       },
       colors: {
         red: "red",

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FaPlay, FaPause } from 'react-icons/fa'; // Import icons for play and pause
-import info from '/videos/smallHero.mp4';
+import info from '/videos/bg-video2.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,8 +73,8 @@ const DeliveryVideoComponent = () => {
 
   return (
 
-    <div className=' w-full md:w-1/2 h-[40rem] md:h-[50rem] md:p-10' ref={videoDivRef}>
-      <div className='h-full relative'>
+    <div  className='w-full md:w-1/2 h-[40rem] md:h-[50rem] md:p-10' ref={videoDivRef}>
+      <div style={{border: '1px'}} className='h-full relative'>
 
         <video
           ref={videoRef} // Attach ref to the video element

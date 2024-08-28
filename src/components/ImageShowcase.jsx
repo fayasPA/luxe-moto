@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import img from '/videos/benz.jpg';
+import img from '/videos/ferrari.jpeg';
+import img2 from '/videos/bmw.jpeg';
+import img3 from '/videos/lambo.jpeg';
+// import img from '/videos/benz.jpg';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { NavLink } from 'react-router-dom';
@@ -37,8 +40,8 @@ const ImageShowcase = () => {
   return (
     <div>
       <div className='w-full md:py-0 mb-5'>
-        <div className='font-medium max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl header-animate-container'>
-          <h2 >Pre Owned Luxury Premium Cars</h2>
+        <div className='max-w-fit ml-10 md:ml-20 text-3xl md:text-7xl header-animate-container'>
+          <h2 >Pre-owned luxury premium cars</h2>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden  mt-4">
@@ -72,7 +75,7 @@ const ImageShowcase = () => {
       <div className='flex justify-center items-center py-10'>
         <div className='w-fit flex justify-center items-center gap-10'>
 
-          <div className='w-fit text-md md:text-xl'>
+          <div className='w-fit font-extralight text-md md:text-xl'>
             <p className=''>
               We have a lot more to show you.
             </p>

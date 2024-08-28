@@ -57,12 +57,15 @@ const InfoVideoHeader = () => {
             </div>
             <div ref={rightSideRef} className='w-full md:w-1/2 flex justify-center items-center'>
                 <button
-                    className="flex gap-2 px-6 py-3.5 md:px-10 md:py-4 overflow-hidden group bg-gradient-to-r from-gray-700 to-black relative hover:bg-gradient-to-r hover:from-green hover:to-green-300 text-white transition-all ease-out duration-300"
+                    className="flex gap-2 px-6 py-3.5 md:px-10 md:py-4 overflow-hidden group bg-gradient-to-r bg-green-900 relative hover:bg-gradient-to-r  text-white transition-all ease-out duration-300"
                 >
+                    {/* <button
+                    className="flex gap-2 px-6 py-3.5 md:px-10 md:py-4 overflow-hidden group bg-gradient-to-r from-[#6e6d6d] to-gray-400 relative hover:bg-gradient-to-r hover:from-green hover:to-green-300 text-black transition-all ease-out duration-300"
+                > */}
                     <span
-                        className="absolute right-0 w-32 md:w-44 h-full top-0 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 -skew-x-12 group-hover:-translate-x-36 ease"
+                        className="absolute right-0 w-32 md:w-44 h-full top-0 transition-all duration-1000 transform translate-x-12 bg-white opacity-20 -skew-x-12 group-hover:-translate-x-36 ease"
                     ></span>
-                    <span className="relative text-base md:text-xl font-semibold">Discover Vehicles</span>
+                    <span className="relative text-base md:text-xl font-normal">Discover Vehicles</span>
                     <FaChevronRight className='flex self-center' />
                 </button>
             </div>
