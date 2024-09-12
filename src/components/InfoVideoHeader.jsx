@@ -19,7 +19,8 @@ const InfoVideoHeader = () => {
                 end: "top 80%",    // End at the same position to ensure it only triggers once
                 toggleActions: "play none none none", // Play the animation once and don't reactivate
                 once: true,        // Run the animation only once
-            }
+          scroller: '[data-scroll-container]',
+        }
         });
 
         tl.fromTo(leftSideRef.current,

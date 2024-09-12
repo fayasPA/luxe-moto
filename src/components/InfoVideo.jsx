@@ -71,6 +71,7 @@ const InfoVideo = () => {
             end: 'bottom top',
             scrub: true, // Smoothly animate based on scroll position
             markers: false,
+            scroller: '[data-scroll-container]',
           },
           ease: 'none', // No easing for a smooth scrolling effect
         }
@@ -93,6 +94,7 @@ const InfoVideo = () => {
           start: 'top 20%', // Start animation when the video div reaches 20% of the viewport height
           end: 'bottom top',
           scrub: true,
+          scroller: '[data-scroll-container]',
         },
       }
     );

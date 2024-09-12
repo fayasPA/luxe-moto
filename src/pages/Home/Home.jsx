@@ -31,6 +31,7 @@ const Home = () => {
               start: "top 75%", // Start animation when the div reaches the center of the viewport
               end: "top 20%",
               toggleActions: "play none none none",
+              scroller: '[data-scroll-container]',
               scrub: true
             },
           }

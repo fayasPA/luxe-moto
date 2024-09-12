@@ -59,6 +59,7 @@ export default function DeliverSwiperSlider() {
           start: 'top 95%', // Start animation when the Swiper is 80% from the top of the viewport
           end: 'center 50%', // End animation when the bottom of Swiper is at the top of the viewport
           scrub: 1, // Smooth animation on scroll with more consistent scrubbing
+          scroller: '[data-scroll-container]',
         },
       }
     );

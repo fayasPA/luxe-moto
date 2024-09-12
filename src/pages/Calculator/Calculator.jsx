@@ -76,10 +76,10 @@ const Calculator = () => {
         datasets: [
             {
                 data: [loanAmount, emi * loanTenure - loanAmount],
-                backgroundColor: ['#49A584','grey'  ], // Customize these colors
-                hoverBackgroundColor: ['#096254','#000'], // Customize hover colors
-                
-    
+                backgroundColor: ['#49A584', 'grey'], // Customize these colors
+                hoverBackgroundColor: ['#096254', '#000'], // Customize hover colors
+
+
             },
         ],
     };
@@ -139,7 +139,8 @@ const Calculator = () => {
                 scrollTrigger: {
                     trigger: ".content-gsap-trigger",
                     toggleActions: "play none none none ",
-                    once: true
+                    once: true,
+                    scroller: '[data-scroll-container]',
                 },
             }
         );
@@ -154,7 +155,7 @@ const Calculator = () => {
 
                 <div className="text-borderColor flex pb-5">
                     <p className="text-gray list-disc text-sm content-text">
-                    Find the Perfect EMI Fit for You.
+                        Find the Perfect EMI Fit for You.
                     </p>
                 </div>
 
@@ -181,7 +182,7 @@ const Calculator = () => {
                         <div className="mt-4 w-full">
                             <label className="block text-black smaller-header-text text-xs md:text-sm lg:text-base">Loan Amount</label>
                             <input type="range" className="range-slider__range" min="100000" max="10000000"
-                             step={10000} value={loanAmount} onChange={handleLoanAmountChange} />
+                                step={10000} value={loanAmount} onChange={handleLoanAmountChange} />
                             <span className='content-gsap  font-bold font-josefin text-green-body'>{getNumberToCurrencyText(loanAmount)}</span>
                         </div>
                         <div className="mt-4 w-full">
