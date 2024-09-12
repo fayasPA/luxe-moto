@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { POST_SELL_VEHICLE_FORM } from '../utils/urls';
+import '../assets/css/sell-car-form.css'
+import cardBg from '/images/cardBg.jpg'
+import { capitalizeWord } from '../utils/helperFunctions';
 
 const ThreeStepForm = () => {
   const [step, setStep] = useState(1);
@@ -37,33 +40,60 @@ const ThreeStepForm = () => {
   };
 
   const renderCarDetailsForm = () => (
-    <div>
-      <h2 className="text-lg md:text-xl text-white font-semibold mb-4">Fill Your Car Details</h2>
-      <div className="space-y-4">
-        <input className="input" type="text" name="make" placeholder="Car Make" value={formValues.make} onChange={handleInputChange} />
-        {errors.make && <span style={{ fontSize: '1em' }} className="error text-red-700">{errors.make}</span>}
-        <input className="input" type="text" name="model" placeholder="Car Model" value={formValues.model} onChange={handleInputChange} />
-        {errors.model && <span style={{ fontSize: '1em' }} className="error text-red-700">{errors.model}</span>}
-        <input className="input" type="text" name="year" placeholder="Manufacturing Year" value={formValues.year} onChange={handleInputChange} />
-        {errors.year && <span style={{ fontSize: '1em' }} className="error text-red-700">{errors.year}</span>}
-        <input className="input" type="text" name="kms" placeholder="KMs Driven" value={formValues.kms} onChange={handleInputChange} />
-        {errors.kms && <span style={{ fontSize: '1em' }} className="error text-red-700">{errors.kms}</span>}
-        <input className="input" type="text" name="regNo" placeholder="Registration No." value={formValues.regNo} onChange={handleInputChange} />
+    <div className=''>
+      <h2 className="text-xs md:text-sm lg:text-base text-white font-light mb-4">{capitalizeWord("Fill Your Car Details")}</h2>
+      <div className="space-y-4 flex flex-col items-end font-josefin">
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm py-2 font-light" type="text" name="make" placeholder={capitalizeWord("Car Make")} value={formValues.make} onChange={handleInputChange} />
+        {errors.make && <span style={{ fontSize: '1em' }} className="error pr-2 text-yellow-600 font-light">{errors.make}</span>}
+        </div>
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm py-2 font-light" type="text" name="model" placeholder={capitalizeWord("Car Model")} value={formValues.model} onChange={handleInputChange} />
+        {errors.model && <span style={{ fontSize: '1em' }} className="error pr-2 text-yellow-600  font-light">{errors.model}</span>}
+        </div>
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm py-2 font-light" type="text" name="year" placeholder={capitalizeWord("Manufacturing Year")} value={formValues.year} onChange={handleInputChange} />
+        {errors.year && <span style={{ fontSize: '1em' }} className="error pr-2 text-yellow-600  font-light">{errors.year}</span>}
+        </div>
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm py-2 font-light" type="text" name="kms" placeholder={capitalizeWord("KMs Driven")} value={formValues.kms} onChange={handleInputChange} />
+        {errors.kms && <span style={{ fontSize: '1em' }} className="error pr-2 text-yellow-600  font-light">{errors.kms}</span>}
+        </div>
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm py-2 font-light" type="text" name="regNo" placeholder={capitalizeWord("Registration No.")} value={formValues.regNo} onChange={handleInputChange} />
       </div>
+        </div>
     </div>
   );
 
   const renderPersonalDetailsForm = () => (
     <div>
-      <h2 className="text-lg md:text-xl font-semibold mb-4">Fill Your Personal Details</h2>
-      <div className="space-y-4">
-        <input className="input" type="text" name="name" placeholder="Name" value={formValues.name} onChange={handleInputChange} />
-        {errors.name && <span style={{ fontSize: '1em' }} className="error text-red-700">{errors.name}</span>}
-        <input className="input" type="email" name="email" placeholder="Email ID" value={formValues.email} onChange={handleInputChange} />
-        <input className="input" type="text" name="mobile" placeholder="Mobile No." value={formValues.mobile} onChange={handleInputChange} />
-        {errors.mobile && <span style={{ fontSize: '1em' }} className="error text-red-700">{errors.mobile}</span>}
-        <input className="input" type="text" name="location" placeholder="Location" value={formValues.location} onChange={handleInputChange} />
+      <h2 className="text-xs md:text-sm lg:text-base font-semibold mb-4">Fill Your Personal Details</h2>
+      <div className="space-y-4 font-josefin">
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm font-light" type="text" name="name" placeholder={capitalizeWord("Name")} value={formValues.name} onChange={handleInputChange} />
+        {errors.name && <span style={{ fontSize: '1em' }} className="error pr-2 text-yellow-600  font-light">{errors.name}</span>}
+        </div>
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm font-light" type="email" name="email" placeholder={capitalizeWord("Email ID")} value={formValues.email} onChange={handleInputChange} />
+        </div >
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm font-light" type="text" name="mobile" placeholder={capitalizeWord("Mobile No.")} value={formValues.mobile} onChange={handleInputChange} />
+        {errors.mobile && <span style={{ fontSize: '1em' }} className="error pr-2 text-yellow-600  font-light">{errors.mobile}</span>}
+        </div>
+        <div className='w-full flex flex-col items-end'>
+
+        <input className="sell-car-input placeholder-black text-xs md:text-sm font-light" type="text" name="location" placeholder={capitalizeWord("Location")} value={formValues.location} onChange={handleInputChange} />
       </div>
+        </div>
     </div>
   );
 
@@ -160,17 +190,24 @@ const ThreeStepForm = () => {
 
   return (
     <div className="flex justify-center items-center  w-full pb-8 md:pb-10">
-      <div className="w-4/5 md:w-3/5 bg-black border-[1px] p-4 md:p-8 shadow-md rounded ">
-        <div className="flex justify-between mb-6">
-          <div className={`step ${step === 1 ? 'active' : 'inactive'}`}>1 Car Details</div>
-          <div className={`step ${step === 2 ? 'active' : 'inactive'}`}>2 Personal Details</div>
+      <div className="w-[97vw] md:w-3/5 bg-black border-[1px] border-black shadow-xl shadow-black rounded " style={{
+        backgroundImage: `url(${cardBg})`,
+      }}>
+        <div className='p-4 md:p-8 backdrop-blur-xl bg-[#12472f69]/60'>
+        <div className='w-full flex mb-6 justify-center'>
+        <div className="w-fit flex gap-5 text-xs md:text-base lg:text-lg">
+          <div className={`step ${step === 1 ? 'active' : 'inactive text-borderColor2/50'}`}>{capitalizeWord("Car Details")} </div>
+          <div className='border-[1px] border-borderColor'></div>
+          <div className={`step ${step === 2 ? 'active' : 'inactive text-borderColor2/50'}`}>{capitalizeWord("Personal Details")} </div>
+        </div>
         </div>
         {step === 1 && renderCarDetailsForm()}
         {step === 2 && renderPersonalDetailsForm()}
         <div className="flex justify-between mt-6">
-          {step > 1 && <button onClick={prevStep} className="bg-gray-900 hover:bg-gray-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-gray-100 hover:border-transparent rounded ">Previous</button>}
-          {step < 2 && <button onClick={nextStep} className="bg-gray-900 hover:bg-gray-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-gray-100 hover:border-transparent rounded">Next</button>}
-          {step === 2 && <button onClick={handleSubmit} className="bg-gradient-to-r from-gray-800 to-gray text-white font-semibold p-1 md:p-2 px-7 md:px-10 rounded-md">Submit</button>}
+          {step > 1 && <button onClick={prevStep} className="px-2 z-30 py-1 bg-green/70 rounded-md text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-green-300/40 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 [text-shadow:3px_5px_2px_#000;]  text-sm ">PREVIOUS</button>}
+          {step < 2 && <button onClick={nextStep} className="px-2 z-30 py-1 bg-green/70 rounded-md text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-green-300/40 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 [text-shadow:3px_5px_2px_#000;]  text-md">NEXT</button>}
+          {step === 2 && <button onClick={handleSubmit} className="px-2 z-30 py-1 bg-green-950 rounded-md text-white relative font-semibold font-sans after:-z-20 after:absolute after:h-1 after:w-1 after:bg-green/70 after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 [text-shadow:3px_5px_2px_#000;]  text-lg">SUBMIT</button>}
+        </div>
         </div>
       </div>
     </div>

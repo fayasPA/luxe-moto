@@ -7,7 +7,7 @@
     --_label-padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem); /* Responsive padding */
     --_switch-easing: cubic-bezier(0.47, 1.64, 0.41, 0.8);
     --_text-color-checked: #ffffff; /* Text color when checked */
-    --_text-color-unchecked: #000000; /* Text color when unchecked */
+    --_text-color-unchecked: #fff; /* Text color when unchecked */
     --_text-size: clamp(0.75rem, 2vw, 1rem); /* Responsive text size */
     color: black;
     width: fit-content;
@@ -114,5 +114,71 @@
       --_label-padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
       --_text-size: clamp(0.8rem, 2vw, 0.75rem); /* Adjusted text size */
     }
+  }
+  
+
+
+  /* headers new */
+  .radio-inputs {
+    position: relative;
+    display: flex;
+    border-radius: 0.5rem;
+    background-color: #70c489;
+    box-sizing: border-box;
+    font-size: 14px;
+    width: fit-content;
+    padding: 1rem 1rem 0 1rem;
+  }
+  
+  .radio-inputs .radio input {
+    display: none;
+  }
+  
+  .radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    transition: all 0.15s ease-in-out;
+    position: relative;
+  }
+  
+  .radio-inputs .radio input:checked + .name {
+    background-color: #18392B;
+    font-weight: 600;
+  }
+  
+  .radio-inputs .radio input + .name:hover {
+    color: #fff;
+  }
+  
+  .radio-inputs .radio input:checked + .name:hover {
+    color: #1d1d29;
+  }
+  
+  .radio-inputs .radio input:checked + .name::after,
+  .radio-inputs .radio input:checked + .name::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #70c489;
+    bottom: 0;
+  }
+  
+  .radio-inputs .radio input:checked + .name::after {
+    right: -10px;
+    border-bottom-left-radius: 300px;
+    box-shadow: -3px 3px 0px 3px #18392B;
+  }
+  
+  .radio-inputs .radio input:checked + .name::before {
+    left: -10px;
+    border-bottom-right-radius: 300px;
+    box-shadow: 3px 3px 0px 3px #18392B;
   }
   

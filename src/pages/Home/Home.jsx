@@ -14,7 +14,6 @@ const Home = () => {
     // Target all elements with the class 'animate-container'
     gsap.utils.toArray('.header-animate-container').forEach((container) => {
       const text = container.querySelector('h2'); // Select the <p> tag within this container
-      console.log('fayas', text)
       if (text) {
         gsap.fromTo(
           text,
@@ -29,8 +28,8 @@ const Home = () => {
             ease: "power2.out",
             scrollTrigger: {
               trigger: container,
-              start: "top 80%", // Start animation when the div reaches the center of the viewport
-              end: "center 60%",
+              start: "top 75%", // Start animation when the div reaches the center of the viewport
+              end: "top 20%",
               toggleActions: "play none none none",
               scrub: true
             },

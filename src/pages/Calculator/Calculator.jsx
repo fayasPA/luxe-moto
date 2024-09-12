@@ -146,53 +146,53 @@ const Calculator = () => {
     }, [])
 
     return (
-        <div className='pt-24'>
-            <div className="bg-white text-black py-10 px-5" id="calculator-range-slider">
-                <div className="text-black flex justify-start">
-                    <h2 className="text-base md:text-lg font-medium content-text">EMI Calculator</h2>
+        <div className='pt-16 md:pt-24'>
+            <div className="text-white py-10 px-5" id="calculator-range-slider">
+                <div className="text-white flex justify-start">
+                    <h2 className="text-base md:text-xl content-text">EMI Calculator</h2>
                 </div>
 
-                <div className="text-black flex pb-5">
+                <div className="text-borderColor flex pb-5">
                     <p className="text-gray list-disc text-sm content-text">
-                    The Car Loan EMI Calculator, is the best way to calculate your Equated Monthly Instalments for the loan amount you require. The EMI calculator helps in decision-making and brings you one step closer to your dream car. Now with all the details in place, all you need to do is apply for a car loan.
+                    Find the Perfect EMI Fit for You.
                     </p>
                 </div>
 
                 {/* calculator */}
-                <div className="content-gsap-trigger flex flex-col md:flex-row items-center border border-[#ececec] p-6 rounded-lg shadow-lg w-full max-w-md md:max-w-5xl mx-auto">
+                <div className="text-black bg-white content-gsap-trigger flex flex-col md:flex-row items-center border border-[#ececec] p-6 rounded-lg shadow-2xl shadow-black w-full max-w-md md:max-w-5xl mx-auto">
                     <div className="flex justify-center items-center w-full md:w-1/2 md:mr-6">
                         <div className="w-48 h-48 md:w-full md:h-full content-gsap">
                             <Doughnut data={data} options={{ borderWidth: 5, hoverBorderWidth: 0, cutout: '70%', plugins: { textCenter: {} } }} plugins={[textCenterPlugin]} />
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 text-center md:text-left mt-4 md:mt-0">
-                        <h2 className="text-2xl font-semibold content-gsap">{getNumberToCurrencyText(emi, 2)} /month</h2>
+                        <h2 className="text-xs md:text-sm lg:text-base font-normal content-gsap "><strong className='font-semibold text-green-body font-josefin text-xl md:text-2xl lg:text-2xl'>{getNumberToCurrencyText(emi, 2)}</strong> per month</h2>
                         <div className="flex justify-between mt-4">
                             <div className="flex flex-col items-center">
-                                <p className="text-lime-950">Principal</p>
-                                <p className="text-lg font-semibold content-gsap">{getNumberToCurrencyText(loanAmount)}</p>
+                                <p className="text-black smaller-header-text text-sm md:text-sm lg:text-base">Principal</p>
+                                <p className="text-base md:text-base lg:text-lg font-semibold content-gsap font-josefin text-green-body">{getNumberToCurrencyText(loanAmount)}</p>
                             </div>
                             <div className="flex flex-col items-center">
-                                <p className="text-gray-600">Interest</p>
+                                <p className="text-black smaller-header-text text-sm md:text-sm lg:text-base">Interest</p>
                                 {/* <p className="text-lg font-semibold">₹ {(emi * loanTenure - loanAmount).toFixed(2)}</p> */}
-                                <p className="text-lg font-semibold content-gsap">{getNumberToCurrencyText(interest, 2)}</p>
+                                <p className="text-base md:text-base lg:text-lg font-semibold content-gsap font-josefin text-green-body">{getNumberToCurrencyText(interest, 2)}</p>
                             </div>
                         </div>
                         <div className="mt-4 w-full">
-                            <label className="block text-[#096254]">Loan Amount</label>
+                            <label className="block text-black smaller-header-text text-xs md:text-sm lg:text-base">Loan Amount</label>
                             <input type="range" className="range-slider__range" min="100000" max="10000000"
                              step={10000} value={loanAmount} onChange={handleLoanAmountChange} />
-                            <span className='content-gsap'>{getNumberToCurrencyText(loanAmount)}</span>
+                            <span className='content-gsap  font-bold font-josefin text-green-body'>{getNumberToCurrencyText(loanAmount)}</span>
                         </div>
                         <div className="mt-4 w-full">
-                            <label className="block text-[#096254]">Rate of Interest</label>
+                            <label className="block text-black smaller-header-text text-xs md:text-sm lg:text-base">Rate of Interest</label>
                             <input type="range" className="range-slider__range" min="1" max="25" step="0.1" value={interestRate} onChange={handleInterestRateChange} />
-                            <span className='content-gsap'>{interestRate} %</span>
+                            <span className='content-gsap  font-bold font-josefin text-green-body'>{interestRate} %</span>
                         </div>
                         <div className="mt-4 w-full">
-                            <label className="block text-[#096254]">Loan Tenure</label>
+                            <label className="block text-black smaller-header-text text-xs md:text-sm lg:text-base">Loan Tenure</label>
                             <input type="range" className="range-slider__range" min="12" max="84" value={loanTenure} onChange={handleLoanTenureChange} />
-                            <span className='content-gsap'>{loanTenure} months</span>
+                            <span className='content-gsap  font-bold font-josefin text-green-body'>{loanTenure} months</span>
                         </div>
                     </div>
                 </div>

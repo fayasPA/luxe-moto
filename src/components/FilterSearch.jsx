@@ -1,48 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import { FiFilter } from 'react-icons/fi'; // Importing the filter icon
-import { AiOutlineClose } from 'react-icons/ai'; // Importing the close icon
+import React, { useEffect, useRef, useState } from 'react';
+import { FiFilter } from 'react-icons/fi';
+import { AiOutlineClose } from 'react-icons/ai';
 import RangeSlider from 'react-range-slider-input';
-import '../assets/css/rangeSliderStyle.css'; // Import the CSS file
+import '../assets/css/rangeSliderStyle.css';
 import { capitalizeWord, getNumberToCurrencyText } from '../utils/helperFunctions';
 import { GET_FILTER_TYPES } from '../utils/urls';
 import { axiosAPI } from '../utils/axiosAPI';
+import { useNavigate } from 'react-router-dom';
+import { GrPowerReset } from 'react-icons/gr';
 
-
-const FilterSearch = () => {
+const FilterSearch = ({ selectedBrand,
+  setSelectedBrand,
+  selectedCarType,
+  setSelectedCarType,
+  selectedFuelType,
+  setSelectedFuelType,
+  selectedPriceRange,
+  setSelectedPriceRange, resetFilters,
+  onApply,
+  isModalOpen,
+  toggleModal }) => {
+  const navigate = useNavigate();
   const axiosInstance = axiosAPI();
   const [brands, setBrands] = useState([]);
   const [vehicleTypes, setVehicleTypes] = useState([]);
   const [fuelTypes, setFuelTypes] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState('');
-  const [selectedCarType, setSelectedCarType] = useState('');
-  const [selectedFuelType, setSelectedFuelType] = useState('');
-  const [priceRange, setPriceRange] = useState([500000, 5000000]);
+  
+  const modalRef = useRef();
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        toggleModal();  // Close modal when clicking outside of it
+      }
+    };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isOrderDropdownOpen, setIsOrderDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('Newest Listed'); // Default option
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
 
-  const toggleDropdown = () => {
-    setIsOrderDropdownOpen(!isOrderDropdownOpen);
-  };
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen]);
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setIsOrderDropdownOpen(false); // Close dropdown after selection
-  };
-
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
 
   const handleSliderChange = (selectedRange) => {
-    // console.log(selectedRange)
     setPriceRange(selectedRange);
   };
 
   useEffect(() => {
     getFilterTypes();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isModalOpen]);
+
+  async function handleFilter() {
+    toggleModal();
+    await onApply();
+  }
+  
 
   async function getFilterTypes() {
     try {
@@ -53,171 +75,129 @@ const FilterSearch = () => {
         setFuelTypes(response.data.fuel_types);
       }
     } catch (error) {
-      console.error("Error fetching filter types:", error);
+      console.error('Error fetching filter types:', error);
     }
   }
 
+
   return (
-    <div className="flex items-center justify-between p-4 border-b border-gray-300">
-      {/* Filter Icon and Text */}
-      <button
-        className="flex items-center space-x-2 text-gray-600 hover:text-gray-800"
-        onClick={toggleModal}
-      >
-        <div className='border p-1 md:p-2 rounded-full'>
-          <FiFilter className="text-xl md:text-2xl" />
-        </div>
-        <span className='hidden md:block'>REFINE YOUR SEARCH</span>
-        <span className='block md:hidden'>Filter</span>
-      </button>
-
-      <div className="flex items-center justify-end space-x-4 b">
-
-
-        <div className="relative input flex flex-col w-fit ">
-          <label
-            htmlFor="password"
-            className="font-semibold relative top-2 ml-[7px] w-fit bg-white px-1 text-gray-600 text-xs md:text-sm"
-          >
-            ORDER
-          </label>
-          <div>
-            <input
-              type="text"
-              id="order-input"
-              className="peer h-12 w-32 md:w-48 border-2 border-gray-300 text-gray-900 pl-2 focus:ring-0 cursor-pointer text-xs md:text-base focus:outline-none"
-              value={selectedOption}
-              readOnly
-              onClick={toggleDropdown}
-            />
-          </div>
-          {isOrderDropdownOpen && (
-            <div
-              className="absolute z-10 top-[100%] w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="order-input"
-              tabIndex="-1"
-            >
-              <div className="py-1" role="none">
-                {['Lowest Price', 'Highest Price', 'Oldest Year', 'Newest Year', 'Lowest Mileage', 'Highest Mileage', 'Newest Listed'].map((option, index) => (
-                  <a
-                    href="#"
-                    key={index}
-                    onClick={() => handleOptionClick(option)}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                    tabIndex="-1"
-                  >
-                    {option}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
-      </div>
-
+    <div className="text-black flex items-center justify-between gap-2">
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-none shadow-lg w-96">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold">Filter Options</h2>
-              <button onClick={toggleModal}>
-                <AiOutlineClose className="text-xl" />
-              </button>
-            </div>
-            <form>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Brand
-                </label>
-                <select
-                  className="w-full border border-gray-300 rounded-none flex flex-col gap-2 p-2 bg-white shadow-xl origin-top focus:outline-none focus:ring-0 focus:border-1"
-                >
-                  <option value="" className='text-gray-500'>Brand</option>
-                  {brands && brands.map((opt, index) => (
-                    <option key={index} value={opt.id}>{capitalizeWord(opt.name)}</option>
-                  ))}
-                </select>
+        <>
+          <div className="fixed inset-0 bg-black opacity-30 h-screen" style={{ zIndex: 10003 }} />
+          <div
+            className="fixed inset-0 flex items-center justify-center z-50 overflow-y-auto h-screen backdrop-blur-md"
+            style={{ zIndex: 10004 }}
+          >
+            <div className="bg-white/70 text-black p-4 md:p-6 rounded-xl shadow-lg w-11/12 md:w-3/4 lg:w-1/2" ref={modalRef}>
+              {/* Modal Header */}
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-sm md:text-base lg:text-xl font-semibold">FILTER OPTIONS</h2>
+                <button onClick={toggleModal} className="text-lg md:text-xl">
+                  <AiOutlineClose className="text-xl" />
+                </button>
               </div>
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Body
-                </label>
-                <select
-                  className="w-full border border-gray-300 rounded-none flex flex-col gap-2 p-2 bg-white shadow-xl origin-top focus:outline-none focus:ring-0 focus:border-1"
-                >
-                  <option value="" className='text-gray-500'>Body</option>
-                  {vehicleTypes && vehicleTypes.map((opt, index) => (
-                    <option key={index} value={opt}>{capitalizeWord(opt)}</option>
-                  ))}
-                </select>
-              </div>
+              {/* Modal Body */}
+              <div className="text-xs md:text-sm">
+                {/* Brand Filter */}
+                <div className="mb-4">
+                  <label className="block text-xs md:text-sm font-medium mb-2">BRAND</label>
+                  <select
+                    value={selectedBrand}
+                    onChange={(e) => setSelectedBrand(e.target.value)}
+                    className="w-full border border-gray-300 rounded-md p-1 bg-white shadow-xl focus:outline-none focus:ring-0 focus:border-1"
+                  >
+                    <option value="" className="text-gray-500">Select</option>
+                    {brands && brands.map((opt, index) => (
+                      <option key={index} value={opt.id}>
+                        {capitalizeWord(opt.name)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Fuel
-                </label>
-                <select
-                  className="w-full border border-gray-300 rounded-none flex flex-col gap-2 p-2 bg-white shadow-xl origin-top focus:outline-none focus:ring-0 focus:border-1"
-                >
-                  <option value="" className='text-gray-500'>Fuel</option>
-                  {fuelTypes && fuelTypes.map((opt, index) => (
-                    <option key={index} value={opt}>{capitalizeWord(opt)}</option>
-                  ))}
-                </select>
-              </div>
+                {/* Body Filter */}
+                <div className="mb-4">
+                  <label className="block text-xs md:text-sm font-medium mb-2">BODY</label>
+                  <select
+                    value={selectedCarType}
+                    onChange={(e) => setSelectedCarType(e.target.value)}
+                    className="w-full border border-gray-300 rounded-md p-1 bg-white shadow-xl focus:outline-none focus:ring-0 focus:border-1"
+                  >
+                    <option value="" className="text-gray-500">Select</option>
+                    {vehicleTypes && vehicleTypes.map((opt, index) => (
+                      <option key={index} value={opt}>
+                        {capitalizeWord(opt)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  PRICE RANGE
-                </label>
+                {/* Fuel Filter */}
+                <div className="mb-4">
+                  <label className="block text-xs md:text-sm font-medium mb-2">FUEL</label>
+                  <select
+                    value={selectedFuelType}
+                    onChange={(e) => setSelectedFuelType(e.target.value)}
+                    className="w-full border border-gray-300 rounded-md p-1 bg-white shadow-xl focus:outline-none focus:ring-0 focus:border-1"
+                  >
+                    <option value="">Select</option>
+                    {fuelTypes && fuelTypes.map((opt, index) => (
+                      <option key={index} value={opt}>
+                        {capitalizeWord(opt)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-                <div className="range-slider-div flex flex-col w-full">
-                  <RangeSlider
-                    min={50000}
-                    max={20000000}
-                    value={priceRange}
-                    step={[20000, 20000]}
-                    className=" border border-gray-200 range-slider-component"
-                    id="range-slider-component"
-                    onInput={handleSliderChange}
-                  />
-                  <div style={{ fontSize: '.8em' }} className="flex justify-between pt-3 ">
-                    <span>{getNumberToCurrencyText(priceRange[0])}</span>
-                    <span>{getNumberToCurrencyText(priceRange[1])}</span>
+                {/* Price Range Filter */}
+                <div className="mb-4">
+                  <label className="block text-xs md:text-sm font-medium mb-2">PRICE RANGE</label>
+                  <div className="range-slider-div flex flex-col w-full">
+                    <RangeSlider
+                      min={50000}
+                      max={20000000}
+                      value={selectedPriceRange}
+                      step={[20000, 20000]}
+                      onInput={(val) => setSelectedPriceRange(val)}
+                      className="border border-gray-200 range-slider-component"
+                      id="range-slider-component"
+                    />
+                    <div className="flex justify-between pt-3 font-bold font-roboto text-xs md:text-sm">
+                      <span>{getNumberToCurrencyText(selectedPriceRange[0])}</span>
+                      <span>{getNumberToCurrencyText(selectedPriceRange[1])}</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* <div className="range-slider-div w-full border border-gray-300 rounded-none flex flex-col gap-2 py-4 px-2 bg-white shadow-xl origin-top focus:outline-none focus:ring-0 focus:border-1">
-                  <RangeSlider
-                    min={50000}
-                    max={20000000}
-                    value={priceRange}
-                    step={[20000, 20000]}
-                    className=" border border-gray-200 range-slider-component"
-                    id="range-slider-component"
-                    onInput={handleSliderChange}
-                  />
-                  <div style={{ fontSize: '.8em' }} className="flex justify-between pt-3 ">
-                    <span>{getNumberToCurrencyText(priceRange[0])}</span>
-                    <span>{getNumberToCurrencyText(priceRange[1])}</span>
-                  </div>
-                </div> */}
-              </div>
+                {/* Apply Button */}
+                <div className="flex justify-between">
+                  <button
+                    className="px-2 py-0 md:px-4 md:py-2 bg-white rounded-md text-black font-semibold transition-all duration-700 hover:scale-105"
+                    onClick={resetFilters}
+                  >
+                    <GrPowerReset size={18} />
+                  </button>
 
-              <div className="flex justify-end">
-                <button className="smky-btn3 relative hover:text-white py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 hover:transition-all hover:duration-500 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-green-200 after:rounded-t-none after:w-full after:bottom-0 after:left-0 text-gray-600">
-                  Apply Filter</button>
+                  <button
+                    className="px-4 py-2 md:px-6 md:py-3 bg-green-body/90 rounded-md text-white font-semibold relative transition-all duration-700 hover:scale-105"
+                    onClick={handleFilter}
+                  >
+                    APPLY
+                  </button>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
-        </div>
+        </>
       )}
+      <button className="smaller-header-text flex items-center hover:text-gray-300" onClick={toggleModal}>
+        <div className="text-white border p-1 md:p-2 rounded-full">
+          <FiFilter className="text-xl md:text-2xl" />
+        </div>
+      </button>
     </div>
   );
 };

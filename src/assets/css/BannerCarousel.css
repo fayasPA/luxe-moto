@@ -31,23 +31,26 @@
   width: 0.6rem;
   height: 0.6rem;
   text-align: center;
-  line-height: 25px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 300;
   color: #000;
   opacity: 1;
   background: rgba(0, 0, 0, 0.2);
   scale: 80%;
   border-radius: 50%;
-  background-color: rgb(170, 167, 167);
+  @apply bg-green-body/40;
+  transition: background-color 0.3s, transform 0.3s, width 1.5s, height 0.3s, border-radius 1.5s; /* Add transition for smooth changes */
 }
 
 .swiper-pagination-bullet-active {
-  color: #228B22;
-  background: #fff;
+  @apply bg-green-body;
   font-weight: 600;
-  scale: 105%;
+  height: 0.6rem;
+  width: 3.5rem;
+  border-radius: 30px; /* Curved border for active bullet */
+  transition: background-color 0.3s, transform 1s, width 1.5s, height 0.3s, border-radius 0.3s; /* Ensure the transition is applied here too */
 }
+
 
 .swiper-slide {
   background-color: transparent !important;
