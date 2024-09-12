@@ -1,0 +1,17 @@
+.sell-car-input {
+    @apply w-full p-1 md:p-1 text-black border border-gray-300 rounded bg-borderColor2;
+  }
+  
+  .btn {
+    @apply bg-green text-white px-4 py-2 rounded
+    /* hover:bg-green-600 */
+    ;
+  }
+  
+  .step {
+    @apply text-white ;
+  }
+  
+  .step.active {
+    @apply text-white font-semibold;
+  }

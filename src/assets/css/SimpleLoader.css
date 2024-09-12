@@ -1,0 +1,50 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the loader horizontally */
+    height: 100%; /* Make the loader take full height of its container */
+  }
+  
+  .bar {
+    display: inline-block;
+    width: 3px;
+    height: 20px;
+    background-color: #023020;
+    border-radius: 10px;
+    animation: scale-up4 1s linear infinite;
+  }
+  
+  .bar:nth-child(2) {
+    height: 35px;
+    margin: 0 5px;
+    animation-delay: 0.25s;
+  }
+  
+  .bar:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes scale-up4 {
+    20% {
+      background-color: #fff;
+      transform: scaleY(1.5);
+    }
+  
+    40% {
+      transform: scaleY(1);
+    }
+  }
+  
+  /* Make the loader responsive */
+  @media (max-width: 768px) {
+    .bar {
+      width: 2px; /* Reduce width on smaller screens */
+      height: 15px; /* Reduce height on smaller screens */
+    }
+  
+    .bar:nth-child(2) {
+      height: 25px; /* Adjust second bar height on smaller screens */
+      margin: 0 3px; /* Adjust margin on smaller screens */
+    }
+  }
+  

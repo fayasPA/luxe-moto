@@ -1,0 +1,68 @@
+.spinner {
+    height: fit-content;
+    width: max-content;
+    font-size: 5em;
+    font-weight: 600;
+    font-family: monospace;
+    letter-spacing: 0.5em;
+    color: #f5f5f5;
+    /* color: #000; */
+    filter: drop-shadow(0 0 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: font-size 0.3s ease; /* Smooth transition for font size */
+  }
+  .spinner span.space {
+    margin: 0 0.2em; /* Adjust this value for the specific space width between 'E' and 'M' */
+  }
+  
+  .spinner span {
+    animation: loading 1.75s ease infinite;
+  }
+  
+  .spinner span:nth-child(2) {
+    animation-delay: 0.25s;
+  }
+  
+  .spinner span:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+  
+  .spinner span:nth-child(4) {
+    animation-delay: 0.75s;
+  }
+  
+  .spinner span:nth-child(5) {
+    animation-delay: 1s;
+  }
+  
+  .spinner span:nth-child(6) {
+    animation-delay: 1.25s;
+  }
+  
+  .spinner span:nth-child(7) {
+    animation-delay: 1.5s;
+  }
+  
+  .spinner span:nth-child(8) {
+    animation-delay: 1.75s;
+  }
+  
+  @keyframes loading {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .spinner {
+      font-size: 2rem; /* Smaller font size for smaller screens */
+      letter-spacing: 0.3em; /* Adjust letter spacing for smaller screens */
+    }
+  }
+  
