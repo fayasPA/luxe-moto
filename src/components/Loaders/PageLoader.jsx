@@ -33,7 +33,7 @@ const PageLoader = ({ setIsLoading }) => {
   }, [setIsLoading]);
 
   return (
-    <div className='overflow-hidden w-screen'>
+    <div className=' w-full'>
       <div
         className='h-screen w-full z-50 text-sm sm:text-lg md:text-2xl lg:3xl font-bold flex flex-col justify-center items-center text-center'
 

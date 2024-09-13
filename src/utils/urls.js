@@ -1,13 +1,13 @@
-const development = false
+const development = true
 let urls;
 
 if (development) {
   // development urls
   urls = {
-    BASE_URL: "http://192.168.41.1:8080/myapp/",
-    BASE_IMAGE_URL: "http://192.168.41.1:8080",
-    // BASE_URL: "http://localhost:8080/myapp/",
-    // BASE_IMAGE_URL: "http://localhost:8080",
+    // BASE_URL: "http://192.168.41.1:8080/myapp/",
+    // BASE_IMAGE_URL: "http://192.168.41.1:8080",
+    BASE_URL: "http://localhost:8080/myapp/",
+    BASE_IMAGE_URL: "http://localhost:8080",
   };
 } else {
   // Production urls

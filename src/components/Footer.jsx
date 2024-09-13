@@ -28,7 +28,6 @@ const Footer = () => {
           trigger: ".footer-container",
           start: "top bottom",
           toggleActions: "play none none none",
-          scroller: '[data-scroll-container]',
         },
       }
     );

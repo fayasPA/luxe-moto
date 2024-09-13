@@ -34,7 +34,7 @@ function SellCar() {
                     trigger: ".content-text",
                     toggleActions: "play none none none ",
                     once: true,
-                    scroller: '[data-scroll-container]',
+                     
                 },
             }
         );

@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { FaPlay, FaPause } from 'react-icons/fa'; // Import icons for play and pause
+import { FaPlay, FaPause } from 'react-icons/fa';
 import info from '/videos/delivery_video.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const DeliveryVideoComponent = () => {
-  const videoRef = useRef(null); // Create a ref to access the video element
-  const videoDivRef = useRef(null); // Create a ref to access the video element
+  const videoRef = useRef(null); // Ref for the video element
+  const videoDivRef = useRef(null); // Ref for the video container
 
-  const [isPlaying, setIsPlaying] = useState(true); // State to track play/pause status, default isPlaying to true since autoplay
+  const [isPlaying, setIsPlaying] = useState(true); // State for tracking play/pause
 
   const handlePlayPause = () => {
     const videoEl = videoRef.current;
@@ -23,16 +23,15 @@ const DeliveryVideoComponent = () => {
 
   useEffect(() => {
     const videoEl = videoRef.current;
-    const divEl = videoDivRef.current;
 
-    // Update play/pause state based on video events
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
 
+    // Add event listeners for play/pause
     videoEl.addEventListener('play', handlePlay);
     videoEl.addEventListener('pause', handlePause);
 
-    // Clean up event listeners on unmount
+    // Cleanup event listeners on unmount
     return () => {
       videoEl.removeEventListener('play', handlePlay);
       videoEl.removeEventListener('pause', handlePause);
@@ -42,59 +41,56 @@ const DeliveryVideoComponent = () => {
   useEffect(() => {
     const divEl = videoDivRef.current;
 
-    // MatchMedia to apply different animations based on screen size
+    // Optimize GSAP animations based on screen size
     ScrollTrigger.matchMedia({
       // For desktop and larger screens
-      "(min-width: 768px)": function () {
+      "(min-width: 1280px)": function () {
         gsap.fromTo(
           divEl,
-          { scale: 0.6 }, // Initial zoom out for desktop
+          { scale: 0.6 },
           {
-            scale: 1.0, // Final zoom in for desktop
-            ease: 'power3.inOut', // Smoother easing function
+            scale: 1,
+            ease: 'power3.inOut',
             duration: 1.5,
             scrollTrigger: {
-              trigger: divEl, // Element to trigger the animation
-              start: 'top 95%', // Start animation when the Swiper is 95% from the top of the viewport
-              end: 'center 40%', // End animation when the bottom of Swiper is at the top of the viewport
-              scrub: 1, // Smooth animation on scroll with more consistent scrubbing
-          scroller: '[data-scroll-container]',
-        },
+              trigger: divEl,
+              start: 'top 95%',
+              end: 'center 40%',
+              scrub: 1,
+            },
           }
         );
       },
-
       // For mobile screens
       "(max-width: 767px)": function () {
         gsap.fromTo(
           divEl,
-          { scale: 0.8 }, // Initial zoom out for mobile
+          { scale: 0.8 },
           {
-            scale: 1, // Final zoom in for mobile
-            ease: 'power3.inOut', // Smoother easing function
+            scale: 1,
+            ease: 'power3.inOut',
             duration: 1.5,
             scrollTrigger: {
-              trigger: divEl, // Element to trigger the animation
-              start: 'top 95%', // Start animation when the Swiper is 95% from the top of the viewport
-              end: 'center 30%', // End animation when the bottom of Swiper is at the top of the viewport
-              scrub: 1, // Smooth animation on scroll with more consistent scrubbing
-          scroller: '[data-scroll-container]',
-        },
+              trigger: divEl,
+              start: 'top 95%',
+              end: 'center 30%',
+              scrub: 1,
+            },
           }
         );
-      }
+      },
     });
   }, []);
 
   return (
-    <div className='w-full md:w-1/2 h-[40rem] md:h-[50rem] md:p-10' ref={videoDivRef}>
-      <div style={{ border: '1px' }} className='h-full relative'>
+    <div className='w-full lg:w-1/2 h-[35rem] lg:h-[50rem] lg:p-10 pt-10 lg:pt-0' ref={videoDivRef}>
+      <div className='h-full relative'>
         <video
-          ref={videoRef} // Attach ref to the video element
-          className='w-full h-full object-cover overflow-hidden md:rounded-3xl'
+          ref={videoRef}
+          className='w-full h-full object-cover overflow-hidden lg:rounded-3xl'
           autoPlay
           loop
-          muted // Mute the video if needed
+          muted
         >
           <source src={info} type="video/mp4" />
           Your browser does not support the video tag.

@@ -9,11 +9,13 @@ import VehicleDetails from "./pages/VehicleDetails/VehicleDetails";
 import Gallery from "./pages/Gallery/Gallery";
 import SellCar from "./pages/SellCar/SellCar";
 import Insurance from "./pages/Insurance/Insurance";
+import LocomotiveScroll from 'locomotive-scroll';
 
 
 function App() {
+  const locomotiveScroll = new LocomotiveScroll();
+  
   const router = createBrowserRouter(
-    
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
         <Route path="" element={<Home />} />
