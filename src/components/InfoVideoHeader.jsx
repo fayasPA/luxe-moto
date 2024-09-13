@@ -4,62 +4,53 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { NavLink } from 'react-router-dom';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const InfoVideoHeader = () => {
     const headerRef = useRef(null);
     const leftSideRef = useRef(null);
     const rightSideRef = useRef(null);
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: headerRef.current,
-                start: "top 90%",  // Start animation when the top of the component is at 80% of the viewport height
-                end: "top 80%",    // End at the same position to ensure it only triggers once
-                toggleActions: "play none none none", // Play the animation once and don't reactivate
-                // once: false,        // Run the animation only once
-                scrub:true,
-        }
+                start: "top 85%", // Start animation when the header is 80% visible
+                end: "bottom 20%", // End point for scroll
+                toggleActions: "play reverse play reverse", // Animate in both scroll directions
+                markers: false // Remove markers in production
+            }
         });
 
-        tl.fromTo(leftSideRef.current,
+        // Animate both left and right elements simultaneously
+        tl.fromTo(
+            [leftSideRef.current, rightSideRef.current], // Animate both refs at once
             {
-                x: '-100vw',  // Start off-screen to the left
-                opacity: 0,   // Start fully transparent
+                x: (i) => (i === 0 ? -300 : 300), // left side from -300, right side from 300
+                opacity: 0
             },
             {
-                x: '0vw',     // End at the original position
-                opacity: 1,   // End fully visible
-                duration: 1.5,  // Increase duration for smoother animation
-                ease: "power2.out",  // Smooth easing
+                x: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power2.out",
+                stagger: 0, // Ensure they animate simultaneously
+                immediateRender: true,
             }
-        ).fromTo(rightSideRef.current,
-            {
-                x: '100vw',   // Start off-screen to the right
-                opacity: 0,   // Start fully transparent
-            },
-            {
-                x: '0vw',     // End at the original position
-                opacity: 1,   // End fully visible
-                duration: 1.5,  // Ensure both sides have the same duration
-                ease: "power2.out",  // Same easing for consistency
-            }, "<"
-        );  // The '<' makes both animations start at the same time
+        );
 
     }, []);
 
-
-
     return (
         <div ref={headerRef} className='w-full flex flex-col md:flex-row gap-5 md:gap-0 justify-center items-center px-4 md:px-20 h-44 md:h-64 overflow-hidden'>
-            <div ref={leftSideRef} className=' md:h-auto w-full md:w-1/2 flex items-center justify-center text-center text-sm md:text-xl lg:text-2xl'>
-                <p className=''>
+            <div className=' md:h-auto w-full md:w-1/2 flex items-center justify-center text-center text-sm md:text-xl lg:text-2xl'>
+                <p ref={leftSideRef}>
                     An extraordinary model range
                 </p>
             </div>
-            <div ref={rightSideRef} className='w-full md:w-1/2 flex justify-center items-center'>
+            <div className='w-full md:w-1/2 flex justify-center items-center'>
                 <NavLink
+                    ref={rightSideRef}
                     to="/vehicles" // Add the path you want to navigate to
                     className="flex gap-2 px-6 py-3.5 md:px-10 md:py-4 overflow-hidden group bg-gradient-to-r bg-green-900 relative hover:bg-gradient-to-r text-white transition-all ease-out duration-300"
                 >
@@ -71,7 +62,6 @@ const InfoVideoHeader = () => {
                 </NavLink>
             </div>
         </div>
-
     );
 };
 

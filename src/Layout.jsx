@@ -8,11 +8,9 @@ import 'react-range-slider-input/dist/style.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import FloatingBtn from './components/FloatingBtn';
-import LocomotiveScroll from 'locomotive-scroll';
 
 const Layout = () => {
-  const locomotiveScroll = new LocomotiveScroll();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Load the content behind the loader
   useEffect(() => {

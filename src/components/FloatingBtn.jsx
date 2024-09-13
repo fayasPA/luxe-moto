@@ -7,7 +7,7 @@ import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import gsap from 'gsap';
 
 const FloatingBtn = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
