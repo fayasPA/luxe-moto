@@ -45,7 +45,7 @@ const Insurance = () => {
           trigger: ".content-gsap-trigger",
           toggleActions: "play none none none ",
           once: true,
-          scroller: '[data-scroll-container]',
+           
         },
       }
     );
@@ -56,7 +56,7 @@ const Insurance = () => {
         start: "top center",
         end: "bottom center",
         scrub: true,
-        scroller: '[data-scroll-container]',
+         
       },
       opacity: 1,
       y: 0,

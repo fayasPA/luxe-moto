@@ -58,7 +58,7 @@ const DeliveryVideoComponent = () => {
               start: 'top 95%', // Start animation when the Swiper is 95% from the top of the viewport
               end: 'center 40%', // End animation when the bottom of Swiper is at the top of the viewport
               scrub: 1, // Smooth animation on scroll with more consistent scrubbing
-          scroller: '[data-scroll-container]',
+           
         },
           }
         );
@@ -78,7 +78,7 @@ const DeliveryVideoComponent = () => {
               start: 'top 95%', // Start animation when the Swiper is 95% from the top of the viewport
               end: 'center 30%', // End animation when the bottom of Swiper is at the top of the viewport
               scrub: 1, // Smooth animation on scroll with more consistent scrubbing
-          scroller: '[data-scroll-container]',
+           
         },
           }
         );

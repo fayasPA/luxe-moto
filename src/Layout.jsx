@@ -11,32 +11,8 @@ import FloatingBtn from './components/FloatingBtn';
 import LocomotiveScroll from 'locomotive-scroll';
 
 const Layout = () => {
+  const locomotiveScroll = new LocomotiveScroll();
   const [isLoading, setIsLoading] = useState(true);
-  const [scrollInstance, setScrollInstance] = useState(null);
-
-  // Initialize LocomotiveScroll when component mounts
-  useEffect(() => {
-    const locoScroll = new LocomotiveScroll({
-      el: document.querySelector('[data-scroll-container]'),
-      smooth: true,
-    });
-    setScrollInstance(locoScroll);
-
-    return () => {
-      if (locoScroll) locoScroll.destroy(); // Cleanup LocomotiveScroll on unmount
-    };
-  }, []);
-
-  // Disable scrolling while loading and enable it once the loader is gone
-  useEffect(() => {
-    if (scrollInstance) {
-      if (isLoading) {
-        scrollInstance.stop(); // Disable LocomotiveScroll
-      } else {
-        scrollInstance.start(); // Enable LocomotiveScroll
-      }
-    }
-  }, [isLoading, scrollInstance]);
 
   // Load the content behind the loader
   useEffect(() => {
@@ -48,7 +24,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="flex flex-col" data-scroll-container>
+    <div className="flex flex-col">
       {/* Loader shows initially */}
       {isLoading && <PageLoader setIsLoading={setIsLoading} />}
 

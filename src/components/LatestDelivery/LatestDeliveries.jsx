@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DeliveryVideoComponent from './DeliveryVideoComponent';
 import DeliverSwiperSlider from './DeliverSwiperSlider';
 import { FaChevronRight } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const LatestDeliveries = () => {
+
+  useEffect(() => {
+    // Register ScrollTrigger plugin with GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Create the scroll animation
+    gsap.fromTo(
+      ".header-animate-text",
+      {
+        y: 500,      // Start 150px below its natural position
+        opacity: 0,  // Start fully transparent
+      },
+      {
+        y: 0,        // End at its natural position
+        opacity: 1,  // End fully visible
+        duration: 1.5, // Animation duration
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: ".header-animate-container", // Element to trigger animation
+          start: 'top 100%',  // When the top of the element hits 80% of the viewport
+          end:'top 30%',
+          toggleActions: 'play none none none', // Play once on scroll
+        },
+      }
+    );
+  }, []);
 
   return (
     <div className='w-full mb-20'>

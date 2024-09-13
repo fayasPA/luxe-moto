@@ -86,7 +86,7 @@ const ImageShowcase = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-hidden mt-4">
           {data.length > 0 ? data.map((vehicle, index) => (
             <div key={index} className="relative overflow-hidden">
-              <NavLink to={`/vehicles/${index}`}>
+              <NavLink to={`/vehicles/${vehicle.id}`}>
                 <img
                   src={`${BASE_IMAGE_URL}${vehicle.image}`}
                   alt={`Showcase ${index + 1}`}

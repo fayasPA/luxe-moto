@@ -140,7 +140,7 @@ const Calculator = () => {
                     trigger: ".content-gsap-trigger",
                     toggleActions: "play none none none ",
                     once: true,
-                    scroller: '[data-scroll-container]',
+                     
                 },
             }
         );
