@@ -47,56 +47,86 @@ const InfoVideo = () => {
   useEffect(() => {
     const video = videoRef.current;
 
-    // Set the video start time to 12 seconds
-    if (video) {
-      video.currentTime = 5; // Set the starting time to 5 seconds
+    // Set up GSAP animations
+    const mm = gsap.matchMedia(); // MatchMedia for handling responsive animations
 
-      // If the video is autoplaying, ensure it starts from 5 seconds
-      video.addEventListener('loadedmetadata', () => {
-        video.currentTime = 5;
-      });
-    }
-
+    // Video zoom-out effect
     if (videoDivRef.current) {
       gsap.fromTo(
         videoDivRef.current,
+        { scale: 1 },
         {
-          scale: 1, // Initial scale
-        },
-        {
-          scale: 0.5, // Zoom-out scale
+          scale: 0.5,
           scrollTrigger: {
             trigger: videoDivRef.current,
-            start: 'top 20%', // Trigger when the top of the video hits 20% of the viewport height
+            start: 'top 20%',
             end: 'bottom top',
-            scrub: true, // Smoothly animate based on scroll position
+            scrub: true,
             markers: false,
           },
-          ease: 'none', // No easing for a smooth scrolling effect
+          ease: 'none',
         }
       );
     }
 
-    gsap.fromTo(
-      textRef.current,
+    // Responsive animations using matchMedia for textRef
+    mm.add(
       {
-        y: 50, // Start 50px below its natural position
-        opacity: 0, // Start fully transparent
+        // Small screens (up to 767px)
+        isSmall: '(max-width: 767px)',
+        // Medium and larger screens (768px and above)
+        isLarge: '(min-width: 768px)',
       },
-      {
-        y: 0, // End at its natural position
-        opacity: 1, // End fully visible
-        duration: 1.5,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: videoDivRef.current,
-          start: 'top 20%', // Start animation when the video div reaches 20% of the viewport height
-          end: 'bottom top',
-          scrub: true,
-        },
+      (context) => {
+        let { isSmall, isLarge } = context.conditions;
+
+        if (isSmall) {
+          // Small screens animation
+          gsap.fromTo(
+            textRef.current,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: videoDivRef.current,
+                start: 'center 70%', // Trigger later for small screens
+                end: 'center 20',
+                scrub: true,
+              },
+            }
+          );
+        }
+
+        if (isLarge) {
+          // Large screens animation
+          gsap.fromTo(
+            textRef.current,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1.5,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: videoDivRef.current,
+                start: 'top 20%',
+                end: 'center top',
+                scrub: true,
+              },
+            }
+          );
+        }
       }
     );
-  }, []);
+
+    // Clean up the animations when component unmounts
+    return () => {
+      mm.revert(); // Revert all media queries when the component unmounts
+    };
+  }, [videoDivRef]);
 
   return (
     <div className='w-full flex flex-col'>
@@ -104,10 +134,10 @@ const InfoVideo = () => {
         <div className='relative w-full h-96 md:h-[70vh]'>
           <video
             className='w-full h-full object-cover'
-            muted // Mute the video if needed
+            muted
             loop
             ref={videoRef}
-            autoPlay={true} // Autoplay is now false for more control
+            autoPlay={true}
           >
             <source src={info} type='video/mp4' />
             Your browser does not support the video tag.

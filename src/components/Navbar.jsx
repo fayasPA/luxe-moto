@@ -70,7 +70,7 @@ const Navbar = () => {
     }, [isOpen]);
 
     return (
-        <nav className=" fixed top-0 left-0 flex justify-center w-screen z-50 overflow-hidden bg-green-body/50">
+        <nav className={` fixed top-0 left-0 flex justify-center w-screen z-50 overflow-hidden bg-green-body/50 ${isScrolled && 'backdrop-blur-md'}`}>
             <div
                 className={`w-full flex justify-between items-center max-w-7xl px-4 ${isScrolled ? 'py-2 md:py-4' : 'py-4 md:py-7'
                     } transition-all duration-700 ease-in-out`}

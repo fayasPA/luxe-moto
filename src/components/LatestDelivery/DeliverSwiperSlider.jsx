@@ -70,7 +70,7 @@ export default function DeliverSwiperSlider() {
       // Clean up the scroll trigger to prevent memory leaks
       ScrollTrigger.getById(swiperEl)?.kill();
     };
-  }, [swiperRef]);
+  }, [swiperRef, imgData]);
 
   return (
     <div className="relative h-full w-full">
@@ -79,7 +79,7 @@ export default function DeliverSwiperSlider() {
         effect={"cards"}
         grabCursor={true}
         modules={[EffectCards]}
-        className="zoomSlider w-full h-full px-10 py-5 lg:px-24 lg:py-10"
+        className="zoomSlider w-full h-full px-5 md:px-10 lg:px-24 py-5 lg:py-10"
       >
         {deliveryloading ? (
           [...Array(3)].map((_, index) => (
@@ -102,9 +102,9 @@ export default function DeliverSwiperSlider() {
             </SwiperSlide>
           ))
         ) : (
-          <SwiperSlide className="blur-md border border-borderColor rounded-lg px-5">
+          <SwiperSlide className="blur-sm border border-borderColor rounded-lg px-5">
             <div className="h-40 md:h-96 w-screen overflow-hidden rounded-lg flex justify-center items-center">
-              <div className="h-full w-full flex justify-center items-center">
+              <div className="h-full w-full flex justify-center items-center px-10">
                 <img
                   src={baseImg}
                   alt="Main Car"
