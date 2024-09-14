@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import info from '/videos/ad_bg.mp4';
+// import info from '/videos/ad_bg.mp4';
 import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
 import { AD_VIDEO_URL } from '../utils/urls';
 
@@ -45,89 +45,89 @@ const InfoVideo = () => {
     }
   };
 
-  useEffect(() => {
-    const video = videoRef.current;
+  // useEffect(() => {
+  //   const video = videoRef.current;
 
-    // Set up GSAP animations
-    const mm = gsap.matchMedia(); // MatchMedia for handling responsive animations
+  //   // Set up GSAP animations
+  //   const mm = gsap.matchMedia(); // MatchMedia for handling responsive animations
 
-    // Video zoom-out effect
-    if (videoDivRef.current) {
-      gsap.fromTo(
-        videoDivRef.current,
-        { scale: 1 },
-        {
-          scale: 0.5,
-          scrollTrigger: {
-            trigger: videoDivRef.current,
-            start: 'top 20%',
-            end: 'bottom top',
-            scrub: true,
-            markers: false,
-          },
-          ease: 'none',
-        }
-      );
-    }
+  //   // Video zoom-out effect
+  //   if (videoDivRef.current) {
+  //     gsap.fromTo(
+  //       videoDivRef.current,
+  //       { scale: 1 },
+  //       {
+  //         scale: 0.5,
+  //         scrollTrigger: {
+  //           trigger: videoDivRef.current,
+  //           start: 'top 20%',
+  //           end: 'bottom top',
+  //           scrub: true,
+  //           markers: false,
+  //         },
+  //         ease: 'none',
+  //       }
+  //     );
+  //   }
 
-    // Responsive animations using matchMedia for textRef
-    mm.add(
-      {
-        // Small screens (up to 767px)
-        isSmall: '(max-width: 767px)',
-        // Medium and larger screens (768px and above)
-        isLarge: '(min-width: 768px)',
-      },
-      (context) => {
-        let { isSmall, isLarge } = context.conditions;
+  //   // Responsive animations using matchMedia for textRef
+  //   mm.add(
+  //     {
+  //       // Small screens (up to 767px)
+  //       isSmall: '(max-width: 767px)',
+  //       // Medium and larger screens (768px and above)
+  //       isLarge: '(min-width: 768px)',
+  //     },
+  //     (context) => {
+  //       let { isSmall, isLarge } = context.conditions;
 
-        if (isSmall) {
-          // Small screens animation
-          gsap.fromTo(
-            textRef.current,
-            { y: 30, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: videoDivRef.current,
-                start: 'center 70%', // Trigger later for small screens
-                end: 'center 20',
-                scrub: true,
-              },
-            }
-          );
-        }
+  //       if (isSmall) {
+  //         // Small screens animation
+  //         gsap.fromTo(
+  //           textRef.current,
+  //           { y: 30, opacity: 0 },
+  //           {
+  //             y: 0,
+  //             opacity: 1,
+  //             duration: 1,
+  //             ease: 'power2.out',
+  //             scrollTrigger: {
+  //               trigger: videoDivRef.current,
+  //               start: 'center 70%', // Trigger later for small screens
+  //               end: 'center 20',
+  //               scrub: true,
+  //             },
+  //           }
+  //         );
+  //       }
 
-        if (isLarge) {
-          // Large screens animation
-          gsap.fromTo(
-            textRef.current,
-            { y: 50, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1.5,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: videoDivRef.current,
-                start: 'top 20%',
-                end: 'center top',
-                scrub: true,
-              },
-            }
-          );
-        }
-      }
-    );
+  //       if (isLarge) {
+  //         // Large screens animation
+  //         gsap.fromTo(
+  //           textRef.current,
+  //           { y: 50, opacity: 0 },
+  //           {
+  //             y: 0,
+  //             opacity: 1,
+  //             duration: 1.5,
+  //             ease: 'power2.out',
+  //             scrollTrigger: {
+  //               trigger: videoDivRef.current,
+  //               start: 'top 20%',
+  //               end: 'center top',
+  //               scrub: true,
+  //             },
+  //           }
+  //         );
+  //       }
+  //     }
+  //   );
 
-    // Clean up the animations when component unmounts
-    return () => {
-      mm.revert(); // Revert all media queries when the component unmounts
-    };
-  }, [videoDivRef]);
+  //   // Clean up the animations when component unmounts
+  //   return () => {
+  //     mm.revert(); // Revert all media queries when the component unmounts
+  //   };
+  // }, [videoDivRef]);
 
   return (
     <div className='w-full flex flex-col'>

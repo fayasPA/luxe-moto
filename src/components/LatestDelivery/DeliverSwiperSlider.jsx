@@ -41,36 +41,36 @@ export default function DeliverSwiperSlider() {
   }
 
   // Initialize GSAP scroll-based animation
-  useEffect(() => {
-    if (!swiperRef.current) return; // Ensure swiperRef is not null
+  // useEffect(() => {
+  //   if (!swiperRef.current) return; // Ensure swiperRef is not null
 
-    const swiperEl = swiperRef.current; // Accessing the Swiper component
+  //   const swiperEl = swiperRef.current; // Accessing the Swiper component
 
-    // GSAP animation: Zooms in and out the Swiper component on scroll
-    gsap.fromTo(
-      swiperEl,
-      {
-        scale: 0.6, // Initial scale (zoomed out)
-      },
-      {
-        scale: 1, // Target scale (zoomed in)
-        ease: 'power3.inOut', // Smoother easing function
-        duration: 1.5, // Duration for smoother transition
-        scrollTrigger: {
-          trigger: swiperEl, // Element to trigger the animation
-          start: 'top 95%', // Start animation when the Swiper is near the viewport
-          end: 'center 50%', // End animation when the Swiper reaches the center
-          scrub: 1, // Smooth animation scrubbing
-          once: false, // Allow animation to replay when scrolling back up
-        },
-      }
-    );
+  //   // GSAP animation: Zooms in and out the Swiper component on scroll
+  //   gsap.fromTo(
+  //     swiperEl,
+  //     {
+  //       scale: 0.6, // Initial scale (zoomed out)
+  //     },
+  //     {
+  //       scale: 1, // Target scale (zoomed in)
+  //       ease: 'power3.inOut', // Smoother easing function
+  //       duration: 1.5, // Duration for smoother transition
+  //       scrollTrigger: {
+  //         trigger: swiperEl, // Element to trigger the animation
+  //         start: 'top 95%', // Start animation when the Swiper is near the viewport
+  //         end: 'center 50%', // End animation when the Swiper reaches the center
+  //         scrub: 1, // Smooth animation scrubbing
+  //         once: false, // Allow animation to replay when scrolling back up
+  //       },
+  //     }
+  //   );
     
-    return () => {
-      // Clean up the scroll trigger to prevent memory leaks
-      ScrollTrigger.getById(swiperEl)?.kill();
-    };
-  }, [swiperRef, imgData]);
+  //   return () => {
+  //     // Clean up the scroll trigger to prevent memory leaks
+  //     ScrollTrigger.getById(swiperEl)?.kill();
+  //   };
+  // }, [swiperRef, imgData]);
 
   return (
     <div className="relative h-full w-full">

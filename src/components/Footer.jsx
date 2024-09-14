@@ -12,26 +12,6 @@ import { IoLogoYoutube } from "react-icons/io";
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
-  useEffect(() => {
-    gsap.fromTo(
-      ".footer-content",
-      {
-        opacity: 0,
-        y: 200,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".footer-container",
-          start: "top bottom",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-  }, []);
 
   return (
     <footer className="w-full h-full bg-18392B text-borderColor pt-5 md:pt-10 footer-container">
