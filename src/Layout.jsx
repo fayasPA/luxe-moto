@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import FloatingBtn from './components/FloatingBtn';
 
 const Layout = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Load the content behind the loader
   useEffect(() => {
