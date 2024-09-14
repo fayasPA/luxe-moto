@@ -7,12 +7,12 @@ import LatestDeliveries from '../../components/LatestDelivery/LatestDeliveries';
 
 const Home = () => {
   return (
-    <section className=' w-full text-white'>
+    <section className='h-full w-full text-white'>
       <BannerCarousel />
-      {/* <InfoVideoHeader />
+      <InfoVideoHeader />
       <InfoVideo />
       <LatestDeliveries />
-      <ImageShowcase /> */}
+      <ImageShowcase />
     </section>
   )
 }

@@ -22,7 +22,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="flex flex-col">
+    <div className="">
       {/* Loader shows initially */}
       {isLoading && <PageLoader setIsLoading={setIsLoading} />}
 
@@ -30,7 +30,7 @@ const Layout = () => {
       <div className={isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}>
         <ToastContainer toastClassName="custom-toast" />
         <FloatingBtn />
-        <div className="overflow-hidden">
+        <div className="">
           <Navbar />
         </div>
         <div>

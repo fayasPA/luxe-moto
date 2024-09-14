@@ -11,35 +11,35 @@ const InfoVideoHeader = () => {
     const leftSideRef = useRef(null);
     const rightSideRef = useRef(null);
 
-    useEffect(() => {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: headerRef.current,
-                start: "top 85%", // Start animation when the header is 80% visible
-                end: "bottom 20%", // End point for scroll
-                toggleActions: "play reverse play reverse", // Animate in both scroll directions
-                markers: false // Remove markers in production
-            }
-        });
+    // useEffect(() => {
+    //     const tl = gsap.timeline({
+    //         scrollTrigger: {
+    //             trigger: headerRef.current,
+    //             start: "top 40%", // Start animation when the header is 80% visible
+    //             end: "top 50%", // End point for scroll
+    //             toggleActions: "play reverse play reverse", // Animate in both scroll directions
+    //             markers: true // Remove markers in production
+    //         }
+    //     });
 
-        // Animate both left and right elements simultaneously
-        tl.fromTo(
-            [leftSideRef.current, rightSideRef.current], // Animate both refs at once
-            {
-                x: (i) => (i === 0 ? -300 : 300), // left side from -300, right side from 300
-                opacity: 0
-            },
-            {
-                x: 0,
-                opacity: 1,
-                duration: 1.2,
-                ease: "power2.out",
-                stagger: 0, // Ensure they animate simultaneously
-                immediateRender: true,
-            }
-        );
+    //     // Animate both left and right elements simultaneously
+    //     tl.fromTo(
+    //         [leftSideRef.current, rightSideRef.current], // Animate both refs at once
+    //         {
+    //             x: (i) => (i === 0 ? -300 : 300), // left side from -300, right side from 300
+    //             opacity: 0
+    //         },
+    //         {
+    //             x: 0,
+    //             opacity: 1,
+    //             duration: 1.2,
+    //             ease: "power2.out",
+    //             stagger: 0, // Ensure they animate simultaneously
+    //             immediateRender: true,
+    //         }
+    //     );
 
-    }, []);
+    // }, []);
 
     return (
         <div ref={headerRef} className='w-full flex flex-col md:flex-row gap-5 md:gap-0 justify-center items-center px-4 md:px-20 h-44 md:h-64 overflow-hidden'>

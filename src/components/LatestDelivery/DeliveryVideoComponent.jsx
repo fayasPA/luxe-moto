@@ -38,29 +38,29 @@ const DeliveryVideoComponent = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const divEl = videoDivRef.current;
+  // useEffect(() => {
+  //   const divEl = videoDivRef.current;
 
-    // Set up GSAP matchMedia for responsive animations
-    gsap.fromTo(
-      divEl,
-      {
-        scale: 0.6, // Initial scale (zoomed out)
-      },
-      {
-        scale: 1, // Target scale (zoomed in)
-        ease: 'power3.inOut', // Smoother easing function
-        duration: 1.5, // Duration for smoother transition
-        scrollTrigger: {
-          trigger: divEl, // Element to trigger the animation
-          start: 'top 95%', // Start animation when the Swiper is near the viewport
-          end: 'center 50%', // End animation when the Swiper reaches the center
-          scrub: 1, // Smooth animation scrubbing
-          once: false, // Allow animation to replay when scrolling back up
-        },
-      }
-    );
-  }, []);
+  //   // Set up GSAP matchMedia for responsive animations
+  //   gsap.fromTo(
+  //     divEl,
+  //     {
+  //       scale: 0.6, // Initial scale (zoomed out)
+  //     },
+  //     {
+  //       scale: 1, // Target scale (zoomed in)
+  //       ease: 'power3.inOut', // Smoother easing function
+  //       duration: 1.5, // Duration for smoother transition
+  //       scrollTrigger: {
+  //         trigger: divEl, // Element to trigger the animation
+  //         start: 'top 95%', // Start animation when the Swiper is near the viewport
+  //         end: 'center 50%', // End animation when the Swiper reaches the center
+  //         scrub: 1, // Smooth animation scrubbing
+  //         once: false, // Allow animation to replay when scrolling back up
+  //       },
+  //     }
+  //   );
+  // }, []);
 
   return (
     <div className='w-full h-full pl-0 lg:pl-24 py-5 lg:py-10' ref={videoDivRef}>

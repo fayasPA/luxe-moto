@@ -9,36 +9,36 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const LatestDeliveries = () => {
   const headerRef = useRef(null); // Create a ref for header text container
 
-  useEffect(() => {
-    // Register ScrollTrigger plugin with GSAP
-    gsap.registerPlugin(ScrollTrigger);
+  // useEffect(() => {
+  //   // Register ScrollTrigger plugin with GSAP
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    // Create the scroll animation with reversible actions
-    gsap.fromTo(
-      headerRef.current,
-      {
-        y: 100,      // Start 100px below its natural position
-        opacity: 0,  // Start fully transparent
-      },
-      {
-        y: 0,        // End at its natural position
-        opacity: 1,  // End fully visible
-        duration: 1.5, // Animation duration
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: ".header-animate-container", // Element to trigger animation
-          start: 'top 80%',  // When the top of the element hits 80% of the viewport
-          end: 'top 20%',    // End when the element is near the top of the viewport
-          scrub: true,       // Smooth scrubbing for reversing animation
-          toggleActions: 'play reverse play reverse', // Reverses on scroll up
-          markers: false,    // Set to 'true' for debugging markers
-        },
-      }
-    );
-  }, []);
+  //   // Create the scroll animation with reversible actions
+  //   gsap.fromTo(
+  //     headerRef.current,
+  //     {
+  //       y: 100,      // Start 100px below its natural position
+  //       opacity: 0,  // Start fully transparent
+  //     },
+  //     {
+  //       y: 0,        // End at its natural position
+  //       opacity: 1,  // End fully visible
+  //       duration: 1.5, // Animation duration
+  //       ease: 'power3.out',
+  //       scrollTrigger: {
+  //         trigger: ".header-animate-container", // Element to trigger animation
+  //         start: 'top bottom',  // When the top of the element hits 80% of the viewport
+  //         end: 'bottom 80%',    // End when the element is near the top of the viewport
+  //         scrub: true,       // Smooth scrubbing for reversing animation
+  //         toggleActions: 'play reverse play reverse', // Reverses on scroll up
+  //         markers: true,    // Set to 'true' for debugging markers
+  //       },
+  //     }
+  //   );
+  // }, []);
 
   return (
-    <div className='w-full mb-10 md:mb-20'>
+    <div className='w-full mb-10 md:mb-20 mt-5'>
       {/* Header */}
       <div className='w-full md:py-0'>
         <div className='header-animate-container max-w-fit ml-10 md:ml-20 text-lg md:text-2xl lg:text-3xl'>
