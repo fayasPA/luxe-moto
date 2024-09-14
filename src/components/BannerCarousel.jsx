@@ -5,13 +5,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import '../assets/css/BannerCarousel.css';
 import { Pagination, Navigation } from 'swiper/modules';
-import { bannerVideo } from '../constants/constants';
 import { getNumberToCurrencyText } from '../utils/helperFunctions';
 import { FaChevronRight } from 'react-icons/fa';
 import gsap from 'gsap';
-import { BASE_IMAGE_URL, GET_BANNER_VEHICLES } from '../utils/urls';
+import { BANNER_VIDEO, BASE_IMAGE_URL, GET_BANNER_VEHICLES } from '../utils/urls';
 import { axiosAPI } from '../utils/axiosAPI';
 import { NavLink } from 'react-router-dom';
+import SimpleLoader from './Loaders/SimpleLoader';
 
 const BannerCarousel = () => {
   const axiosInstance = axiosAPI();
@@ -159,15 +159,16 @@ const BannerCarousel = () => {
       >
         <SwiperSlide>
           <div className='w-full h-full overflow-hidden'>
+          { !isVideoReady && <div className="w-full h-full flex justify-center items-center"><SimpleLoader /></div> }
             <video
               ref={videoRef}
               id="carousel-video"
               playsInline={true}
               className="w-full h-full object-cover"
-              preload="auto"
+              preload="metadata"
               muted
             >
-              <source src={bannerVideo} type="video/mp4" />
+              <source src={BANNER_VIDEO} type="video/mp4" />
             </video>
           </div>
         </SwiperSlide>
@@ -175,7 +176,7 @@ const BannerCarousel = () => {
         {bannerData.map((banner, i) => (
           <SwiperSlide key={i}>
             <div className='h-full w-full flex relative'>
-              <div className='w-1/2 md:w-1/3 h-full'></div>
+              <div className='w-1/3 h-full'></div>
               <div className='flex flex-1 h-full bg-white'>
                 <div className='w-[20%] md:w-[12%] h-full shadow-xl shadow-black bg-green-body/30' style={{ boxShadow: '10px 0 5px -5px rgba(0, 0, 0, 0.2)' }}></div>
                 <div className='w-[20%] md:w-[12%] h-full shadow-xl shadow-black bg-green-body/20' style={{ boxShadow: '10px 0 10px -5px rgba(0, 0, 0, 0.3)' }}></div>

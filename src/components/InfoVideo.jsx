@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import info from '/videos/ad_bg.mp4';
 import { PlayIcon, PauseIcon } from '@heroicons/react/24/solid';
+import { AD_VIDEO_URL } from '../utils/urls';
 
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -139,7 +140,7 @@ const InfoVideo = () => {
             ref={videoRef}
             autoPlay={true}
           >
-            <source src={info} type='video/mp4' />
+            <source src={AD_VIDEO_URL} type='video/mp4' />
             Your browser does not support the video tag.
           </video>
           <button
