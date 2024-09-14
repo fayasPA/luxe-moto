@@ -42,28 +42,42 @@ const DeliveryVideoComponent = () => {
     const divEl = videoDivRef.current;
 
     // Set up GSAP matchMedia for responsive animations
-    gsap.fromTo(
-      divEl,
+    const mm = gsap.matchMedia();
+
+    mm.add(
       {
-        scale: 0.6, // Initial scale (zoomed out)
+        // For desktop and larger screens
+        isDesktop: "(min-width: 1280px)",
+        // For mobile screens
+        isMobile: "(max-width: 767px)",
       },
-      {
-        scale: 1, // Target scale (zoomed in)
-        ease: 'power3.inOut', // Smoother easing function
-        duration: 1.5, // Duration for smoother transition
-        scrollTrigger: {
-          trigger: divEl, // Element to trigger the animation
-          start: 'top 95%', // Start animation when the Swiper is near the viewport
-          end: 'center 50%', // End animation when the Swiper reaches the center
-          scrub: 1, // Smooth animation scrubbing
-          once: false, // Allow animation to replay when scrolling back up
-        },
+      (context) => {
+        const { isDesktop, isMobile } = context.conditions;
+
+        gsap.fromTo(
+          divEl,
+          { scale: isMobile ? 0.8 : 0.6 },
+          {
+            scale: 1,
+            ease: 'power3.inOut',
+            duration: 1.5,
+            scrollTrigger: {
+              trigger: divEl,
+              start: 'top 95%',
+              end: isMobile ? 'center 30%' : 'center 40%',
+              scrub: 1,
+            },
+          }
+        );
       }
     );
+
+    // Cleanup matchMedia on component unmount
+    return () => mm.revert();
   }, []);
 
   return (
-    <div className='w-full h-full pl-0 lg:pl-24 py-5 lg:py-10' ref={videoDivRef}>
+    <div className='w-full lg:w-1/2 h-[27rem] sm:h-[32rem] md:h-[50rem] lg:p-10 pt-10 lg:pt-0' ref={videoDivRef}>
       <div className='h-full relative'>
         <video
           ref={videoRef}

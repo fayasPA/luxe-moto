@@ -38,7 +38,7 @@ const LatestDeliveries = () => {
   }, []);
 
   return (
-    <div className='w-full mb-20'>
+    <div className='w-full mb-10 md:mb-20'>
       {/* Header */}
       <div className='w-full md:py-0'>
         <div className='header-animate-container max-w-fit ml-10 md:ml-20 text-lg md:text-2xl lg:text-3xl'>
@@ -54,9 +54,12 @@ const LatestDeliveries = () => {
         <div className='w-full lg:w-1/2 h-[27rem] sm:h-[32rem] md:h-[50rem] px-5 overflow-hidden'>
           <DeliverSwiperSlider />
         </div>
-
         {/* Right - Delivery Video Component */}
-        <DeliveryVideoComponent />
+        <div className='w-full lg:w-1/2 h-[27rem] sm:h-[32rem] md:h-[50rem] px-0 lg:px-5 overflow-hidden'>
+          <DeliveryVideoComponent />
+        </div>
+
+        {/* <DeliveryVideoComponent /> */}
       </div>
 
       {/* Footer with "View All Deliveries" Button */}
@@ -68,9 +71,18 @@ const LatestDeliveries = () => {
           <span
             className="absolute right-0 w-32 md:w-44 h-full top-0 transition-all duration-1000 transform translate-x-12 bg-white opacity-20 -skew-x-12 group-hover:-translate-x-36 ease pointer-events-none"
           ></span>
-          <span className="relative text-base md:text-md font-normal">View All Deliveries</span>
+          <span className="relative text-xs md:text-sm lg:text-base font-normal">View All Deliveries</span>
           <FaChevronRight className='flex self-center' />
         </NavLink>
+        {/* <NavLink
+          className="flex gap-2 px-6 py-3.5 md:px-10 md:py-4 overflow-hidden group bg-gradient-to-r bg-green-900 relative hover:bg-gradient-to-r text-white transition-all ease-out duration-300"
+        >
+          <span
+            className="absolute right-0 w-32 md:w-44 h-full top-0 transition-all duration-1000 transform translate-x-12 bg-white opacity-20 -skew-x-12 group-hover:-translate-x-36 ease pointer-events-none"
+          ></span>
+          <span className="relative text-base md:text-md font-normal"></span>
+          <FaChevronRight className='flex self-center' />
+        </NavLink> */}
       </div>
     </div>
   );
