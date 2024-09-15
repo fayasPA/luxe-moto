@@ -32,8 +32,9 @@ export const POST_ENQUIRY_FORM = 'https://script.google.com/macros/s/AKfycbwkDCF
 
 // export const AD_VIDEO_URL = 'https://luxemoto.in/static/ad_bg.mp4'
 // export const BANNER_VIDEO = 'https://luxemoto.in/static/banner_video.mp4'
-// export const DELIVERY_AD = 'https://luxemoto.in/static/delivery_video.mp4'
 
 export const AD_VIDEO_URL = 'https://luxemoto.in/static/compressed_ad_bg.mp4'
 export const BANNER_VIDEO = 'https://luxemoto.in/static/compressed_banner_video.mp4'
-export const DELIVERY_AD = 'https://luxemoto.in/static/compressed_delivery_video.mp4'
+// export const DELIVERY_AD = 'https://luxemoto.in/static/compressed_delivery_video.mp4'
+export const DELIVERY_AD = 'https://luxemoto.in/static/lambo.mp4'
+// export const DELIVERY_AD = 'https://luxemoto.in/static/fast.mp4'
