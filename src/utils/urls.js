@@ -30,6 +30,10 @@ export const GET_STAR_DELIVERIES = 'get_all_delivery';
 export const POST_SELL_VEHICLE_FORM = 'https://script.google.com/macros/s/AKfycbzUWJWxa7iW0JT-Ow6o0ONTuaPRVxOvqt8A3UdB4a2GmvZtwWrwcHBOerVFJA4YGVJNsg/exec';
 export const POST_ENQUIRY_FORM = 'https://script.google.com/macros/s/AKfycbwkDCFLdDnciykwS0Np7Dp0hXscQ_18Iks65DjB4BcxRkTyYl4rk98xggdxIBFSxFQ4/exec';
 
-export const AD_VIDEO_URL = 'https://luxemoto.in/static/ad_bg.mp4'
-export const BANNER_VIDEO = 'https://luxemoto.in/static/banner_video.mp4'
-export const DELIVERY_AD = 'https://luxemoto.in/static/delivery_video.mp4'
+// export const AD_VIDEO_URL = 'https://luxemoto.in/static/ad_bg.mp4'
+// export const BANNER_VIDEO = 'https://luxemoto.in/static/banner_video.mp4'
+// export const DELIVERY_AD = 'https://luxemoto.in/static/delivery_video.mp4'
+
+export const AD_VIDEO_URL = 'https://luxemoto.in/static/compressed_ad_bg.mp4'
+export const BANNER_VIDEO = 'https://luxemoto.in/static/compressed_banner_video.mp4'
+export const DELIVERY_AD = 'https://luxemoto.in/static/compressed_delivery_video.mp4'

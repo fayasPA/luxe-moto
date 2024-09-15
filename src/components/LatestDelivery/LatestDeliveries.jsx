@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const LatestDeliveries = () => {
+const LatestDeliveries = React.memo(() => {
   const headerRef = useRef(null); // Create a ref for header text container
 
   // useEffect(() => {
@@ -86,6 +86,6 @@ const LatestDeliveries = () => {
       </div>
     </div>
   );
-};
+});
 
 export default LatestDeliveries;
