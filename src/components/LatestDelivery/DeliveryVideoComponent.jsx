@@ -32,12 +32,20 @@ const DeliveryVideoComponent = () => {
     videoEl.addEventListener('play', handlePlay);
     videoEl.addEventListener('pause', handlePause);
 
+    // Try to autoplay the video programmatically
+    videoEl.muted = true; // Ensure it's muted to meet autoplay requirements
+    videoEl.play().catch((error) => {
+      // If autoplay fails, catch the error and handle it (e.g., show a play button)
+      console.error('Autoplay failed:', error);
+      setIsPlaying(false);
+    });
+
     // Cleanup event listeners on unmount
     return () => {
       videoEl.removeEventListener('play', handlePlay);
       videoEl.removeEventListener('pause', handlePause);
     };
-  }, []);
+  }, [videoRef]);
 
   // useEffect(() => {
   //   const divEl = videoDivRef.current;
@@ -69,6 +77,7 @@ const DeliveryVideoComponent = () => {
         <video
           ref={videoRef}
           className='w-full h-full object-cover overflow-hidden lg:rounded-3xl'
+          playsInline={true}
           autoPlay
           loop
           muted
