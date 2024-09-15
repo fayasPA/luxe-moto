@@ -13,7 +13,7 @@ import { axiosAPI } from '../utils/axiosAPI';
 import { NavLink } from 'react-router-dom';
 import SimpleLoader from './Loaders/SimpleLoader';
 
-const BannerCarousel = () => {
+const BannerCarousel = React.memo(() => {
   const axiosInstance = axiosAPI();
   const videoRef = useRef(null);
   const swiperRef = useRef(null);
@@ -222,6 +222,6 @@ const BannerCarousel = () => {
       </Swiper>
     </div>
   );
-}
+})
 
 export default BannerCarousel;

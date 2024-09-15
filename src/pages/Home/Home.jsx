@@ -5,7 +5,7 @@ import ImageShowcase from '../../components/ImageShowcase';
 import InfoVideoHeader from '../../components/InfoVideoHeader';
 import LatestDeliveries from '../../components/LatestDelivery/LatestDeliveries';
 
-const Home = () => {
+const Home = React.memo(() => {
   return (
     <section className='h-full w-full text-white'>
       <BannerCarousel />
@@ -15,6 +15,6 @@ const Home = () => {
       <ImageShowcase />
     </section>
   )
-}
+})
 
 export default Home

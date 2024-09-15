@@ -8,7 +8,7 @@ import { AD_VIDEO_URL } from '../utils/urls';
 // Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-const InfoVideo = () => {
+const InfoVideo = React.memo(() => {
   const videoDivRef = useRef(null);
   const videoRef = useRef(null);
   const textRef = useRef(null);
@@ -166,6 +166,6 @@ const InfoVideo = () => {
       </div>
     </div>
   );
-};
+});
 
 export default InfoVideo;

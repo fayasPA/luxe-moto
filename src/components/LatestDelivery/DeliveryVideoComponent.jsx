@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FaPlay, FaPause } from 'react-icons/fa';
-import info from '/videos/delivery_video.mp4';
+// import info from '/videos/delivery_video.mp4';
+import { DELIVERY_AD } from '../../utils/urls';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,7 +73,7 @@ const DeliveryVideoComponent = () => {
           loop
           muted
         >
-          <source src={info} type="video/mp4" />
+          <source src={DELIVERY_AD} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <button
