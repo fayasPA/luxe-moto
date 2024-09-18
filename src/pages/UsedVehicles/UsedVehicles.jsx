@@ -166,7 +166,7 @@ const UsedVehicles = () => {
       <div className="mx-auto max-w-3xl  lg:max-w-7xl border border-black shadow-2xl shadow-black rounded-xl overflow-hidden" style={{
         backgroundImage: `url(${cardBg})`,
       }}>
-        <div className='px-5 md:px-12 pt-5 pb-20 backdrop-blur-xl bg-[#12472f69]'>
+        <div className='px-5 md:px-12 lg:px-12 pt-5 pb-20 backdrop-blur-xl bg-[#12472f69]'>
 
           <div className=''>
             <h2 className='text-sm sm:text-base md:text-xl lg:text-2xl font-extralight'>MAKE YOUR CHOICE</h2>
@@ -299,23 +299,24 @@ const UsedVehicles = () => {
                       <div className='w-full h-auto '>
                         <div className="px-4 pt-4 pb-2 h-full flex flex-col justify-between">
                           {/* First Section: Brand, Model, and Color */}
-                          <div className='h-1/3 flex justify-between text-xs md:text-sm lg:text-sm '>
-                            <div>
-                              <div className="font-normal">
+                          <div className='h-1/3 flex justify-between text-xs md:text-sm lg:text-sm'>
+                            <div className='w-3/4'> {/* Restrict width of the first section */}
+                              <div className="font-normal overflow-hidden text-ellipsis whitespace-nowrap">
                                 <span>{capitalizeWord(product.brand)}</span>
                               </div>
-                              <div className="text-sm md:text-base lg:text-lg font-extrabold mb-2">
+                              <div className="overflow-hidden text-ellipsis whitespace-nowrap text-sm md:text-base lg:text-lg font-extrabold mb-2">
                                 {capitalizeWord(` ${product.model}`)}
                               </div>
                             </div>
-                            <div className='flex gap-2'>
-                              <div className="font-light">
-                                {capitalizeWord(product.color)}
-                              </div>
+
+                            <div className="font-light text-right w-1/4 text-[.6rem] md:text-[.7rem]">
+                              {capitalizeWord(product.color)}
                             </div>
                           </div>
+
                           {/* Divider */}
                           <div className='border-b-[0.1px] border-spacing-10 mx-8 md:mx-3 lg:mx-2 border-[#ffffff25]'></div>
+
                           {/* Second Section: Year, KM, Fuel */}
                           <div className="h-1/3 mt-3 flex justify-between">
                             <div className="smaller-header-text flex flex-wrap justify-between w-full">
@@ -325,25 +326,30 @@ const UsedVehicles = () => {
                               </div>
                               <div className="w-1/3 flex flex-col justify-center items-center gap-1">
                                 <PiGasPumpLight className='h-6 w-6 md:h-6 md:w-6 lg:h-5 lg:w-5 text-gray' />
-                                <div className="text-xs sm:text-sm md:text-xs lg:text-xs font-bold ">
+                                <div className="text-xs sm:text-sm md:text-xs lg:text-xs font-bold">
                                   {capitalizeWord(product.fuel_type)}
                                 </div>
                               </div>
                               <div className="w-1/3 flex flex-col justify-center items-center">
                                 <IoSpeedometerOutline className='h-6 w-6 md:h-6 md:w-6 lg:h-5 lg:w-5 text-gray' />
-                                <div className="text-base md:text-base lg:text-sm font-bold font-josefin ">{product.kms}</div>
+                                <div className="text-base md:text-base lg:text-sm font-bold font-josefin">
+                                  {product.kms}
+                                </div>
                               </div>
                             </div>
                           </div>
+
                           {/* Divider */}
                           <div className='mt-2 border-b-[0.1px] border-spacing-10 mx-8 md:mx-3 lg:mx-2 border-[#ffffff25]'></div>
+
                           {/* Third Section: Price */}
                           <div className="mt-2 flex justify-center items-center w-full">
-                            <div className="bg-borderColor2  py-1 text-black rounded-md text-xl md:text-2xl lg:text-xl font-extrabold font-roboto w-full text-center">
+                            <div className="bg-borderColor2 py-1 text-black rounded-md text-xl md:text-2xl lg:text-xl font-extrabold font-josefin w-full text-center">
                               {getNumberToCurrencyText(product.price)}
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </NavLink>
 
@@ -381,10 +387,10 @@ const UsedVehicles = () => {
 
         {/* Modal */}
         <EnquiryModal
-        isEnquiryModalOpen={isEnquiryModalOpen}
-        setIsEnquiryModalOpen={setIsEnquiryModalOpen}
-        selectedEnqProduct={selectedEnqProduct}
-      />
+          isEnquiryModalOpen={isEnquiryModalOpen}
+          setIsEnquiryModalOpen={setIsEnquiryModalOpen}
+          selectedEnqProduct={selectedEnqProduct}
+        />
 
 
 

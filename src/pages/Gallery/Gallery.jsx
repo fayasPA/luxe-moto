@@ -128,11 +128,11 @@ const Gallery = () => {
 
         <div className='px-5 md:px-12 pt-5 pb-20 backdrop-blur-xl bg-[#12472f69]'>
           <div className='w-full text-start'>
-            <h2 className="text-base md:text-3xl lg:text-4xl  max-xl:text-start">OUR SHOWCASE</h2>
+            <h2 className="text-xs md:text-sm lg:text-base  max-xl:text-start">OUR SHOWCASE</h2>
           </div>
 
 
-          <div className="w-full flex mb-6 justify-center mt-6">
+          <div className="w-full flex mb-6 justify-center mt-6  text-[.8rem] md:text-base lg:text-lg">
             <div className="w-fit flex gap-5">
 
               {/* Step 1 - STAR DELIVERY */}
@@ -166,7 +166,7 @@ const Gallery = () => {
                   <>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 mt-4">
                       {imgData.map((img) => (
-                        <div key={img.id} className="h-[40vh] sm:h-[50vh] md:h-96 w-full rounded-lg overflow-hidden shadow-xl shadow-[#00000079]">
+                        <div key={img.id} className="cursor-pointer h-[40vh] sm:h-[50vh] md:h-96 w-full rounded-lg overflow-hidden shadow-xl shadow-[#00000079]">
                           <div className="h-full w-full">
                             <img
                               className="w-full h-full object-cover"
@@ -178,22 +178,6 @@ const Gallery = () => {
                         </div>
                       ))}
 
-                      {imgModalOpen && (
-                        <div className="fixed inset-0 z-50 bg-black/70 h-[100vh] flex justify-center items-center">
-                          <button
-                            className="absolute top-4 right-4 text-white text-5xl font-bold"
-                            onClick={closeImgModal}
-                          >
-                            ×
-                          </button>
-                          <img
-                            id="modal-img"
-                            className="w-full max-w-[90%] max-h-[90%] sm:max-w-[70%] sm:max-h-[70%] md:max-w-[60%] md:max-h-[60%] lg:max-w-[50%] lg:max-h-[50%] object-cover rounded-3xl"
-                            src={modalSrc}
-                            alt="Modal Content"
-                          />
-                        </div>
-                      )}
                     </div>
 
                     {imgData.length < totalImgDataCount && (
@@ -226,17 +210,17 @@ const Gallery = () => {
                     />
                   </div>
                 ) :
-                  (data.length > 0 ?<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+                  (data.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
                     {data.map((youtube, index) => (
                       <div key={index} className="h-64 md:h-80 bg-cover group rounded-3xl bg-center overflow-hidden mx-auto cursor-pointer flex justify-center items-center">
                         <YoutubePlayer url={youtube.video_links} />
                       </div>
                     ))}
-                  </div>: 
-                <>
-                <div className='w-full h-[50vh] flex justify-center items-center text-base md:text-xl lg:text-2xl'>No data found.</div>
-              </>
-                )}
+                  </div> :
+                    <>
+                      <div className='w-full h-[50vh] flex justify-center items-center text-base md:text-xl lg:text-2xl'>No data found.</div>
+                    </>
+                  )}
 
               </div>
 
@@ -262,6 +246,23 @@ const Gallery = () => {
 
 
       </section>
+
+      {imgModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/70 h-[100vh] flex justify-center items-center">
+          <button
+            className="absolute top-4 right-4 text-white text-5xl font-bold"
+            onClick={closeImgModal}
+          >
+            ×
+          </button>
+          <img
+            id="modal-img"
+            className="w-full max-w-[90%] max-h-[90%] sm:max-w-[70%] sm:max-h-[70%] md:max-w-[60%] md:max-h-[60%] lg:max-w-[50%] lg:max-h-[50%] object-cover rounded-3xl"
+            src={modalSrc}
+            alt="Modal Content"
+          />
+        </div>
+      )}
     </div>
 
   )
