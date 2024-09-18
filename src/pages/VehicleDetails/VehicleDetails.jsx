@@ -69,7 +69,7 @@ const VehicleDetails = () => {
   };
 
   return (
-    <div className='relative h-full md:p-24 pt-32 md:pt-32' ref={scrollRef}>
+    <div className='relative h-full md:p-24 pt-16 md:pt-32' ref={scrollRef}>
       {/* Background Image */}
       <div
         className='absolute inset-0 bg-cover bg-center blur-lg opacity-20'
@@ -85,14 +85,14 @@ const VehicleDetails = () => {
               <img
                 src={images[0] && `${BASE_IMAGE_URL}${images[0].path}`}
                 alt="Main Car"
-                className={`${images[0] ? 'h-full w-full' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
+                className={`${images[0] ? 'h-full w-full hover:scale-110 transition-transform duration-[2000ms] ease-in' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
               />
             </div>
             <div className='w-1/2 overflow-hidden rounded-t-lg flex justify-center items-center'>
               <img
                 src={images[1] ? `${BASE_IMAGE_URL}${images[1].path}` : `${sampleBg}`}
                 alt="Main Car"
-                className={`${images[1] ? 'h-full w-full' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
+                className={`${images[1] ? 'h-full w-full hover:scale-110 transition-transform duration-[2000ms] ease-in' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
               />
             </div>
           </div>
@@ -101,21 +101,21 @@ const VehicleDetails = () => {
               <img
                 src={images[2] ? `${BASE_IMAGE_URL}${images[2].path}` : `${sampleBg}`}
                 alt="Main Car"
-                className={`${images[2] ? 'h-full w-full' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
+                className={`${images[2] ? 'h-full w-full hover:scale-110 transition-transform duration-[2000ms] ease-in' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
               />
             </div>
             <div className='h-1/3 overflow-hidden rounded-lg flex justify-center items-center'>
               <img
                 src={images[3] ? `${BASE_IMAGE_URL}${images[3].path}` : `${sampleBg}`}
                 alt="Main Car"
-                className={`${images[3] ? 'h-full w-full' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
+                className={`${images[3] ? 'h-full w-full hover:scale-110 transition-transform duration-[2000ms] ease-in' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
               />
             </div>
             <div className='h-1/3 overflow-hidden rounded-lg flex justify-center items-center'>
               <img
                 src={images[4] ? `${BASE_IMAGE_URL}${images[4].path}` : `${sampleBg}`}
                 alt="Main Car"
-                className={`${images[4] ? 'h-full w-full' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
+                className={`${images[4] ? 'h-full w-full hover:scale-110 transition-transform duration-[2000ms] ease-in' : 'blur-sm h-20'} object-cover  transition-all duration-1000`}
               />
             </div>
             <div className='w-full bg-white text-black flex justify-center font-light rounded-t-lg cursor-pointer' onClick={handleOpenModal}>
@@ -138,54 +138,47 @@ const VehicleDetails = () => {
               '--swiper-pagination-color': '#000',
               '--swiper-navigation-size': ".8rem",
             }}
+            loop={false}
             spaceBetween={10}
             navigation={true}
-            thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
+            thumbs={{ swiper: thumbsSwiper }}
             modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiper2 h-[80%]"
+            className="mySwiper2"
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
                 <img
-                  className='h-full w-full object-cover'
                   src={image.path && `${BASE_IMAGE_URL}${image.path}`}
-                  alt={`Slide ${index + 1}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <Swiper
+            onSwiper={setThumbsSwiper}
+            loop={false}
+            spaceBetween={10}
+            slidesPerView={4}
+            freeMode={true}
+            watchSlidesProgress={true}
+            modules={[FreeMode, Navigation, Thumbs]}
+            className="mySwiper"
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={image.path && `${BASE_IMAGE_URL}${image.path}`}
                 />
               </SwiperSlide>
             ))}
           </Swiper>
 
-          {/* Thumbs Swiper */}
-          <Swiper
-            onSwiper={setThumbsSwiper}
-            navigation={true}
-            spaceBetween={10}
-            slidesPerView={3}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="mySwiperThumbs h-[20%]"
-            style={{
-              '--swiper-navigation-size': ".6rem",
-            }}
-          >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  className='h-full w-52 object-cover'
-                  src={image.path && `${BASE_IMAGE_URL}${image.path}`}
-                  alt={`Thumbnail ${index + 1}`}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
         </div>
         {/* mobile images */}
 
 
 
 
-        {/* Overview */}
+        {/* DETAILS */}
         <div className='bg-green-body/40 bg-opacity-30 backdrop-brightness-90 text-white rounded-b-2xl shadow-2xl shadow-black overflow-hidden'
           style={{
             backgroundImage: `url(${bgImage})`,
@@ -194,15 +187,15 @@ const VehicleDetails = () => {
             <div className='w-full flex flex-col md:flex-row justify-between items-start md:items-center'>
               <div className='mb-4 md:mb-0'>
                 {/* car details */}
-                <p className='font-bold text-xl md:text-2xl'>{data.brand?.name}</p>
-                <p className='font-bold text-3xl md:text-5xl'>{data.model}</p>
+                <p className='font-bold text-sm md:text-xl lg:text-2xl'>{data.brand?.name}</p>
+                <p className='font-bold text-lg md:text-3xl lg:text-4xl'>{data.model}</p>
               </div>
               <div className='flex flex-col items-start md:items-center gap-3'>
                 {/* price */}
                 <p
                   className="px-4 py-2 md:px-6 md:py-3 overflow-hidden group bg-gradient-to-r bg-white hover:bg-gradient-to-r text-green-body rounded shadow-lg shadow-black"
                 >
-                  <span className="text-sm md:text-xl font-extrabold font-josefin">{data.price ? getNumberToCurrencyText(data.price): 'N/A'}</span>
+                  <span className="text-lg md:text-xl lg:text-2xl font-extrabold font-josefin">{data.price ? getNumberToCurrencyText(data.price) : 'N/A'}</span>
                 </p>
                 {/* tailwind button */}
               </div>
@@ -244,7 +237,7 @@ const VehicleDetails = () => {
               </div>
               <div className="space-y-1">
                 <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Status</h3>
-                <p className="text-sm md:text-xl font-semibold">{capitalizeFirstLetters(data.status)}</p>
+                <p className="text-xs md:text-xl font-semibold">{capitalizeFirstLetters(data.status)}</p>
               </div>
             </div>
 
