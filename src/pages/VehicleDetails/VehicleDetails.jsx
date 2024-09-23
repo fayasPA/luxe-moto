@@ -213,7 +213,11 @@ const VehicleDetails = () => {
               </div>
               <div className="space-y-1">
                 <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Engine Size</h3>
-                <p className="text-sm md:text-xl font-semibold font-josefin">{data.kms} KM</p>
+                <p className="text-sm md:text-xl font-semibold font-josefin">{data.engine_size ?? 'N/A'}</p>
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Kilometer</h3>
+                <p className="text-sm md:text-xl font-semibold font-josefin">{data.kms ? `${data.kms} KM` : 'N/A'}</p>
               </div>
               <div className="space-y-1">
                 <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Color</h3>
@@ -224,8 +228,8 @@ const VehicleDetails = () => {
                 <p className="text-sm md:text-xl font-medium">{capitalizeFirstLetters(data.fuel_type) ?? 'N/A'}</p>
               </div>
               <div className="space-y-1">
-                <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Ownership</h3>
-                <p className="text-sm md:text-xl font-semibold font-josefin">{data.ownership}</p>
+                <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">No of Owner(S)</h3>
+                <p className="text-sm md:text-xl font-semibold font-josefin">{data.ownership?? 'N/A'}</p>
               </div>
               <div className="space-y-1">
                 <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Insurance Date</h3>
@@ -233,7 +237,7 @@ const VehicleDetails = () => {
               </div>
               <div className="space-y-1">
                 <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Transmission</h3>
-                <p className="text-sm md:text-xl font-semibold font-josefin">{data.transmission}</p>
+                <p className="text-sm md:text-xl font-semibold">{data.transmission}</p>
               </div>
               <div className="space-y-1">
                 <h3 className="text-xs md:text-lg font-semibold text-borderColor2/60 tracking-widest">Status</h3>
