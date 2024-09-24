@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { useParams } from 'react-router-dom';
 import { BASE_IMAGE_URL, GET_VEHICLE_DETAILS } from '../../utils/urls';
-import { capitalizeFirstLetters, getNumberToCurrencyText } from '../../utils/helperFunctions';
+import { capitalizeFirstLetters, formatTextWithFonts, getNumberToCurrencyText } from '../../utils/helperFunctions';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -188,7 +188,7 @@ const VehicleDetails = () => {
               <div className='mb-4 md:mb-0'>
                 {/* car details */}
                 <p className='font-bold text-sm md:text-xl lg:text-2xl'>{data.brand?.name}</p>
-                <p className='font-bold text-lg md:text-3xl lg:text-4xl'>{data.model}</p>
+                <p className='font-bold text-lg md:text-3xl lg:text-4xl font-babylon'>{formatTextWithFonts(data.model?? "")}</p>
               </div>
               <div className='flex flex-col items-start md:items-center gap-3'>
                 {/* price */}

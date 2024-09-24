@@ -4,7 +4,7 @@ import FilterSearch from '../../components/FilterSearch';
 import { axiosAPI } from '../../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_ALL_VEHICLES } from '../../utils/urls';
 import { TbChevronsDown } from 'react-icons/tb';
-import { capitalizeWord, getNumberToCurrencyText } from '../../utils/helperFunctions';
+import { capitalizeWord, formatTextWithFonts, getNumberToCurrencyText } from '../../utils/helperFunctions';
 import { IoSpeedometerOutline } from 'react-icons/io5';
 import { PiCalendarLight, PiGasPumpLight } from 'react-icons/pi';
 import cardBg from '/images/cardBg.jpg'
@@ -305,7 +305,7 @@ const UsedVehicles = () => {
                                 <span>{capitalizeWord(product.brand)}</span>
                               </div>
                               <div className="overflow-hidden text-ellipsis whitespace-nowrap text-sm md:text-base lg:text-lg font-extrabold mb-2">
-                                {capitalizeWord(` ${product.model}`)}
+                                {formatTextWithFonts(product.model)}
                               </div>
                             </div>
 
