@@ -6,6 +6,7 @@ import { FaChevronRight } from 'react-icons/fa';
 import { axiosAPI } from '../utils/axiosAPI';
 import { BASE_IMAGE_URL, GET_LATEST_VEHICLES } from '../utils/urls';
 import sampleBg from '/images/logo-white.png';
+import { formatTextWithFonts } from '../utils/helperFunctions';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,7 +121,7 @@ const ImageShowcase = () => {
                 </NavLink>
                 <div className="w-full bg-green-body/40 px-2 absolute bottom-0 inset-x-0 flex flex-col items-start justify-start gap-1">
                   <span className="pt-1 text-white text-sm sm:text-base md:text-lg lg:text-xl font-semibold drop-shadow-md">
-                    {vehicle.model}
+                    {formatTextWithFonts(vehicle.model)}
                   </span>
                   <span className="text-white text-xl sm:text-2xl md:text-2xl lg:text-4xl font-bold drop-shadow-md">
                     {vehicle.brand}

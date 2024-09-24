@@ -3,6 +3,7 @@ import { IoMdCloseCircle } from 'react-icons/io';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { BASE_IMAGE_URL, POST_ENQUIRY_FORM } from '../../utils/urls';
+import { formatTextWithFonts } from '../../utils/helperFunctions';
 
 const EnquiryModal = ({
   isEnquiryModalOpen,
@@ -110,7 +111,7 @@ const EnquiryModal = ({
                 />
                 <div>
                   <h2 className="enquiry-modal-title text-xl font-bold">
-                    {selectedEnqProduct?.brand} {selectedEnqProduct?.model}
+                    {selectedEnqProduct?.brand} {formatTextWithFonts(selectedEnqProduct?.model)}
                   </h2>
                 </div>
               </div>

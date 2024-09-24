@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import '../assets/css/BannerCarousel.css';
 import { Pagination, Navigation } from 'swiper/modules';
-import { getNumberToCurrencyText } from '../utils/helperFunctions';
+import { formatTextWithFonts, getNumberToCurrencyText } from '../utils/helperFunctions';
 import { FaChevronRight } from 'react-icons/fa';
 import gsap from 'gsap';
 import { BANNER_VIDEO, BASE_IMAGE_URL, GET_BANNER_VEHICLES } from '../utils/urls';
@@ -194,7 +194,7 @@ const BannerCarousel = React.memo(() => {
                 <div className="h-full flex items-center justify-end sm:justify-center md:items-center pt-10 sm:pt-0 md:pt-0">
                   <div className="pr-5 sm:pr-5 md:pr-0">
                     <h2 className="text-sm md:text-2xl lg:text-4xl font-bold mb-2 content-text text-start">{banner.brand}</h2>
-                    <h4 className="text-xs md:text-xl lg:text-2xl font-bold mb-2 content-text text-start">{banner.model}</h4>
+                    <h4 className="text-xs md:text-xl lg:text-2xl font-bold mb-2 content-text text-start">{formatTextWithFonts(banner.model)}</h4>
                     <div className="flex items-end mb-4">
                       <span className="text-md sm:text-lg md:text-3xl font-semibold font-josefin text-red-500 mr-2 content-text">
                         {getNumberToCurrencyText(banner.price)}
