@@ -305,7 +305,7 @@ const UsedVehicles = () => {
                                 <span>{capitalizeWord(product.brand)}</span>
                               </div>
                               <div className="overflow-hidden text-ellipsis whitespace-nowrap text-sm md:text-base lg:text-lg font-extrabold mb-2">
-                                {formatTextWithFonts(product.model)}
+                                 {(product.model)}
                               </div>
                             </div>
 
