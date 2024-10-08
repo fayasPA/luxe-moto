@@ -21,14 +21,14 @@ const PageLoader = ({ setIsLoading }) => {
         scale: 1,
       },
       {
-        opacity:1,
+        opacity: 1,
         scale: 2.5,
         duration: 2,
         // ease: 'sine.out',
       }
     )
-      // After 2 seconds, fade out the whole loader
-      
+    // After 2 seconds, fade out the whole loader
+
 
   }, [setIsLoading]);
 
@@ -39,8 +39,10 @@ const PageLoader = ({ setIsLoading }) => {
 
       >
         <div className='w-fit flex gap-2 justify-center items-center text-center' ref={middleRef}>
-          <img src={companyLogo} alt="Luxe Moto Logo" className='w-6 md:w-8 h-4 md:h-5 ' />
-          <p className=''><span className="font-babylon">LUXE MOTO</span>&nbsp;</p>
+          <img src={companyLogo} alt="Luxe Moto Logo" className='w-6 md:w-8 h-3 md:h-5 -mt-[.5px] md:-mt-[.2px]' />
+          <p className=''><span className=""
+            style={{ fontFamily: "'Babylon', sans-serif" }}
+          >LUXE MOTO</span>&nbsp;</p>
         </div>
 
       </div>
