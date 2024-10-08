@@ -13,12 +13,20 @@
   src: url('/fonts/Babylon.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'LemonMilk';
+  src: url('/fonts/LEMONMILK-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
     /* font-family: "Noto Sans", sans-serif; */
     /* font-family: 'Roboto', sans-serif; */
     /* font-family: "Montserrat", sans-serif; */
     /* font-family: "DM Sans", sans-serif; */
-    font-family: 'Babylon', sans-serif;
+    /* font-family: 'Babylon', sans-serif; */
+    font-family: 'LemonMilk', sans-serif;
     font-weight: 100;
     background-color: #023020;
     /* background-color: #054e20; */ /*luxe moto font*/

@@ -76,12 +76,13 @@ const Navbar = () => {
                     } transition-all duration-700 ease-in-out`}
             >
                 {/* Logo section */}
-                <div className="flex items-center gap-1 text-center justify-center">
+                <div className="flex items-center gap-1 text-center justify-center ">
                     <NavLink to={'/'} className=''>
                         <img src={companyLogo} alt="Company Logo" className={`${isScrolled ? 'w-5 h-3 md:w-12 md:h-5' : 'w-6 h-3 md:w-14 md:h-6'} transition-all duration-700 ease-in-out`} />
                     </NavLink>
-                    <NavLink to={'/'} className="flex md:hidden items-center justify-center text-center mt-1">
-                        <h1 className={`text-white ${isScrolled ? 'text-xs md:text-2xl' : 'text-sm md:text-2xl'} transition-all duration-700 ease-in-out font-semibold md:font-bold`}>
+                    <NavLink to={'/'} className="flex md:hidden items-center justify-center text-center">
+                        <h1 className={`text-white ${isScrolled ? 'text-xs md:text-2xl' : 'text-sm md:text-2xl'} transition-all duration-700 ease-in-out font-semibold md:font-bold`}
+                        >
                             LUXE MOTO
                         </h1>
                     </NavLink>
@@ -90,7 +91,6 @@ const Navbar = () => {
                 {/* Brand Name */}
                 <NavLink to={'/'} className="hidden md:flex items-center">
                     <h1
-                        style={{ fontFamily: "'Babylon', sans-serif" }}
                         className={`text-white ${isScrolled ? 'text-xs md:text-xl' : 'text-sm md:text-2xl'} transition-all duration-700 ease-in-out font-semibold md:font-bold`}
                     >
                         LUXE MOTO

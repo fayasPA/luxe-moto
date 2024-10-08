@@ -111,7 +111,7 @@ const EnquiryModal = ({
                 />
                 <div>
                   <h2 className="enquiry-modal-title text-xl font-bold">
-                    {selectedEnqProduct?.brand} {formatTextWithFonts(selectedEnqProduct?.model)}
+                    {selectedEnqProduct?.brand}  {(selectedEnqProduct?.model)}
                   </h2>
                 </div>
               </div>

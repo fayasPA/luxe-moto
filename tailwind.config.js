@@ -11,7 +11,7 @@ export default {
         roboto: ['Roboto', 'sans-serif'],
         josefin: ['Montserrat', 'sans-serif'],
         dmSand: ['DM Sand', 'sans-serif'],
-        babylon: ['Babylon', 'sans-serif'],
+        babylon: ['LemonMilk', 'sans-serif'],
       },
       colors: {
         red: "red",

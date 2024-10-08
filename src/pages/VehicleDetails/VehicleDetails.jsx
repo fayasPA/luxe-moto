@@ -188,7 +188,7 @@ const VehicleDetails = () => {
               <div className='mb-4 md:mb-0'>
                 {/* car details */}
                 <p className='font-bold text-sm md:text-xl lg:text-2xl'>{data.brand?.name}</p>
-                <p className='font-bold text-lg md:text-3xl lg:text-4xl font-babylon'>{formatTextWithFonts(data.model?? "")}</p>
+                <p className='font-bold text-lg md:text-3xl lg:text-4xl font-babylon'> {(data.model?? "")}</p>
               </div>
               <div className='flex flex-col items-start md:items-center gap-3'>
                 {/* price */}

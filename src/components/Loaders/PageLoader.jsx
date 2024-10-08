@@ -39,7 +39,7 @@ const PageLoader = ({ setIsLoading }) => {
 
       >
         <div className='w-fit flex gap-2 justify-center items-center text-center' ref={middleRef}>
-          <img src={companyLogo} alt="Luxe Moto Logo" className='w-6 md:w-8 h-4 md:h-5 -mt-1' />
+          <img src={companyLogo} alt="Luxe Moto Logo" className='w-6 md:w-8 h-4 md:h-5 ' />
           <p className=''><span className="font-babylon">LUXE MOTO</span>&nbsp;</p>
         </div>
 

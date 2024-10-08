@@ -157,7 +157,7 @@ const InfoVideo = React.memo(() => {
         <div className='w-full text-center p-4 md:p-8'>
           <p ref={textRef} className='text-sm md:text-xl lg:text-2xl font-extralight text-borderColor'>
             Introducing the most electrifying Car stories ever.{' '}
-            <strong className='text-white' style={{ fontFamily: 'babylon, sans-serif' }}>
+            <strong className='text-white font-babylon'>
               Luxe Moto
             </strong>{' '}
             is the perfect match for your used car purchase.
