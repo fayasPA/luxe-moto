@@ -34,32 +34,32 @@ const ImageShowcase = () => {
     }
   }
 
-  useEffect(() => {
-    // GSAP animation for header
-    if (data.length > 0){
-      gsap.fromTo(
-        headerRef.current,
-        {
-          y: 100,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.5,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: 'top 80%',
-            end: 'top 20%',
-            scrub: true,
-            toggleActions: 'play reverse play reverse',
-            markers: false,  // Set to true for debugging
-          },
-        }
-      );
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   // GSAP animation for header
+  //   if (data.length > 0){
+  //     gsap.fromTo(
+  //       headerRef.current,
+  //       {
+  //         y: 100,
+  //         opacity: 0,
+  //       },
+  //       {
+  //         y: 0,
+  //         opacity: 1,
+  //         duration: 1.5,
+  //         ease: 'power3.out',
+  //         scrollTrigger: {
+  //           trigger: headerRef.current,
+  //           start: 'top 80%',
+  //           end: 'top 20%',
+  //           scrub: true,
+  //           toggleActions: 'play reverse play reverse',
+  //           markers: false,  // Set to true for debugging
+  //         },
+  //       }
+  //     );
+  //   }
+  // }, [data]);
 
   const VehicleCardSkeleton = () => (
     <div className="relative overflow-hidden">
