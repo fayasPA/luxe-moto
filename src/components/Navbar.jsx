@@ -80,8 +80,9 @@ const Navbar = () => {
                     <NavLink to={'/'} className=''>
                         <img src={companyLogo} alt="Company Logo" className={`${isScrolled ? 'w-5 h-3 md:w-12 md:h-5' : 'w-6 h-3 md:w-14 md:h-6'} transition-all duration-700 ease-in-out`} />
                     </NavLink>
-                    <NavLink to={'/'} className="flex md:hidden items-center justify-center text-center">
+                    <NavLink to={'/'} className="flex md:hidden items-center justify-center text-center mt-1">
                         <h1 className={`text-white ${isScrolled ? 'text-xs md:text-2xl' : 'text-sm md:text-2xl'} transition-all duration-700 ease-in-out font-semibold md:font-bold`}
+                        style={{ fontFamily: "'Babylon', sans-serif" }}
                         >
                             LUXE MOTO
                         </h1>
@@ -91,6 +92,7 @@ const Navbar = () => {
                 {/* Brand Name */}
                 <NavLink to={'/'} className="hidden md:flex items-center">
                     <h1
+                        style={{ fontFamily: "'Babylon', sans-serif" }}
                         className={`text-white ${isScrolled ? 'text-xs md:text-xl' : 'text-sm md:text-2xl'} transition-all duration-700 ease-in-out font-semibold md:font-bold`}
                     >
                         LUXE MOTO
