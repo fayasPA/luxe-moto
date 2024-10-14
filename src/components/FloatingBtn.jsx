@@ -34,10 +34,10 @@ const FloatingBtn = () => {
   return (
     <div className="fixed bottom-10 right-5 md:right-4 z-50 text-white">
       <div ref={menuRef} className={`opened-button-div flex flex-col items-center bg-green-body/50 shadow-lg rounded-full p-2 border border-borderColor`} style={{ transform: 'scale(0)' }}>
-        <button type='button' name='phone-btn' className="mb-2 p-2 rounded-full hover:border hover:border-white" onClick={() => window.location.href = 'tel:+917907962116'}>
+        <button type='button' name='phone-btn' className="mb-2 p-2 rounded-full hover:border hover:border-white" onClick={() => window.location.href = 'tel:+918590081819'}>
           <FiPhone className="text-xl" />
         </button>
-        <button type='button' name='whatsapp-btn' className="mb-2 p-2 rounded-full hover:border hover:border-white" onClick={() => window.location.href = 'https://wa.me/917907962116'}>
+        <button type='button' name='whatsapp-btn' className="mb-2 p-2 rounded-full hover:border hover:border-white" onClick={() => window.location.href = 'https://wa.me/918590081819'}>
           <FaWhatsapp className="text-xl" />
         </button>
         <button type='button' name='instagram-btn' className="mb-2 p-2 rounded-full hover:border hover:border-white" onClick={() => window.location.href = 'https://www.instagram.com/luxe_moto_/'}>
