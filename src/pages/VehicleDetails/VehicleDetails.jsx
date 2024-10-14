@@ -27,7 +27,7 @@ const VehicleDetails = () => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
   const axiosInstance = axiosAPI();
   const { carId } = useParams();
-  const phoneNumber = "+917907962116"
+  const phoneNumber = "+918590081819"
 
   useEffect(() => {
     get_vehicle_details();
