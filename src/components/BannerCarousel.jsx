@@ -32,7 +32,7 @@ const BannerCarousel = React.memo(() => {
     try {
       const response = await axiosInstance.get(GET_BANNER_VEHICLES);
       if (response.status === 200 && response.data.carDetails) {
-        setBannerData(response.data.carDetails);
+        setBannerData(response.data.carDetails.reverse());
       }
     } catch (error) {
       console.log("---------BANNER_ERROR", error);
@@ -102,7 +102,7 @@ const BannerCarousel = React.memo(() => {
 
         clearTimeout(slideTimeoutRef.current);
         slideTimeoutRef.current = setTimeout(() => {
-          swiperRef.current?.slideNext();
+          swiperRef.current?.slidePrev();
         }, videoDuration * 1000);
       }
     } else {
@@ -112,7 +112,7 @@ const BannerCarousel = React.memo(() => {
 
       clearTimeout(slideTimeoutRef.current);
       slideTimeoutRef.current = setTimeout(() => {
-        swiperRef.current?.slideNext();
+        swiperRef.current?.slidePrev();
       }, 3000);
     }
   };
