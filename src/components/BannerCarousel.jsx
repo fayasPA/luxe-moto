@@ -92,9 +92,8 @@ const BannerCarousel = React.memo(() => {
 
     if (activeIndex === 0 || swiper.realIndex === 0) {
       if (videoRef.current && isVideoReady) {
-        // Only play if the video isn't already playing
         if (videoRef.current.paused || videoRef.current.ended) {
-          videoRef.current.currentTime = 19; // Ensure video starts from 19 seconds
+          videoRef.current.currentTime = 19;
           videoRef.current.play().catch(error => {
             console.log("Error playing video: ", error);
           });
@@ -102,7 +101,7 @@ const BannerCarousel = React.memo(() => {
 
         clearTimeout(slideTimeoutRef.current);
         slideTimeoutRef.current = setTimeout(() => {
-          swiperRef.current?.slidePrev();
+          swiperRef.current?.slideTo(bannerData.length); // Move to the last slide
         }, videoDuration * 1000);
       }
     } else {
@@ -112,7 +111,11 @@ const BannerCarousel = React.memo(() => {
 
       clearTimeout(slideTimeoutRef.current);
       slideTimeoutRef.current = setTimeout(() => {
-        swiperRef.current?.slidePrev();
+        if (swiper.realIndex === 0) {
+          swiper.slideTo(bannerData.length); // Go to the last slide to continue reverse effect
+        } else {
+          swiperRef.current?.slidePrev(); // Move to the previous slide
+        }
       }, 3000);
     }
   };
@@ -123,7 +126,7 @@ const BannerCarousel = React.memo(() => {
 
     const handleVideoEnded = () => {
       if (swiperRef.current) {
-        swiperRef.current.slideNext(); // Move to the next slide when the video ends
+        swiperRef.current.slideTo(bannerData.length); // Move to the last slide after video ends
       }
     };
 
