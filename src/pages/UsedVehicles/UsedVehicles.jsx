@@ -373,12 +373,19 @@ const UsedVehicles = () => {
           </div>
 
           {datas.length < totalDataCount && (
-            <div className="flex flex-row w-full pt-10 text-borderColor2 items-center justify-center">
-              <div onClick={() => setCurrentPage(currentPage + 1)} className="hover:text-white cursor-pointer flex w-fit text-3xl md:text-4xl lg:text-6xl flex-col items-center justify-center">
-                <TbChevronsDown />
-              </div>
-            </div>
+            <div className='mt-5 flex flex-col items-start md:items-center gap-3 cursor-pointer'
+            onClick={() => setCurrentPage(currentPage + 1)}
+            >
+                  {/* price */}
+                  <p
+                    className="px-4 py-2 md:px-6 md:py-3 overflow-hidden group bg-gradient-to-r bg-white hover:bg-black hover:text-white uppercase text-green-body rounded shadow-lg shadow-black flex w-full justify-center"
+                  >
+                    <span className="text-lg md:text-xl lg:text-2xl font-extrabold font-josefin">View more</span>
+                  </p>
+                  {/* tailwind button */}
+                </div>
           )}
+          
           {datas.length === 0 && (
             <div className='w-full h-[50vh] flex justify-center items-center text-base md:text-xl lg:text-2xl'>No data found.</div>
           )}

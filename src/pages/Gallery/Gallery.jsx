@@ -181,11 +181,17 @@ const Gallery = () => {
                     </div>
 
                     {imgData.length < totalImgDataCount && (
-                      <div className="flex w-full pt-10 items-center justify-center">
-                        <div onClick={() => setImgCurrentPage(imgCurrentPage + 1)} className="hover:text-white cursor-pointer flex w-fit text-3xl md:text-4xl lg:text-6xl flex-col items-center justify-center">
-                          <TbChevronsDown />
-                        </div>
-                      </div>
+                    <div className='mt-5 flex flex-col items-start md:items-center gap-3 cursor-pointer'
+                      onClick={() => setImgCurrentPage(imgCurrentPage + 1)}
+                    >
+                      {/* price */}
+                      <p
+                        className="px-4 py-2 md:px-6 md:py-3 overflow-hidden group bg-gradient-to-r bg-white hover:bg-black hover:text-white uppercase text-green-body rounded shadow-lg shadow-black flex w-full justify-center"
+                      >
+                        <span className="text-lg md:text-xl lg:text-2xl font-extrabold font-josefin">View more</span>
+                      </p>
+                      {/* tailwind button */}
+                    </div>
                     )}
                   </> :
                   <>
@@ -225,17 +231,16 @@ const Gallery = () => {
               </div>
 
               {data.length < totalDataCount && (
-                <div className="flex flex-row w-full pt-10 text-borderColor2 items-center justify-center">
-                  <div onClick={() => setCurrentPage(currentPage + 1)} className="hover:text-white cursor-pointer flex w-fit text-3xl md:text-4xl lg:text-6xl flex-col items-center justify-center">
-                    <TbChevronsDown />
-                  </div>
-                </div>
-              )}
-              {data.length < totalDataCount && (
-                <div className="flex flex-row w-full py-5 px-10">
-                  <button onClick={() => setCurrentPage(currentPage + 1)} className="w-full bg-white hover:bg-gray-700 text-gray-800 hover:text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                    View More
-                  </button>
+                <div className='mt-5 flex flex-col items-start md:items-center gap-3 cursor-pointer'
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  {/* price */}
+                  <p
+                    className="px-4 py-2 md:px-6 md:py-3 overflow-hidden group bg-gradient-to-r bg-white hover:bg-black hover:text-white uppercase text-green-body rounded shadow-lg shadow-black flex w-full justify-center"
+                  >
+                    <span className="text-lg md:text-xl lg:text-2xl font-extrabold font-josefin">View more</span>
+                  </p>
+                  {/* tailwind button */}
                 </div>
               )
               }
